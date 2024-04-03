@@ -16,6 +16,7 @@ const Register = () => {
     const [id, setId] = useState("");
     const [pw, setPw] = useState("");
     const [pwCheck, setPwCheck] = useState("");
+    const [pwHide, setPwHide] = useState(false); // 비밀번호 숨기기
 
     return (
         <Container>
@@ -47,6 +48,8 @@ const Register = () => {
                     setState={setPw}
                     placeholder="비밀번호"
                     isPassword={true}
+                    pwHide={pwHide}
+                    setPwHide={setPwHide}
                     marginTop={'8px'}
                 />
                 <Input
@@ -54,6 +57,8 @@ const Register = () => {
                     setState={setPwCheck}
                     placeholder="비밀번호 확인"
                     isPassword={true}
+                    pwHide={pwHide}
+                    setPwHide={setPwHide}
                     marginTop={'8px'}
                 />
             </Body>
