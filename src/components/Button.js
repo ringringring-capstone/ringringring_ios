@@ -1,16 +1,20 @@
 import styled from "styled-components";
 import palette from "../styles/colorPalette";
+import { useNavigation } from "@react-navigation/native";
 
-const Button = ({ text, type }) => {
+const Button = ({ text, type, movePage }) => {
+    const navigation = useNavigation();
     return (
         <Container 
             type={type}
-            topCheck={text}>
+            topCheck={text}
+            onPress={() => navigation.navigate(movePage)}
+        >
             <BtnText type={type}>{text}</BtnText>
         </Container>
     );
 };
-const Container = styled.View`
+const Container = styled.Pressable`
     width: 83%;
     height: 51px;
     background-color: ${(props) => (props.type === 'main') ?
@@ -30,6 +34,7 @@ const BtnText = styled.Text`
     };
     font-size: 15px;
     text-align: center;
-    margin-top: 16px;
+    font-family: "IBMPlexSans-Regular";
+    margin-top: 13px;
 `;
-export default Button
+export default Button;

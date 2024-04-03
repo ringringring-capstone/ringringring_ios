@@ -1,35 +1,30 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import styled from 'styled-components';
 import palette from '../styles/colorPalette';
 import Button from '../components/Button';
+import Input from '../components/Input';
 
 const Login = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
-  const onChangeId = (inputText) => {
-    setId(inputText);
-  }
-  const onChangePw = (inputText) => {
-    setPw(inputText);
-  }
-
   return (
     <Container>
       <AppLogo> RingRingRing </AppLogo>
       <Input
-        id="id"
-        onChangeText={onChangeId}
+        state={id}
+        setState={setId}
         placeholder="아이디"
-        value={id}
+        isPassword={false}
+        marginTop={'50px'}
       />
       <Input
-        id="pw"
-        onChangeText={onChangePw}
+        state={pw}
+        setState={setPw}
         placeholder="비밀번호"
-        secureTextEntry={true}
-        value={pw}
+        isPassword={true}
+        marginTop={'8px'}
       />
       <Button
         text={"로그인"}
@@ -38,30 +33,21 @@ const Login = () => {
       <Button
         text={"아직 계정이 없으신가요?"}
         type={"sub"}
+        movePage={'register'}
       />
       <IdPwSearch>아이디 ・ 비밀번호 찾기</IdPwSearch>
     </Container>
   );
 }
-const Container = styled.View`
+const Container = styled(SafeAreaView)`
   flex: 1;
   background-color: ${palette.white};
   align-items: center;
 `;
 const AppLogo = styled.Text`
-  margin-top: 110px;
+  margin-top: 38px;
   font-size: 24px;
   font-family: "IBMPlexSans-Bold";
-`;
-const Input = styled.TextInput`
-  width: 325px;
-  height: 44px;
-  border-radius: 20px;
-  border: 1px solid #F0F0F0;
-  background-color: ${palette.white};
-  padding: 3px 15px;
-  margin-top: ${(props) => (props.id === "id") ? "50px" : "8px"};
-  font-family: "IBMPlexSans-Regular";
 `;
 const IdPwSearch = styled.Text`
   color: ${palette.main};
