@@ -24,7 +24,7 @@ const Input = ({
     );
 };
 const TextInput = styled.TextInput`
-    width: 325px;
+    width: 100%;
     height: 44px;
     border-radius: 20px;
     border: 1px solid #F0F0F0;

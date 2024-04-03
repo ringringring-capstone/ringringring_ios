@@ -12,30 +12,32 @@ const Login = () => {
   return (
     <Container>
       <AppLogo> RingRingRing </AppLogo>
-      <Input
-        state={id}
-        setState={setId}
-        placeholder="아이디"
-        isPassword={false}
-        marginTop={'50px'}
-      />
-      <Input
-        state={pw}
-        setState={setPw}
-        placeholder="비밀번호"
-        isPassword={true}
-        marginTop={'8px'}
-      />
-      <Button
-        text={"로그인"}
-        type={"main"}
-      />
-      <Button
-        text={"아직 계정이 없으신가요?"}
-        type={"sub"}
-        movePage={'register'}
-      />
-      <IdPwSearch>아이디 ・ 비밀번호 찾기</IdPwSearch>
+      <Body>
+        <Input
+          state={id}
+          setState={setId}
+          placeholder="아이디"
+          isPassword={false}
+          marginTop={'50px'}
+        />
+        <Input
+          state={pw}
+          setState={setPw}
+          placeholder="비밀번호"
+          isPassword={true}
+          marginTop={'8px'}
+        />
+        <Button
+          text={"로그인"}
+          type={"main"}
+        />
+        <Button
+          text={"아직 계정이 없으신가요?"}
+          type={"sub"}
+          movePage={'register'}
+        />
+        <IdPwFindText>아이디 ・ 비밀번호 찾기</IdPwFindText>
+      </Body>
     </Container>
   );
 }
@@ -49,7 +51,11 @@ const AppLogo = styled.Text`
   font-size: 24px;
   font-family: "IBMPlexSans-Bold";
 `;
-const IdPwSearch = styled.Text`
+const Body = styled.View`
+  width: 83%;
+  align-items: center;
+`;
+const IdPwFindText = styled.Text`
   color: ${palette.main};
   font-size: 15px;
   font-family: "IBMPlexSans-Regular";

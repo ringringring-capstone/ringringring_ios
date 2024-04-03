@@ -86,7 +86,7 @@ const Body = styled.View`
 `;
 const Footer = styled.View`
     flex: 1;
-    width: 110%;
+    width: 91%;
     align-items: center;
 `;
 const NoticeText = styled.Text`
