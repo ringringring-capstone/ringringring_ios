@@ -5,7 +5,7 @@ import palette from '../styles/colorPalette';
 import Button from '../components/Button';
 import Input from '../components/Input';
 
-const Login = () => {
+const LoginScreen = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
@@ -30,6 +30,7 @@ const Login = () => {
         <Button
           text={"로그인"}
           type={"main"}
+          movePage={'home'}
         />
         <Button
           text={"아직 계정이 없으신가요?"}
@@ -61,4 +62,4 @@ const IdPwFindText = styled.Text`
   font-family: "IBMPlexSans-Regular";
   margin-top: 20px;
 `;
-export default Login;
+export default LoginScreen;

@@ -10,7 +10,7 @@ import Button from "../components/Button";
 import { Navigation } from "react-native-navigation";
 import { useNavigation } from "@react-navigation/native";
 
-const Register = () => {
+const RegisterScreen = () => {
     const navigation = useNavigation();
     const [name, setName] = useState("");
     const [id, setId] = useState("");
@@ -100,4 +100,4 @@ const NoticeText = styled.Text`
     color: ${palette.black};
     margin-top: ${(props) => props.plusStyle ? '35px' : '10px'};
 `;
-export default Register;
+export default RegisterScreen;

@@ -5,8 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import * as Font from 'expo-font';
 import palette from './src/styles/colorPalette'
 
-import Login from './src/screens/Login';
-import Register from './src/screens/Register';
+import Login from './src/screens/LoginScreen';
+import Register from './src/screens/RegisterScreen';
+import HomeScreen from './src/screens/HomeScreen';
 
 export default function App() {
   const [isFont, setIsFont] = useState(false)
@@ -34,6 +35,13 @@ export default function App() {
         <Stack.Screen
           name="register"
           component={Register}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="home"
+          component={HomeScreen}
           options={{
             headerShown: false
           }}
