@@ -34,7 +34,7 @@ const BtnText = styled.Text`
     };
     font-size: 15px;
     text-align: center;
-    font-family: "IBMPlexSans-Regular";
+    font-family: "IBMPlexSans-Bold";
     margin-top: 13px;
 `;
 export default Button;
