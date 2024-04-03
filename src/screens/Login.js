@@ -5,8 +5,8 @@ import palette from '../styles/colorPalette';
 import Button from '../components/Button';
 
 const Login = () => {
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
 
   const onChangeId = (inputText) => {
     setId(inputText);
@@ -17,38 +17,41 @@ const Login = () => {
 
   return (
     <Container>
-      <AppLogo> RingRingRing Logo </AppLogo>
+      <AppLogo> RingRingRing </AppLogo>
       <Input
-        id='id'
+        id="id"
         onChangeText={onChangeId}
-        placeholder='아이디'
+        placeholder="아이디"
         value={id}
       />
       <Input
-        id='pw'
+        id="pw"
         onChangeText={onChangePw}
-        placeholder='비밀번호'
+        placeholder="비밀번호"
+        secureTextEntry={true}
         value={pw}
       />
       <Button
-        text={'로그인'}
-        type={'main'}
+        text={"로그인"}
+        type={"main"}
       />
       <Button
-        text={'아직 계정이 없으신가요?'}
-        type={'sub'}
+        text={"아직 계정이 없으신가요?"}
+        type={"sub"}
       />
       <IdPwSearch>아이디 ・ 비밀번호 찾기</IdPwSearch>
     </Container>
   );
 }
 const Container = styled.View`
+  flex: 1;
   background-color: ${palette.white};
   align-items: center;
 `;
 const AppLogo = styled.Text`
   margin-top: 110px;
   font-size: 24px;
+  font-family: "IBMPlexSans-Bold";
 `;
 const Input = styled.TextInput`
   width: 325px;
@@ -57,11 +60,13 @@ const Input = styled.TextInput`
   border: 1px solid #F0F0F0;
   background-color: ${palette.white};
   padding: 3px 15px;
-  margin-top: ${(props) => (props.id === 'id') ? '50px' : '8px'};
+  margin-top: ${(props) => (props.id === "id") ? "50px" : "8px"};
+  font-family: "IBMPlexSans-Regular";
 `;
 const IdPwSearch = styled.Text`
   color: ${palette.main};
   font-size: 15px;
+  font-family: "IBMPlexSans-Regular";
   margin-top: 20px;
 `;
 export default Login;
