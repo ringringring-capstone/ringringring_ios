@@ -15,16 +15,24 @@ import ChecklistScreen from './src/screens/Checklist';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [isFont, setIsFont] = useState(false)
+  const [isFontLoading, setIsFontLoading] = useState(false)
 
   // 폰트 적용
-  useEffect(async () => {
-    await Font.loadAsync({
-      "IBMPlexSans-Regular": require("./src/assets/font/IBMPlexSansKR-Regular.ttf"),
-      "IBMPlexSans-Bold": require("./src/assets/font/IBMPlexSansKR-Bold.ttf"),
-    });
-    setIsFont(true);
+  useEffect(() => {
+    async function loadFonts() {
+      await Font.loadAsync({
+        "IBMPlexSans-Regular": require("./src/assets/font/IBMPlexSansKR-Regular.ttf"),
+        "IBMPlexSans-Bold": require("./src/assets/font/IBMPlexSansKR-Bold.ttf"),
+      });
+      setIsFontLoading(true);
+    }
+    loadFonts();
   }, []);
+
+  // 폰트 로딩 중에는 렌더링 방지
+  if(!isFontLoading) { 
+    return null 
+  }
 
   return (
     <NavigationContainer>

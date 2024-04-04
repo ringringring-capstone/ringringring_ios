@@ -65,8 +65,8 @@ const HomeContainer = styled.Pressable`
 `;
 const IconContainer = styled.Pressable`
     margin-top: 25px;
-    left: ${(props) => ((props.icon === "mypage") ? "50px" : "none")};
-    right: ${(props) => ((props.icon === "checklist") ? "50px" : "none")};
+    left: ${(props) => ((props.icon === "mypage") ? "60px" : "none")};
+    right: ${(props) => ((props.icon === "checklist") ? "60px" : "none")};
     align-items: center;
 `;
 const IconImg = styled.Image`
