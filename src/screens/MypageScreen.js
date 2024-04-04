@@ -1,10 +1,10 @@
 import { SafeAreaView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components";
 import palette from "../styles/colorPalette";
 
 import Logout from "../assets/icon/mypage/ic_logout.png";
 import Logoutbutton from "../assets/icon/ic_backBtn.png";
-import { useNavigation } from "@react-navigation/native";
 
 const MyPage = () => {
     const navigation = useNavigation();

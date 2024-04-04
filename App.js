@@ -9,8 +9,8 @@ import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import MyPageScreen from './src/screens/MypageScreen';
+import ChecklistScreen from './src/screens/ChecklistScreen';
 import BottomMenu from './src/components/BottomMenu';
-import ChecklistScreen from './src/screens/Checklist';
 
 const Stack = createNativeStackNavigator();
 

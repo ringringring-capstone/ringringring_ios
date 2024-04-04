@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { SafeAreaView } from "react-native";
-import styled from "styled-components";
 import { useNavigation } from "@react-navigation/native";
+import styled from "styled-components";
 import palette from "../styles/colorPalette";
 
 import HomeSelect from "../assets/icon/bottom/ic_home_Select.png";
@@ -9,8 +10,6 @@ import checklistSelect from "../assets/icon/bottom/ic_checklist_Select.png";
 import checklistNotSelect from "../assets/icon/bottom/ic_checklist_NotSelect.png";
 import mypageSelect from "../assets/icon/bottom/ic_mypage_Select.png";
 import mypageNotSelect from "../assets/icon/bottom/ic_mypage_NotSelect.png";
-import { useState } from "react";
-
 
 const BottomMenu = () => {
     const navigation = useNavigation();
