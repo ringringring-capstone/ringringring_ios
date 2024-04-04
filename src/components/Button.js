@@ -17,6 +17,8 @@ const Button = ({ text, type, movePage }) => {
 const Container = styled.Pressable`
     width: 100%;
     height: 51px;
+    display: flex;
+    justify-content: center;
     background-color: ${(props) => (props.type === 'main') ?
      `${palette.main}` : `${palette.white}`
     };
@@ -35,6 +37,5 @@ const BtnText = styled.Text`
     font-size: 15px;
     text-align: center;
     font-family: "IBMPlexSans-Bold";
-    margin-top: 13px;
 `;
 export default Button;
