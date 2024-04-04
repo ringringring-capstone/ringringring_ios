@@ -34,7 +34,7 @@ const BtnText = styled.Text`
     color: ${(props) => (props.type === 'main') ?
      `${palette.white}` : `${palette.main}`
     };
-    font-size: 15px;
+    font-size: 17px;
     text-align: center;
     font-family: "IBMPlexSans-Bold";
 `;

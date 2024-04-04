@@ -40,7 +40,7 @@ const LogoutIcon = styled.Image`
     height: 30px;
 `;
 const LogoutText = styled.Text`
-    font-size: 20px;
+    font-size: 18px;
     font-family: "IBMPlexSans-Regular";
     margin-left: 10px;
 `;

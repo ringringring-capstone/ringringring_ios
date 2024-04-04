@@ -58,7 +58,7 @@ const Body = styled.View`
 `;
 const IdPwFindText = styled.Text`
   color: ${palette.main};
-  font-size: 15px;
+  font-size: 17px;
   font-family: "IBMPlexSans-Regular";
   margin-top: 20px;
 `;

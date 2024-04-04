@@ -95,7 +95,7 @@ const Footer = styled.View`
     align-items: center;
 `;
 const NoticeText = styled.Text`
-    font-size: 17px;
+    font-size: 18px;
     font-family: "IBMPlexSans-Bold";
     color: ${palette.black};
     margin-top: ${(props) => props.plusStyle ? '35px' : '10px'};
