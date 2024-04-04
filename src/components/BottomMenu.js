@@ -1,34 +1,50 @@
 import { SafeAreaView } from "react-native";
 import styled from "styled-components";
+import { useNavigation } from "@react-navigation/native";
 import palette from "../styles/colorPalette";
 
 import HomeSelect from "../assets/icon/bottom/ic_home_Select.png";
-import checklistNotSelect from "../assets/icon/bottom/ic_checkList_NotSelect.png";
+import HomeNotSelect from "../assets/icon/bottom/ic_home_NotSelect.png";
+import checklistSelect from "../assets/icon/bottom/ic_checklist_Select.png";
+import checklistNotSelect from "../assets/icon/bottom/ic_checklist_NotSelect.png";
+import mypageSelect from "../assets/icon/bottom/ic_mypage_Select.png";
 import mypageNotSelect from "../assets/icon/bottom/ic_mypage_NotSelect.png";
-import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+
 
 const BottomMenu = () => {
     const navigation = useNavigation();
+    const [menu, setMenu] = useState("home");
+
+    const movePage = (page) => {
+        setMenu(page);
+        navigation.navigate(page);
+    }
 
     return (
         <Container>
             <IconContainer 
                 icon={"checklist"}
-                onPress={() => navigation.navigate('checklist')}>
-                <IconImg    
-                    source={checklistNotSelect}/>
+                onPress={() => movePage("checklist")}>
+                <IconImg 
+                    source={(menu === 'checklist') ? checklistSelect : checklistNotSelect}/>
                 <IconTitle>체크리스트</IconTitle>
             </IconContainer>
             <HomeContainer 
                 icon={"home"}
-                onPress={() => navigation.navigate('home')}>
-                <IconImg source={HomeSelect}/>
-                <IconTitle home={true}>홈</IconTitle>
+                onPress={() => movePage("home")}>
+                <IconImg
+                    source={(menu === "home") ? HomeSelect : HomeNotSelect}/>
+                <IconTitle 
+                    home={true}
+                    select={menu === "home"}
+                >홈</IconTitle>
             </HomeContainer>
             <IconContainer 
                 icon={"mypage"}
-                onPress={() => navigation.navigate('mypage')}>
-                <IconImg source={mypageNotSelect}/>
+                onPress={() => movePage("mypage")}>
+                <IconImg 
+                    source={(menu === "mypage") ? mypageSelect : mypageNotSelect}/>
                 <IconTitle>마이페이지</IconTitle>
             </IconContainer>
         </Container>
@@ -76,7 +92,9 @@ const IconImg = styled.Image`
 const IconTitle = styled.Text`
     position: ${(props) => (props.home ? 'absolute' : 'relative')};
     top: ${(props) => (props.home ? '75px' : '0px')};
-    color: ${(props) => (props.home ? `${palette.main}` : `${palette.black}`)};;
+    color: ${(props) => (
+        props.home ? (props.select ?
+             `${palette.main}` : `${palette.black}`) : `${palette.black}`)};
     font-size: 11px;
     font-family: "IBMPlexSans-Bold";
     margin-top: 3px;
