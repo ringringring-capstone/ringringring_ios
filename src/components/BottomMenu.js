@@ -5,20 +5,29 @@ import palette from "../styles/colorPalette";
 import HomeSelect from "../assets/icon/bottom/ic_home_Select.png";
 import checklistNotSelect from "../assets/icon/bottom/ic_checkList_NotSelect.png";
 import mypageNotSelect from "../assets/icon/bottom/ic_mypage_NotSelect.png";
+import { useNavigation } from "@react-navigation/native";
 
 const BottomMenu = () => {
+    const navigation = useNavigation();
+
     return (
         <Container>
-            <IconContainer icon={"checklist"}>
+            <IconContainer 
+                icon={"checklist"}
+                onPress={() => navigation.navigate('checklist')}>
                 <IconImg    
                     source={checklistNotSelect}/>
                 <IconTitle>체크리스트</IconTitle>
             </IconContainer>
-            <HomeContainer icon={"home"}>
+            <HomeContainer 
+                icon={"home"}
+                onPress={() => navigation.navigate('home')}>
                 <IconImg source={HomeSelect}/>
                 <IconTitle home={true}>홈</IconTitle>
             </HomeContainer>
-            <IconContainer icon={"mypage"}>
+            <IconContainer 
+                icon={"mypage"}
+                onPress={() => navigation.navigate('mypage')}>
                 <IconImg source={mypageNotSelect}/>
                 <IconTitle>마이페이지</IconTitle>
             </IconContainer>
@@ -46,7 +55,7 @@ const HomeContainer = styled.Pressable`
     justify-content: center;
     width: 69px;
     height: 69px;
-    bottom: 40px;
+    bottom: 20px;
     margin-bottom: 5px;
     shadow-color: ${palette.black};
     shadow-opacity: 0.5;
@@ -55,7 +64,7 @@ const HomeContainer = styled.Pressable`
     background-color: ${palette.main};
 `;
 const IconContainer = styled.Pressable`
-    margin-bottom: 10px;
+    margin-top: 25px;
     left: ${(props) => ((props.icon === "mypage") ? "50px" : "none")};
     right: ${(props) => ((props.icon === "checklist") ? "50px" : "none")};
     align-items: center;
@@ -66,7 +75,7 @@ const IconImg = styled.Image`
 `;
 const IconTitle = styled.Text`
     position: ${(props) => (props.home ? 'absolute' : 'relative')};
-    top: ${(props) => (props.home ? '77px' : '0px')};
+    top: ${(props) => (props.home ? '75px' : '0px')};
     color: ${(props) => (props.home ? `${palette.main}` : `${palette.black}`)};;
     font-size: 11px;
     font-family: "IBMPlexSans-Bold";

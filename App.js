@@ -5,13 +5,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import * as Font from 'expo-font';
 import palette from './src/styles/colorPalette'
 
-import Login from './src/screens/LoginScreen';
-import Register from './src/screens/RegisterScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import RegisterScreen from './src/screens/RegisterScreen';
 import HomeScreen from './src/screens/HomeScreen';
+import MyPageScreen from './src/screens/MypageScreen';
+import BottomMenu from './src/components/BottomMenu';
+import ChecklistScreen from './src/screens/Checklist';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isFont, setIsFont] = useState(false)
-  const Stack = createNativeStackNavigator();
 
   // 폰트 적용
   useEffect(async () => {
@@ -24,30 +28,33 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="login">
-        <Stack.Screen 
-          name="login" 
-          component={Login}
-          options={{
-            headerShown: false
-          }}
-        />
-        <Stack.Screen
-          name="register"
-          component={Register}
-          options={{
-            headerShown: false
-          }}
-        />
-        <Stack.Screen
-          name="home"
-          component={HomeScreen}
-          options={{
-            headerShown: false
-          }}
-        />
+      <Stack.Navigator 
+        initialRouteName="login"
+        screenOptions={{
+          headerShown: false,
+      }}>
+        <Stack.Screen name="login" component={LoginScreen}/>
+        <Stack.Screen name="register" component={RegisterScreen}/>
+        <Stack.Screen name="main" component={MainScreen}/>
       </Stack.Navigator>
-      <StatusBar style="auto" />
+      <StatusBar style="auto"/>
     </NavigationContainer>
+  );
+};
+
+function MainScreen() {
+  return (
+    <>
+      <Stack.Navigator 
+        initialRouteName="home"
+        screenOptions={{
+          headerShown: false,
+      }}>
+        <Stack.Screen name="home" component={HomeScreen}/>
+        <Stack.Screen name="mypage" component={MyPageScreen}/>
+        <Stack.Screen name="checklist" component={ChecklistScreen}/>
+      </Stack.Navigator>
+      <BottomMenu/>
+    </>
   );
 };

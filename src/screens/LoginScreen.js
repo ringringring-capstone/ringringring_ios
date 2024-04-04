@@ -30,7 +30,7 @@ const LoginScreen = () => {
         <Button
           text={"로그인"}
           type={"main"}
-          movePage={'home'}
+          movePage={'main'}
         />
         <Button
           text={"아직 계정이 없으신가요?"}

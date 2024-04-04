@@ -11,7 +11,6 @@ const HomeScreen = () => {
             <Body>
 
             </Body>
-            <BottomMenu/>
         </Container>
     );
 };
