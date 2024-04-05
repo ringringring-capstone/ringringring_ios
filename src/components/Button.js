@@ -8,8 +8,7 @@ const Button = ({ text, type, movePage }) => {
         <Container 
             type={type}
             topCheck={text}
-            onPress={() => navigation.navigate(movePage)}
-        >
+            onPress={() => navigation.navigate(movePage)}>
             <BtnText type={type}>{text}</BtnText>
         </Container>
     );
