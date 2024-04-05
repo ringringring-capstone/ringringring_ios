@@ -48,7 +48,7 @@ const LogoutBtn = styled.Image`
     position: relative;
     width: 8px;
     height: 15px;
-    left: 225;
+    left: 230px;
     transform: rotate(180deg);
 `;
 export default MyPage;

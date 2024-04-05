@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components";
 import palette from "../styles/colorPalette";
 
+// icon
 import HomeSelect from "../assets/icon/bottom/ic_home_Select.png";
 import HomeNotSelect from "../assets/icon/bottom/ic_home_NotSelect.png";
 import checklistSelect from "../assets/icon/bottom/ic_checklist_Select.png";
