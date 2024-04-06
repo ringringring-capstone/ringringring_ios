@@ -1,25 +1,37 @@
 import { SafeAreaView } from "react-native";
+import { useState } from "react";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 
-import NotCheck from "../../assets/image/img_NotCheck.png";
+import NotCheck from "../../assets/icon/img_NotCheck.png";
+import Check from "../../assets/icon/img_Check.png";
 
 const OptionItem = ({content}) => {
+    const [check, setCheck] = useState(false);
+
+    const onClickItem = () => {
+        setCheck(!check);
+    }
+
     return (
-        <Container>
-            <OptionText>{content}</OptionText>
-            <CheckIconContainer>   
-                <CheckIcon source={NotCheck}/>
+        <Container
+            select={check}
+            onPress={onClickItem}>
+            <OptionText select={check}>{content}</OptionText>
+            <CheckIconContainer select={check}>   
+                <CheckIcon source={(check ? Check : NotCheck)}/>
             </CheckIconContainer>
         </Container>
     );
 };
-const Container = styled(SafeAreaView)`
+const Container = styled.Pressable`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: ${palette.white};
+    background-color: ${(props) => (props.select ? 
+        `${palette.main}` : `${palette.white}`
+    )};
     border: 1px solid ${palette.white};
     border-radius: 20px;
     shadow-color: ${palette.black};
@@ -30,7 +42,9 @@ const Container = styled(SafeAreaView)`
 const OptionText = styled.Text`
     font-size: 16px;
     font-family: "IBMPlexSans-Regular";
-    color: ${palette.black};
+    color: ${(props) => (props.select ? 
+        `${palette.white}` : `${palette.black}`
+    )};
     margin: 20px 75px 20px 20px;
     line-height: 20px;
 `;
@@ -43,12 +57,14 @@ const CheckIconContainer = styled.View`
     width: 29px;
     height: 29px;
     margin-right: 18px;
-    background-color: ${palette.white};
-    border: 1px solid ${palette.main};
+    background-color: ${(props) => (props.select ? 
+        `${palette.main}` : `${palette.white}`
+    )};
+    border: 1px solid ${(props) => (props.select ? 
+        `${palette.white}` : `${palette.main}`
+    )};
     border-radius: 50%;
 `;
 const CheckIcon = styled.Image`
-    /* margin-left: 4px;
-    margin-top: 7px; */
 `;
 export default OptionItem;

@@ -1,8 +1,8 @@
 import { SafeAreaView, SafeAreaViewBase } from "react-native";
 import styled from "styled-components";
-import GoBackBtn from "../GoBackBtn";
 import palette from "../../styles/colorPalette";
 import Button from "../Button";
+import GoBackBtn from "../GoBackBtn";
 import OptionList from "./OptionList";
 
 const DoingChecklist = () => {

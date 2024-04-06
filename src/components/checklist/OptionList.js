@@ -1,7 +1,7 @@
 import { SafeAreaView, ScrollView } from "react-native";
 import styled from "styled-components";
-import OptionItem from "./OptionItem";
 import palette from "../../styles/colorPalette";
+import OptionItem from "./OptionItem";
 
 const OptionList = () => {
     // 일단 이러고 넣어둠.
@@ -33,7 +33,7 @@ const Container = styled(ScrollView)`
     width: 100%;
     height: 90%;
     margin-top: 20px;
-    padding: 5px 2px;
+    padding: 5px 3px;
     background-color: ${palette.white};
 `;
 export default OptionList;
