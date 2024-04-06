@@ -66,5 +66,7 @@ const CheckIconContainer = styled.View`
     border-radius: 50%;
 `;
 const CheckIcon = styled.Image`
+    width: 15px;
+    height: 10px;
 `;
 export default OptionItem;

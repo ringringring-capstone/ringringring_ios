@@ -22,7 +22,7 @@ const OptionList = () => {
         "전화 통화 시, 무슨 말을 해야할 지 모르겠다.",
     ];
     return (
-        <Container>
+        <Container showsVerticalScrollIndicator={false}>
             {text.map((item) => 
                 <OptionItem content={item}/>
             )}
@@ -32,8 +32,8 @@ const OptionList = () => {
 const Container = styled(ScrollView)`
     width: 100%;
     height: 90%;
-    margin-top: 20px;
-    padding: 5px 3px;
+    margin-top: 15px;
+    padding: 5px;
     background-color: ${palette.white};
 `;
 export default OptionList;
