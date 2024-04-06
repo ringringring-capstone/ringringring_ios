@@ -11,6 +11,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import MyPageScreen from './src/screens/MypageScreen';
 import ChecklistScreen from './src/screens/ChecklistScreen';
 import BottomMenu from './src/components/BottomMenu';
+import DoingChecklist from './src/components/checklist/DoingChecklist';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +32,7 @@ export default function App() {
 
   // 폰트 로딩 중에는 렌더링 방지
   if(!isFontLoading) { 
-    return null 
+    return null;
   }
 
   return (
@@ -44,6 +45,7 @@ export default function App() {
         <Stack.Screen name="login" component={LoginScreen}/>
         <Stack.Screen name="register" component={RegisterScreen}/>
         <Stack.Screen name="main" component={MainScreen}/>
+        <Stack.Screen name="doingchecklist" component={DoingChecklist}/>
       </Stack.Navigator>
       <StatusBar style="auto"/>
     </NavigationContainer>
