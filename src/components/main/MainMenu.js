@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import palette from "../styles/colorPalette";
+import palette from "../../styles/colorPalette";
 
-import callPractice1 from "../assets/icon/main/ic_callPractice1.png";
-import callPractice2 from "../assets/icon/main/ic_callPractice2.png";
-import callPractice3 from "../assets/icon/main/ic_callPractice3.png";
-import Mission from "../assets/icon/main/ic_mission.png";
+import callPractice1 from "../../assets/icon/main/ic_callPractice1.png";
+import callPractice2 from "../../assets/icon/main/ic_callPractice2.png";
+import callPractice3 from "../../assets/icon/main/ic_callPractice3.png";
+import Mission from "../../assets/icon/main/ic_mission.png";
 
 const MainMenu = () => {
     const Menulist = [

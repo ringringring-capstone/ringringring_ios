@@ -1,10 +1,12 @@
 import { SafeAreaView, ScrollView } from "react-native";
 import styled from "styled-components";
-import BottomMenu from "../components/BottomMenu";
+import palette from "../styles/colorPalette";
 
 import GirlImg from "../assets/image/img_mainScreenTop.png";
-import palette from "../styles/colorPalette";
-import MainMenu from "../components/MainMenu";
+
+import BottomMenu from "../components/BottomMenu";
+import MainMenu from "../components/main/MainMenu";
+import InfoBox from "../components/InfoBox";
 
 const HomeScreen = () => {
     const name = "홍길동";
@@ -18,6 +20,9 @@ const HomeScreen = () => {
             </Header>
             <Body>
                 <MainMenu/>
+                <MiddleLine/>
+                <InfoBox/>
+                <MiddleLine/>
             </Body>
         </Container>
     );
@@ -49,5 +54,10 @@ const IntroductText = styled.Text`
     };
     margin-top: ${(props) => (props.type === "main") ? "30px" : "15px"};
     margin-left: 23px;
+`;
+const MiddleLine = styled.View`
+    width: 100%;
+    height: 17px;
+    background-color: #ECECEC;
 `;
 export default HomeScreen;
