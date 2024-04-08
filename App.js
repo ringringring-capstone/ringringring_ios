@@ -23,6 +23,7 @@ export default function App() {
     async function loadFonts() {
       await Font.loadAsync({
         "IBMPlexSans-Regular": require("./src/assets/font/IBMPlexSansKR-Regular.ttf"),
+        "IBMPlexSans-Medium": require("./src/assets/font/IBMPlexSansKR-Medium.ttf"),
         "IBMPlexSans-Bold": require("./src/assets/font/IBMPlexSansKR-Bold.ttf"),
       });
       setIsFontLoading(true);
@@ -60,9 +61,9 @@ function MainScreen() {
         screenOptions={{
           headerShown: false,
       }}>
+        <Stack.Screen name="checklist" component={ChecklistScreen}/>
         <Stack.Screen name="home" component={HomeScreen}/>
         <Stack.Screen name="mypage" component={MyPageScreen}/>
-        <Stack.Screen name="checklist" component={ChecklistScreen}/>
       </Stack.Navigator>
       <BottomMenu/>
     </>

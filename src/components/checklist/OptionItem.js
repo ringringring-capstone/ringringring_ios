@@ -3,8 +3,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 
-import NotCheck from "../../assets/icon/img_NotCheck.png";
-import Check from "../../assets/icon/img_Check.png";
+import NotCheck from "../../assets/icon/ic_NotCheck.png";
+import Check from "../../assets/icon/ic_Check.png";
 
 const OptionItem = ({content}) => {
     const [check, setCheck] = useState(false);
