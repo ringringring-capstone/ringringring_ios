@@ -7,6 +7,7 @@ import GirlImg from "../assets/image/img_mainScreenTop.png";
 import BottomMenu from "../components/BottomMenu";
 import MainMenu from "../components/main/MainMenu";
 import MyPractice from "../components/statistics/MyPractice";
+import AllStatitics from "../components/statistics/AllStatistics";
 
 const HomeScreen = () => {
     const name = "홍길동";
@@ -24,6 +25,7 @@ const HomeScreen = () => {
                     <MiddleLine/>
                     <MyPractice/>
                     <MiddleLine/>
+                    <AllStatitics/>
                 </Body>
             </SubContainer>
         </Container>
