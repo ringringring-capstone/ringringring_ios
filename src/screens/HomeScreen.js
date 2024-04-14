@@ -6,35 +6,42 @@ import GirlImg from "../assets/image/img_mainScreenTop.png";
 
 import BottomMenu from "../components/BottomMenu";
 import MainMenu from "../components/main/MainMenu";
-import InfoBox from "../components/InfoBox";
+import MyPractice from "../components/statistics/MyPractice";
 
 const HomeScreen = () => {
     const name = "홍길동";
 
     return (
         <Container>
-            <Header>
-                <ExampleImg source={GirlImg}/>
-                <IntroductText type={"main"}>{name} 님,{"\n"}안녕하세요 😊</IntroductText>
-                <IntroductText type={"sub"}>오늘도 함께 연습해봐요!</IntroductText>
-            </Header>
-            <Body>
-                <MainMenu/>
-                <MiddleLine/>
-                <InfoBox/>
-                <MiddleLine/>
-            </Body>
+            <SubContainer>
+                <Header>
+                    <ExampleImg source={GirlImg}/>
+                    <IntroductText type={"main"}>{name} 님,{"\n"}안녕하세요 😊</IntroductText>
+                    <IntroductText type={"sub"}>오늘도 함께 연습해봐요!</IntroductText>
+                </Header>
+                <Body>
+                    <MainMenu/>
+                    <MiddleLine/>
+                    <MyPractice/>
+                    <MiddleLine/>
+                </Body>
+            </SubContainer>
         </Container>
     );
 };
 const Container = styled(SafeAreaView)`
     flex: 1;
+    background-color: ${palette.white};
     display: flex;
     position: relative;
     overflow-y: scroll;
 `;
+const SubContainer = styled(ScrollView)`
+    flex: 1;
+`;
 const Header = styled.View`
-    flex: 4;
+    /* flex: 4; */
+    height: 200px;
     background-color: #FFF7F5;
 `;
 const Body = styled.View`
