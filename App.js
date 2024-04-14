@@ -12,6 +12,7 @@ import MyPageScreen from './src/screens/MypageScreen';
 import ChecklistScreen from './src/screens/ChecklistScreen';
 import BottomMenu from './src/components/BottomMenu';
 import DoingChecklist from './src/components/checklist/DoingChecklist';
+import CheckListResult from './src/components/checklist/CheckListResult';
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +48,7 @@ export default function App() {
         <Stack.Screen name="register" component={RegisterScreen}/>
         <Stack.Screen name="main" component={MainScreen}/>
         <Stack.Screen name="doingchecklist" component={DoingChecklist}/>
+        <Stack.Screen name="checklistresult" component={CheckListResult}/>
       </Stack.Navigator>
       <StatusBar style="auto"/>
     </NavigationContainer>

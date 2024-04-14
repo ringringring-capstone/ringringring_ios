@@ -1,32 +1,25 @@
-import { useState } from "react";
-import { SafeAreaView } from "react-native";
 import styled from "styled-components";
-
+import { SafeAreaView } from "react-native";
 import palette from "../../styles/colorPalette";
-
 import Button from "../Button";
 import GoBackBtn from "../GoBackBtn";
-import OptionList from "./OptionList";
+import MenuTitle from "../MenuTitle";
 
-const DoingChecklist = () => {
-    const [score, setScore] = useState(0);
+const CheckListResult = () => {
+    const username = "홍길동";
     return (
         <Container>
             <Header>
                 <GoBackBtn/>
             </Header>
             <Body>
-                <NoticeText>
-                    아래 항목 중, 해당되는 상태가 있다면{"\n"}
-                    체크해주세요.
-                </NoticeText>
-                <OptionList score={score} setScore={setScore}/>
+                <MenuTitle text={`${username} 님은 현재 ..`} type={"sub"}/>
             </Body>
             <Footer>
                 <Button
-                    text={"결과 확인하기"}
+                    text={"닫기"}
                     type={"main"}
-                    movePage={"checklistresult"}
+                    movePage={"checklist"}
                 />
             </Footer>
         </Container>
@@ -57,10 +50,4 @@ const Footer = styled(SafeAreaView)`
     align-items: center;
     background-color: ${palette.white};
 `;
-const NoticeText = styled.Text`
-    font-size: 18px;
-    font-family: "IBMPlexSans-Bold";
-    color: ${palette.black};
-    margin-top: ${(props) => props.plusStyle ? '35px' : '10px'};
-`;
-export default DoingChecklist;
+export default CheckListResult;
