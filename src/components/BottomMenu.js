@@ -63,8 +63,8 @@ const Container = styled(SafeAreaView)`
     background-color: ${palette.white};
     border-radius: 20px;
     shadow-color: ${palette.black};
-    shadow-opacity: 0.5;
-    shadow-offset: 0px 5px;
+    shadow-opacity: 0.1;
+    shadow-offset: 0px -3px;
 `;
 const HomeContainer = styled.Pressable`
     align-items: center;
