@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import SubMenuTitle from "./SubMenuTitle";
+import MenuTitle from "./MenuTitle";
 
 const InfoBox = () => {
     return (
         <Container>
-            <SubMenuTitle text={"나의 연습량"}/>
+            <MenuTitle text={"나의 연습량"} type={"sub"}/>
         </Container>
     );
 };

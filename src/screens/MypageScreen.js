@@ -12,7 +12,7 @@ const MyPage = () => {
 
     return (
         <Container>
-            <MenuTitle text={'MY페이지'}/>
+            <MenuTitle text={"MY페이지"} type={"main"}/>
             <Body onPress={() => navigation.navigate("login")}>
                 <LogoutIcon source={Logout}/>
                 <LogoutText>로그아웃</LogoutText>

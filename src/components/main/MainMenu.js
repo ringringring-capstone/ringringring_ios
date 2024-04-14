@@ -8,16 +8,16 @@ import Mission from "../../assets/icon/main/ic_mission.png";
 
 const MainMenu = () => {
     const Menulist = [
-        { src: callPractice1, content: "예약전화" },
-        { src: callPractice2, content: "배달전화" },
-        { src: callPractice3, content: "상담전화" },
-        { src: Mission, content: "미션도전" }
+        { id: 1, src: callPractice1, content: "예약전화" },
+        { id: 2, src: callPractice2, content: "배달전화" },
+        { id: 3, src: callPractice3, content: "상담전화" },
+        { id: 4, src: Mission, content: "미션도전" }
     ];
 
     return (
         <Container>
             {Menulist.map((item) => (
-                <MenuItem>
+                <MenuItem key={item.id}>
                     <ItemIcon source={item.src}/>
                     <ItemContent>{item.content}</ItemContent>
                 </MenuItem>

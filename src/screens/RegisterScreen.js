@@ -1,14 +1,12 @@
 import { useState } from "react";
+import { Pressable, SafeAreaView } from 'react-native';
 import styled from "styled-components";
 import palette from "../styles/colorPalette";
-import { Pressable, SafeAreaView } from 'react-native';
 
 import Input from "../components/Input";
 import GoBackBtn from "../components/GoBackBtn";
 
 import Button from "../components/Button";
-import { Navigation } from "react-native-navigation";
-import { useNavigation } from "@react-navigation/native";
 
 const RegisterScreen = () => {
     const navigation = useNavigation();

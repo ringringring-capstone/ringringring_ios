@@ -43,7 +43,7 @@ const Body = styled.View`
 const ExampleImg = styled.Image`
     position: absolute;
     right: 0;
-    bottom: -3;
+    bottom: -3px;
     width: 145px;
     height: 159px;
 `;

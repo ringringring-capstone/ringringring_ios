@@ -1,15 +1,15 @@
-import { SafeAreaView, Text } from "react-native";
+import { useState } from "react";
+import { SafeAreaView } from "react-native";
 import styled from "styled-components";
 import MenuTitle from "../components/MenuTitle";
 import Button from "../components/Button";
-import { useState } from "react";
 
 const Checklist = () => {
     const name = '홍길동';
     return (
         <Container>
             <Header>
-                <MenuTitle text={'체크리스트'}/>
+                <MenuTitle text={"체크리스트"} type={"main"}/>
             </Header>
             <Body>
                 <NoticeText>{name} 님은 아직 최근 결과가 없어요 😔</NoticeText>
