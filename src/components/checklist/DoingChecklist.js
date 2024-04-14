@@ -1,11 +1,15 @@
-import { SafeAreaView, SafeAreaViewBase } from "react-native";
+import { useState } from "react";
+import { SafeAreaView } from "react-native";
 import styled from "styled-components";
+
 import palette from "../../styles/colorPalette";
+
 import Button from "../Button";
 import GoBackBtn from "../GoBackBtn";
 import OptionList from "./OptionList";
 
 const DoingChecklist = () => {
+    const [score, setScore] = useState(0);
     return (
         <Container>
             <Header>
@@ -14,9 +18,9 @@ const DoingChecklist = () => {
             <Body>
                 <NoticeText>
                     아래 항목 중, 해당되는 상태가 있다면{"\n"}
-                    체크해주세요.
+                    체크해주세요. {score}
                 </NoticeText>
-                <OptionList/>
+                <OptionList score={score} setScore={setScore}/>
             </Body>
             <Footer>
                 <Button

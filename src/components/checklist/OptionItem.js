@@ -6,11 +6,15 @@ import palette from "../../styles/colorPalette";
 import NotCheck from "../../assets/icon/ic_NotCheck.png";
 import Check from "../../assets/icon/ic_Check.png";
 
-const OptionItem = ({content}) => {
-    const [check, setCheck] = useState(false);
+const OptionItem = ({content, score, setScore, clickValue}) => {
+    const [check, setCheck] = useState(clickValue);
 
     const onClickItem = () => {
         setCheck(!check);
+        if (check) 
+            setScore(score - 1);
+        else
+            setScore(score + 1);
     }
 
     return (
