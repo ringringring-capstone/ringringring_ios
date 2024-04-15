@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components";
+import palette from "../styles/colorPalette";
 import MenuTitle from "../components/MenuTitle";
 import Button from "../components/Button";
 
@@ -25,6 +26,7 @@ const Container = styled(SafeAreaView)`
     display: flex;
     flex: 1;
     align-items: center;
+    background-color: ${palette.white};
 `;
 const Header = styled.View`
     width: 100%;

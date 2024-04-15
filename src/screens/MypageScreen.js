@@ -23,6 +23,7 @@ const MyPage = () => {
 };
 const Container = styled(SafeAreaView)`
     flex: 1;
+    background-color: ${palette.white};
 `;
 const Body = styled.Pressable`
     display: flex;
