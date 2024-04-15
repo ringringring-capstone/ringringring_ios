@@ -22,12 +22,15 @@ const SeverityLevel = ({score}) => {
                 <ChartText>심각도</ChartText>
                 <ChartText>100</ChartText>
             </ChartTextContainer>
+            {/* <FigureTextContainer>
+                <FigureText>심각도  | {" "}</FigureText>
+                <FigureScore>{score*10} %</FigureScore>
+            </FigureTextContainer> */}
         </Container>
     );
 };
 const Container = styled.View`
-    flex: 1;
-    width: 100%;
+    flex: 0.13;
     padding: 0 28px;
     margin-top: 10px;
 `;
@@ -44,10 +47,8 @@ const ChartContainer = styled.View`
 `;
 const Figure = styled(LinearGradient)`
     width: ${(props) => (props.checkCount * 10)}%;
-    /* max-width: 100%; */
     height: 24px;
     border-radius: 20px;
-    background-color: antiquewhite;
 `;
 const LineContainer = styled.View`
     position: relative;
@@ -57,13 +58,29 @@ const LineContainer = styled.View`
     display: flex;
     flex-direction: row;
     align-items: center;
-
 `;
 const Line = styled.View`
     border: 0.5px dotted #5E5E5E;
     width: 1px;
     height: 100%;
 `;
+// 체크리스트 처음 화면(테스트 한번 한 적 있는 경우)
+// const FigureTextContainer = styled.View`
+//     margin-top: 15px;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-end;
+//     align-items: center;
+// `;  
+// const FigureText = styled.Text`
+//     font-size: 19px;
+//     font-family: "IBMPlexSans-Regular";
+// `;
+// const FigureScore = styled.Text`
+//     font-size: 19px;
+//     font-family: "IBMPlexSans-Bold";
+//     color: ${palette.sub};
+// `;
 const ChartTextContainer = styled.View`
     display: flex;
     flex-direction: row;

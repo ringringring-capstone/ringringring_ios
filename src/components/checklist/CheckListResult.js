@@ -5,6 +5,7 @@ import Button from "../Button";
 import GoBackBtn from "../GoBackBtn";
 import MenuTitle from "../MenuTitle";
 import SeverityLevel from "./SeverityLevel";
+import StatusDesc from "./StatusDesc";
 
 const CheckListResult = ({route}) => {
     const { score } = route.params;
@@ -17,6 +18,9 @@ const CheckListResult = ({route}) => {
             <Body>
                 <MenuTitle text={`${username} 님은 현재 ..`} type={"sub"}/>
                 <SeverityLevel score={score}/>
+                <MenuTitle text={"🧐 이런 적 있지 않았나요?"} type={"sub"}/>
+                <StatusDesc/>
+                <MenuTitle text={`👥 ${username} 님과 비슷한 사람들은?`} type={"sub"}/>
             </Body>
             <Footer>
                 <Button
