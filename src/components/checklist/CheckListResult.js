@@ -4,8 +4,9 @@ import palette from "../../styles/colorPalette";
 import Button from "../Button";
 import GoBackBtn from "../GoBackBtn";
 import MenuTitle from "../MenuTitle";
+import SeverityLevel from "./SeverityLevel";
 
-const CheckListResult = () => {
+const CheckListResult = ({check}) => {
     const username = "홍길동";
     return (
         <Container>
@@ -14,6 +15,7 @@ const CheckListResult = () => {
             </Header>
             <Body>
                 <MenuTitle text={`${username} 님은 현재 ..`} type={"sub"}/>
+                <SeverityLevel checkCount={check}/>
             </Body>
             <Footer>
                 <Button
@@ -40,7 +42,7 @@ const Header = styled.View`
 `;
 const Body = styled.View`
     flex: 10;
-    width: 87%;
+    width: 100%;
 `;
 const Footer = styled(SafeAreaView)`
     flex: 1;

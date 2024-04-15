@@ -21,6 +21,7 @@ const OptionList = ({score, setScore}) => {
         <Container showsVerticalScrollIndicator={false}>
             {text.map((item) => 
                 <OptionItem 
+                    key={item}
                     content={item.question}
                     score={score}
                     setScore={setScore}
