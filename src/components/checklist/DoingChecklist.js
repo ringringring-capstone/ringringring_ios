@@ -27,6 +27,7 @@ const DoingChecklist = () => {
                     text={"결과 확인하기"}
                     type={"main"}
                     movePage={"checklistresult"}
+                    props={{score}}
                 />
             </Footer>
         </Container>

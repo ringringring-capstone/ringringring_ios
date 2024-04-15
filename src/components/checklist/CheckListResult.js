@@ -6,7 +6,8 @@ import GoBackBtn from "../GoBackBtn";
 import MenuTitle from "../MenuTitle";
 import SeverityLevel from "./SeverityLevel";
 
-const CheckListResult = ({check}) => {
+const CheckListResult = ({route}) => {
+    const { score } = route.params;
     const username = "홍길동";
     return (
         <Container>
@@ -15,7 +16,7 @@ const CheckListResult = ({check}) => {
             </Header>
             <Body>
                 <MenuTitle text={`${username} 님은 현재 ..`} type={"sub"}/>
-                <SeverityLevel checkCount={check}/>
+                <SeverityLevel score={score}/>
             </Body>
             <Footer>
                 <Button

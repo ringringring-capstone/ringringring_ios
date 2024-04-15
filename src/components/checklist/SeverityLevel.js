@@ -1,11 +1,27 @@
 import styled from "styled-components";
+import { LinearGradient } from "expo-linear-gradient";
 import palette from "../../styles/colorPalette";
 
-const SeverityLevel = ({checkCount}) => {
+const SeverityLevel = ({score}) => {
     return (
         <Container>
             <ChartContainer>
-                <Figure checkCount={checkCount}/>
+                <Figure 
+                    colors={["#809C29", "#A8BF62"]}
+                    start={{x: 0, y: 0}}
+                    end={{x: 1, y: 0}}
+                    checkCount={score}/>
+                <LineContainer>
+                    <Line/>
+                    <Line/>
+                    <Line/>
+                    <Line/>
+                    <Line/>
+                    <Line/>
+                    <Line/>
+                    <Line/>
+                    <Line/>
+                </LineContainer>
             </ChartContainer>
             <ChartTextContainer>
                 <ChartText>0</ChartText>
@@ -27,14 +43,32 @@ const ChartContainer = styled.View`
     border-radius: 20px;
     border: 1px solid #9D9D9D;
     padding: 2px;
+    display: flex;
     shadow-color: ${palette.black};
     shadow-opacity: 0.1;
     shadow-offset: 2px 3px;
 `;
-const Figure = styled.View`
-    width: ${(props) => (props.checkCount * 10)}px;
+const Figure = styled(LinearGradient)`
+    width: ${(props) => (props.checkCount * 10)}%;
+    /* max-width: 100%; */
     height: 24px;
     border-radius: 20px;
+    background-color: antiquewhite;
+`;
+const LineContainer = styled.View`
+    position: relative;
+    height: 100%;
+    top: -24px;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+`;
+const Line = styled.View`
+    border: 0.5px dotted #5E5E5E;
+    width: 1px;
+    height: 100%;
 `;
 const ChartTextContainer = styled.View`
     display: flex;

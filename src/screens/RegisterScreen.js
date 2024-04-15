@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Pressable, SafeAreaView } from 'react-native';
 import styled from "styled-components";
 import palette from "../styles/colorPalette";

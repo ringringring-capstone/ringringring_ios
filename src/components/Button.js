@@ -2,13 +2,13 @@ import styled from "styled-components";
 import palette from "../styles/colorPalette";
 import { useNavigation } from "@react-navigation/native";
 
-const Button = ({ text, type, movePage }) => {
+const Button = ({ text, type, movePage, props }) => {
     const navigation = useNavigation();
     return (
         <Container 
             type={type}
             topCheck={text}
-            onPress={() => navigation.navigate(movePage)}>
+            onPress={() => navigation.navigate(movePage, props)}>
             <BtnText type={type}>{text}</BtnText>
         </Container>
     );
