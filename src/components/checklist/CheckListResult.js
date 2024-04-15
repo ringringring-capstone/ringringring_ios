@@ -25,7 +25,7 @@ const CheckListResult = ({route}) => {
                 <StatusDesc/>
                 <MenuTitle text={`👥 ${username} 님과 비슷한 사람들은?`} type={"sub"}/>
                 <SubTitle>전체 이용자 중에서 이만큼 있어요!</SubTitle>
-                <AllUsers/>
+                <AllUsers score={score}/>
                 <SubTitle>하루 평균 이정도 연습하고 있어요!</SubTitle>
                 <DailyPractice/>
             </Body>
