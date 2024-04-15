@@ -12,15 +12,9 @@ const SeverityLevel = ({score}) => {
                     end={{x: 1, y: 0}}
                     checkCount={score}/>
                 <LineContainer>
+                   {Array.from({length: 9}).map((item) => (
                     <Line/>
-                    <Line/>
-                    <Line/>
-                    <Line/>
-                    <Line/>
-                    <Line/>
-                    <Line/>
-                    <Line/>
-                    <Line/>
+                   ))}
                 </LineContainer>
             </ChartContainer>
             <ChartTextContainer>
