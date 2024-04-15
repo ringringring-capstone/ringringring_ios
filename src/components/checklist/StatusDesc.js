@@ -15,7 +15,7 @@ const StatusDesc = () => {
     );
 };
 const Container = styled.View`
-    flex: 0.12;
+    /* flex: 0.2; */
     padding: 0 28px;
     margin-top: 15px;
 `;

@@ -1,15 +1,18 @@
 import styled from "styled-components";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, ScrollView } from "react-native";
 import palette from "../../styles/colorPalette";
 import Button from "../Button";
 import GoBackBtn from "../GoBackBtn";
 import MenuTitle from "../MenuTitle";
 import SeverityLevel from "./SeverityLevel";
 import StatusDesc from "./StatusDesc";
+import DailyPractice from "./DailyPractice";
+import AllUsers from "./AllUsers";
 
 const CheckListResult = ({route}) => {
     const { score } = route.params;
     const username = "홍길동";
+
     return (
         <Container>
             <Header>
@@ -21,6 +24,10 @@ const CheckListResult = ({route}) => {
                 <MenuTitle text={"🧐 이런 적 있지 않았나요?"} type={"sub"}/>
                 <StatusDesc/>
                 <MenuTitle text={`👥 ${username} 님과 비슷한 사람들은?`} type={"sub"}/>
+                <SubTitle>전체 이용자 중에서 이만큼 있어요!</SubTitle>
+                <AllUsers/>
+                <SubTitle>하루 평균 이정도 연습하고 있어요!</SubTitle>
+                <DailyPractice/>
             </Body>
             <Footer>
                 <Button
@@ -45,9 +52,14 @@ const Header = styled.View`
     justify-content: center;
     padding-left: 28px;
 `;
-const Body = styled.View`
+const Body = styled(ScrollView)`
     flex: 10;
     width: 100%;
+`;
+const SubTitle = styled.Text`
+    font-size: 18px;
+    font-family: "IBMPlexSans-Bold";
+    margin: 8px 0 0 28px;
 `;
 const Footer = styled(SafeAreaView)`
     flex: 1;
