@@ -24,8 +24,6 @@ const HomeScreen = () => {
                     <MainMenu/>
                     <MiddleLine/>
                     <MyPractice/>
-                    <MiddleLine/>
-                    <AllStatitics/>
                 </Body>
             </SubContainer>
         </Container>

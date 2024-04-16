@@ -30,9 +30,9 @@ const AllUsers = ({score}) => {
                 width={300}
                 height={220}
                 chartConfig={{
-                    backgroundGradientFrom: "#1E2923",
-                    backgroundGradientTo: "#08130D",
-                    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+                    backgroundGradientFrom: `${palette.white}`,
+                    backgroundGradientTo: `${palette.white}`,
+                    color: (opacity = 1) => `rgba(219, 219, 219, ${opacity})`,
                     // strokeWidth: 2 // optional, default 3
                 }}
                 accessor={"population"}

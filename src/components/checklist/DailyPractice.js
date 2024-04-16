@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ProgressChart } from "react-native-chart-kit";
 import palette from "../../styles/colorPalette";
 
 const DailyPractice = () => {
@@ -7,8 +8,27 @@ const DailyPractice = () => {
         {category: "my", text: "내 연습 시간"}
     ];
 
+    const data = {
+        labels: ["평균 연습 시간", "내 연습 시간"], // optional
+        data: [0.4, 0.6]
+    };
+    
+
     return (
         <Container>
+            <ProgressChart
+                data={data}
+                width={300}
+                height={220}
+                strokeWidth={10}
+                radius={32}
+                chartConfig={{
+                    backgroundGradientFrom: `${palette.white}`, // 시작 색상
+                    backgroundGradientTo: `${palette.white}`,   // 종료 색상
+                    color: (opacity = 1) => `rgba(219, 219, 219, ${opacity})`,
+                }}
+                hideLegend={true}
+            />
             {GraphTitle.map((item) => (
                 <GraphContainer>
                     <GraphColor cate={item.category}/>
