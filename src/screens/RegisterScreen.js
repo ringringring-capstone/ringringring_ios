@@ -15,7 +15,21 @@ const RegisterScreen = () => {
     const [pw, setPw] = useState("");
     const [pwCheck, setPwCheck] = useState("");
     const [pwHide, setPwHide] = useState(false); // 비밀번호 숨기기
-    // const NoticeText = ["사용 가능한 이메일입니다.", "이미 존재하는 이메일입니다."];
+    const [duplicateCheck, setDuplicateCheck] = useState(false);
+    const [duplicateResult, setDuplicateResult] = useState("");
+
+    // 예시 이메일
+    const emailExample = "qwer1234@naver.com";
+
+    const DuplicateClick = () => {
+        setDuplicateCheck(true);
+        if (id === emailExample) {
+            setDuplicateResult("이미 존재하는 이메일입니다.");
+        }
+        else if (id !== emailExample) {
+            setDuplicateResult("사용 가능한 이메일입니다.");
+        }
+    }
 
     return (
         <Container>
@@ -42,10 +56,13 @@ const RegisterScreen = () => {
                         isPassword={false}
                         marginTop={'15px'}
                     />
-                    <CheckBtn>
+                    <CheckBtn onPress={DuplicateClick}>
                         <BtnText>중복 확인</BtnText>
                     </CheckBtn>
                 </IdContainer>
+                <DuplicateNotice duplicateCheck={duplicateCheck}>
+                        {duplicateResult}
+                </DuplicateNotice>
                 <Input
                     state={pw}
                     setState={setPw}
@@ -108,6 +125,13 @@ const CheckBtn = styled.Pressable`
     display: flex;
     align-items: center;
     justify-content: center;
+`;
+const DuplicateNotice = styled.Text`
+    display: ${(props) => (props.duplicateCheck) ? "flex" : "none"};
+    color: #E54848;
+    font-size: 14px;
+    font-family: "IBMPlexSans-Regular";
+    margin: 5px 0 10px 10px;
 `;
 const BtnText = styled.Text`
     font-size: 15px;
