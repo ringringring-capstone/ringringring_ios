@@ -46,7 +46,7 @@ const ChartContainer = styled.View`
     shadow-offset: 2px 3px;
 `;
 const Figure = styled(LinearGradient)`
-    width: ${(props) => (props.checkCount * 10)}%;
+    width: ${(props) => (props.checkCount * 14.2857)}%;
     height: 24px;
     border-radius: 20px;
 `;
