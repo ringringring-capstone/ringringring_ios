@@ -6,7 +6,6 @@ import palette from "../styles/colorPalette";
 
 import Input from "../components/Input";
 import GoBackBtn from "../components/GoBackBtn";
-
 import Button from "../components/Button";
 
 const RegisterScreen = () => {
@@ -16,6 +15,7 @@ const RegisterScreen = () => {
     const [pw, setPw] = useState("");
     const [pwCheck, setPwCheck] = useState("");
     const [pwHide, setPwHide] = useState(false); // 비밀번호 숨기기
+    // const NoticeText = ["사용 가능한 이메일입니다.", "이미 존재하는 이메일입니다."];
 
     return (
         <Container>
@@ -31,17 +31,21 @@ const RegisterScreen = () => {
                     isPassword={false}
                     marginTop={'15px'}
                 />
-                <NoticeText 
-                    plusStyle={true}> 
+                <NoticeText plusStyle={true}> 
                     로그인에 사용할 {"\n"}아이디와 비밀번호를 입력해주세요. 
                 </NoticeText>
-                <Input
-                    state={id}
-                    setState={setId}
-                    placeholder="아이디"
-                    isPassword={false}
-                    marginTop={'15px'}
-                />
+                <IdContainer>
+                    <Input
+                        state={id}
+                        setState={setId}
+                        placeholder="이메일"
+                        isPassword={false}
+                        marginTop={'15px'}
+                    />
+                    <CheckBtn>
+                        <BtnText>중복 확인</BtnText>
+                    </CheckBtn>
+                </IdContainer>
                 <Input
                     state={pw}
                     setState={setPw}
@@ -87,6 +91,28 @@ const Header = styled.View`
 const Body = styled.View`
     flex: 10;
     width: 87%;
+`;
+const IdContainer = styled.View`
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    align-items: center;
+`;
+const CheckBtn = styled.Pressable`
+    width: 30%;
+    height: 44px;
+    margin: 15px 0 0 7px;
+    margin-top: 15px;
+    border: 1px solid ${palette.sub};
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+const BtnText = styled.Text`
+    font-size: 15px;
+    font-family: "IBMPlexSans-Bold";
+    color: ${palette.sub};
 `;
 const Footer = styled.View`
     flex: 1;

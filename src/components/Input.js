@@ -12,7 +12,7 @@ const Input = ({
     isPassword, 
     pwHide,
     setPwHide,
-    marginTop 
+    marginTop,
 }) => {
     const onClickPwHide = () => {
         setPwHide(!pwHide);
