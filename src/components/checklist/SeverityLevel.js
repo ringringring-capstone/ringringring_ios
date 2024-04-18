@@ -22,10 +22,10 @@ const SeverityLevel = ({score}) => {
                 <ChartText>심각도</ChartText>
                 <ChartText>100</ChartText>
             </ChartTextContainer>
-            {/* <FigureTextContainer>
+            <FigureTextContainer>
                 <FigureText>심각도  | {" "}</FigureText>
                 <FigureScore>{score*10} %</FigureScore>
-            </FigureTextContainer> */}
+            </FigureTextContainer>
         </Container>
     );
 };
