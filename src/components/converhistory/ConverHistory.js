@@ -1,0 +1,33 @@
+import { SafeAreaView } from "react-native";
+import styled from "styled-components";
+import palette from "../../styles/colorPalette";
+import GoBackBtn from "../GoBackBtn";
+
+const ConverHistory = () => {
+    return (
+        <Container>
+            <Header>
+                <GoBackBtn/>
+            </Header>
+            <Body>
+
+            </Body>
+        </Container>
+    );
+};
+const Container = styled(SafeAreaView)`
+    flex: 1;
+    background-color: ${palette.white};
+`;
+const Header = styled.View`
+    flex: 1;
+    width: 100%;
+    align-items: left;
+    justify-content: center;
+    padding-left: 28px;
+`;
+const Body = styled.View`
+    flex: 10;
+    width: 87%;
+`;
+export default ConverHistory;

@@ -13,6 +13,7 @@ import ChecklistScreen from './src/screens/ChecklistScreen';
 import BottomMenu from './src/components/BottomMenu';
 import DoingChecklist from './src/components/checklist/DoingChecklist';
 import CheckListResult from './src/components/checklist/CheckListResult';
+import ConverHistory from './src/components/converhistory/ConverHistory';
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +50,7 @@ export default function App() {
         <Stack.Screen name="main" component={MainScreen}/>
         <Stack.Screen name="doingchecklist" component={DoingChecklist}/>
         <Stack.Screen name="checklistresult" component={CheckListResult}/>
+        <Stack.Screen name="converhistory" component={ConverHistory}/>
       </Stack.Navigator>
       <StatusBar style="auto"/>
     </NavigationContainer>

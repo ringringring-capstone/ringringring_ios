@@ -19,7 +19,7 @@ const MyPage = () => {
         },
         {
             title : "대화기록",
-            movepage : "login",
+            movepage : "converhistory",
             type: "ConverHistory",
             icon: ConverHistory
         }
@@ -29,7 +29,7 @@ const MyPage = () => {
         <Container>
             <MenuTitle text={"MY페이지"} type={"main"}/>
             {category.map((item) => (
-                <SubContainer onPress={() => navigation.navigate("login")}>
+                <SubContainer onPress={() => navigation.navigate("converhistory")}>
                     <Icon source={item.icon} type={item.type}/>
                     <TitleText>{item.title}</TitleText>
                     <BackButton source={BackBtn}/>
@@ -63,7 +63,6 @@ const BackButton = styled.Image`
     width: 8px;
     height: 15px;
     left: 230px;
-    /* position: relative; */
     transform: rotate(180deg);
 `;
 export default MyPage;
