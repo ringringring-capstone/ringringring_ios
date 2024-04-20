@@ -2,6 +2,7 @@ import { SafeAreaView } from "react-native";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 import GoBackBtn from "../GoBackBtn";
+import ConverHistoryList from "../converhistory/ConverHistoryList";
 
 const ConverHistory = () => {
     return (
@@ -10,7 +11,7 @@ const ConverHistory = () => {
                 <GoBackBtn/>
             </Header>
             <Body>
-
+                <ConverHistoryList/>
             </Body>
         </Container>
     );
