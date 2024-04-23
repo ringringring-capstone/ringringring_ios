@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native';
-import styled from 'styled-components';
-import palette from '../styles/colorPalette';
-import Button from '../components/Button';
-import Input from '../components/Input';
+import React, { useState } from "react";
+import { SafeAreaView } from "react-native";
+import styled from "styled-components";
+import palette from "../styles/colorPalette";
+import Button from "../components/Button";
+import Input from "../components/Input";
+import DuplicateCheck from "../components/Login/DuplicateCheck";
 
 const LoginScreen = () => {
   const [id, setId] = useState("");
@@ -27,6 +28,7 @@ const LoginScreen = () => {
           isPassword={true}
           marginTop={'8px'}
         />
+        <DuplicateCheck/>
         <Button
           text={"로그인"}
           type={"main"}
