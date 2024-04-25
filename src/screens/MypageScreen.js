@@ -29,7 +29,7 @@ const MyPage = () => {
         <Container>
             <MenuTitle text={"MY페이지"} type={"main"}/>
             {category.map((item) => (
-                <SubContainer onPress={() => navigation.navigate("converhistory")}>
+                <SubContainer onPress={() => navigation.navigate(item.movepage)}>
                     <Icon source={item.icon} type={item.type}/>
                     <TitleText>{item.title}</TitleText>
                     <BackButton source={BackBtn}/>
