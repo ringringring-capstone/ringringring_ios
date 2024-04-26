@@ -58,6 +58,9 @@ const Body = styled(ScrollView)`
     flex: 10;
     width: 100%;
 `;
+const SeverityLeveContainer = styled.View`
+    width: 100%;
+`;
 const SubTitle = styled.Text`
     font-size: 18px;
     font-family: "IBMPlexSans-Bold";

@@ -22,17 +22,17 @@ const SeverityLevel = ({score}) => {
                 <ChartText>심각도</ChartText>
                 <ChartText>100</ChartText>
             </ChartTextContainer>
-            {/* <FigureTextContainer>
-                <FigureText>심각도  | {" "}</FigureText>
-                <FigureScore>{score*10} %</FigureScore>
-            </FigureTextContainer> */}
+            <FigureTextContainer>
+                <FigureText type="text">심각도  | {" "}</FigureText>
+                <FigureText type="score">{score*10} %</FigureText>
+            </FigureTextContainer>
         </Container>
     );
 };
 const Container = styled.View`
     flex: 0.13;
     padding: 0 28px;
-    margin-top: 10px;
+    margin: 10px 0;
 `;
 const ChartContainer = styled.View`
     height: 30px;
@@ -64,23 +64,18 @@ const Line = styled.View`
     width: 1px;
     height: 100%;
 `;
-// 체크리스트 처음 화면(테스트 한번 한 적 있는 경우)
-// const FigureTextContainer = styled.View`
-//     margin-top: 15px;
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: flex-end;
-//     align-items: center;
-// `;  
-// const FigureText = styled.Text`
-//     font-size: 19px;
-//     font-family: "IBMPlexSans-Regular";
-// `;
-// const FigureScore = styled.Text`
-//     font-size: 19px;
-//     font-family: "IBMPlexSans-Bold";
-//     color: ${palette.sub};
-// `;
+const FigureTextContainer = styled.View`
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+`;  
+const FigureText = styled.Text`
+    font-size: 20px;
+    font-family: ${(props) => (props.type === "text") ? "IBMPlexSans-Regular" : "IBMPlexSans-Bold"};
+    color: ${(props) => (props.type === "text") ? `${palette.black}` : `${palette.sub}`};
+`;
 const ChartTextContainer = styled.View`
     display: flex;
     flex-direction: row;
