@@ -16,7 +16,9 @@ const Checklist = () => {
                 <NoticeText>{name} 님은 아직 최근 결과가 없어요 😔</NoticeText>
                 <Button
                     text={"검사하기"}
-                    type={"main"}
+                    backgroundColor={palette.main}
+                    borderColor={"none"}
+                    fontColor={palette.white}
                     movePage={"doingchecklist"}/>
             </Body>
         </Container>

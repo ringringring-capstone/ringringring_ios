@@ -25,7 +25,9 @@ const DoingChecklist = () => {
             <Footer>
                 <Button
                     text={"결과 확인하기"}
-                    type={"main"}
+                    backgroundColor={palette.main}
+                    borderColor={"none"}
+                    fontColor={palette.white}
                     movePage={"checklistresult"}
                     props={{score}}
                 />

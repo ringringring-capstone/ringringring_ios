@@ -31,12 +31,16 @@ const LoginScreen = () => {
         <DuplicateCheck/>
         <Button
           text={"로그인"}
-          type={"main"}
+          backgroundColor={palette.main}
+          borderColor={"none"}
+          fontColor={palette.white}
           movePage={'main'}
         />
         <Button
           text={"아직 계정이 없으신가요?"}
-          type={"sub"}
+          backgroundColor={palette.white}
+          borderColor={palette.main}
+          fontColor={palette.main}
           movePage={'register'}
         />
         <IdPwFindText>아이디 ・ 비밀번호 찾기</IdPwFindText>

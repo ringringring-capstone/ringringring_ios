@@ -32,7 +32,9 @@ const CheckListResult = ({route}) => {
             <Footer>
                 <Button
                     text={"닫기"}
-                    type={"main"}
+                    backgroundColor={palette.main}
+                    borderColor={"none"}
+                    fontColor={palette.white}
                     movePage={"checklist"}
                 />
             </Footer>

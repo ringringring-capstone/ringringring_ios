@@ -2,14 +2,22 @@ import styled from "styled-components";
 import palette from "../styles/colorPalette";
 import { useNavigation } from "@react-navigation/native";
 
-const Button = ({ text, type, movePage, props }) => {
+const Button = ({ 
+    text, 
+    backgroundColor, 
+    borderColor, 
+    fontColor,
+    movePage, 
+    props 
+}) => {
     const navigation = useNavigation();
     return (
         <Container 
-            type={type}
+            backgroundColor={backgroundColor}
+            borderColor={borderColor}
             topCheck={text}
             onPress={() => navigation.navigate(movePage, props)}>
-            <BtnText type={type}>{text}</BtnText>
+            <BtnText fontColor={fontColor}>{text}</BtnText>
         </Container>
     );
 };
@@ -18,21 +26,15 @@ const Container = styled.Pressable`
     height: 51px;
     display: flex;
     justify-content: center;
-    background-color: ${(props) => (props.type === 'main') ?
-     `${palette.main}` : `${palette.white}`
-    };
+    background-color: ${(props) => props.backgroundColor};
     border-radius: 20px;
-    border: ${(props) => (props.type === 'main') ?
-      'none' : `1px solid ${palette.main}`
-    };
+    border: ${(props) => props.borderColor};
     margin-top: ${(props) => (props.topCheck === '로그인') ? 
         '25px' : '8px'
     };
 `;
 const BtnText = styled.Text`
-    color: ${(props) => (props.type === 'main') ?
-     `${palette.white}` : `${palette.main}`
-    };
+    color: ${(props) => props.fontColor};
     font-size: 17px;
     text-align: center;
     font-family: "IBMPlexSans-Bold";

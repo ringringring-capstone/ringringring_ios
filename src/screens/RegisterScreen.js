@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Pressable, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import styled from "styled-components";
 import palette from "../styles/colorPalette";
 
@@ -14,9 +14,10 @@ const RegisterScreen = () => {
     const [id, setId] = useState("");
     const [pw, setPw] = useState("");
     const [pwCheck, setPwCheck] = useState("");
-    const [pwHide, setPwHide] = useState(false); // 비밀번호 숨기기
+    const [pwHide, setPwHide] = useState(false);                    // 비밀번호 숨기기
     const [duplicateCheck, setDuplicateCheck] = useState(false);
-    const [duplicateResult, setDuplicateResult] = useState("");
+    const [duplicateResult, setDuplicateResult] = useState("");     // 중복 확인
+    const [isInputCheck, setIsInputCheck] = useState(false);        // 입력창 빈 곳 없는지 확인
 
     // 예시 이메일
     const emailExample = "qwer1234@naver.com";
@@ -28,6 +29,18 @@ const RegisterScreen = () => {
         }
         else if (id !== emailExample) {
             setDuplicateResult("사용 가능한 이메일입니다.");
+        }
+    }
+
+    useEffect(() => {
+        handleCheck();
+    }, [name, id, pw, pwCheck]);
+
+    const handleCheck = () => {
+        if (name !== "" && id !== "" && pw !== ""  && pwCheck !== "") {
+            setIsInputCheck(true);
+        } else {
+            setIsInputCheck(false);
         }
     }
 
@@ -84,9 +97,10 @@ const RegisterScreen = () => {
             </Body>
             <Footer>    
                 <Button
-                    text={'회원가입'}
-                    type={'main'}
-                    movePage={'login'}
+                    text={"회원가입"}
+                    backgroundColor={palette.main}
+                    borderColor={"none"}
+                    fontColor={palette.white}
                 />
             </Footer>
         </Container>
