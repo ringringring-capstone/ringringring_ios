@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 import OptionItem from "./OptionItem";

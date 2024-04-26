@@ -18,6 +18,7 @@ const ConverHistory = () => {
 };
 const Container = styled(SafeAreaView)`
     flex: 1;
+    width: 100%;
     background-color: ${palette.white};
 `;
 const Header = styled.View`
@@ -29,6 +30,6 @@ const Header = styled.View`
 `;
 const Body = styled.View`
     flex: 10;
-    width: 87%;
+    width: 100%;
 `;
 export default ConverHistory;
