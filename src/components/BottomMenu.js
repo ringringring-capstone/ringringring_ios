@@ -27,7 +27,7 @@ const BottomMenu = () => {
                 icon={"checklist"}
                 onPress={() => movePage("checklist")}>
                 <IconImg 
-                    source={(menu === 'checklist') ? checklistSelect : checklistNotSelect}/>
+                    source={(menu === "checklist") ? checklistSelect : checklistNotSelect}/>
                 <IconTitle>체크리스트</IconTitle>
             </IconContainer>
             <HomeContainer 
@@ -37,8 +37,7 @@ const BottomMenu = () => {
                     source={(menu === "home") ? HomeSelect : HomeNotSelect}/>
                 <IconTitle 
                     home={true}
-                    select={menu === "home"}
-                >홈</IconTitle>
+                    select={menu === "home"}>홈</IconTitle>
             </HomeContainer>
             <IconContainer 
                 icon={"mypage"}
