@@ -24,7 +24,7 @@ const SeverityLevel = ({score}) => {
             </ChartTextContainer>
             <FigureTextContainer>
                 <FigureText type="text">심각도  | {" "}</FigureText>
-                <FigureText type="score">{score*10} %</FigureText>
+                <FigureText type="score">{(score* 14.2857).toFixed(0)} %</FigureText>
             </FigureTextContainer>
         </Container>
     );
