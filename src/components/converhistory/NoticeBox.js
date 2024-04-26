@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 
-const NoticeBox = () => {
+const NoticeBox = ({setIsClick}) => {
+    const handleClick = () => {
+        setIsClick(false);
+    }
+    
     return (
         <Container>
             <BoxContainer>
@@ -14,10 +18,14 @@ const NoticeBox = () => {
                     </NoticeText>
                 </TextContainer>
                 <ButtonContainer>
-                    <ButtonItemContainer type="main">
+                    <ButtonItemContainer 
+                        type="main"
+                        onPress={handleClick}>
                         <BtnText type="main">확인</BtnText>
                     </ButtonItemContainer>
-                    <ButtonItemContainer type="sub">
+                    <ButtonItemContainer 
+                        type="sub"
+                        onPress={handleClick}>
                         <BtnText type="sub">취소</BtnText>
                     </ButtonItemContainer>
                 </ButtonContainer>

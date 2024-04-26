@@ -4,7 +4,7 @@ import palette from "../../styles/colorPalette";
 import InfoBox from "../InfoBox";
 import ConverHistoryItem from "./ConverHistoryItem";
 
-const ConverHistoryList = ({isClick, setIsClick}) => {
+const ConverHistoryList = ({setIsClick}) => {
     const CallConversation = [
         {
             title: "자전거 환불 전화 연습",
@@ -35,7 +35,6 @@ const ConverHistoryList = ({isClick, setIsClick}) => {
                         key={idx}
                         title={item.title}
                         content={item.content}
-                        isClick={isClick}
                         setIsClick={setIsClick}
                     />
                 ))}

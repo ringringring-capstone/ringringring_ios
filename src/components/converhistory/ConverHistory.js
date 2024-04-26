@@ -15,11 +15,11 @@ const ConverHistory = () => {
                 <GoBackBtn/>
             </Header>
             <Body>
-                <ConverHistoryList 
-                    isClick={isClick} 
-                    setIsClick={setIsClick}/>
+                <ConverHistoryList setIsClick={setIsClick}/>
             </Body>
-            {isClick && <NoticeBox/>}
+            {isClick && 
+                <NoticeBox setIsClick={setIsClick}/>
+            }
         </Container>
     );
 };

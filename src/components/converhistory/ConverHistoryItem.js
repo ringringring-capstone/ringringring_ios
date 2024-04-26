@@ -4,9 +4,9 @@ import { Pressable } from "react-native";
 
 import ContentMoreBtn from "../../assets/icon/ic_contentMore.png";
 
-const ConverHistoryItem = ({isClick, setIsClick, title, content}) => {
+const ConverHistoryItem = ({setIsClick, title, content}) => {
     const handleClick = () => {
-        setIsClick(!isClick);
+        setIsClick(true);
     }
 
     return (
@@ -46,9 +46,6 @@ const MainTitle = styled.Text`
     color: ${palette.main};
     margin-bottom: 13px;
 `;
-// const ButtonContainer = styled.Pressable`
-    
-// `;
 const MoreBtn = styled.Image`
     width: 4px;
     height: 15px;
