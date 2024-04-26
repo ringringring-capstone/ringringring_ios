@@ -21,7 +21,10 @@ const CheckListResult = ({route}) => {
             <Body>
                 <MenuTitle text={`${username} 님은 현재 ..`} type={"sub"}/>
                 <SeverityLevel score={score}/>
-                <MenuTitle text={"🧐 이런 적 있지 않았나요?"} type={"sub"}/>
+                <MenuContainer>
+                    <MenuTitle text={"🧐 이런 적 있지 않았나요?"} type={"sub"}/>
+                    <Line/>
+                </MenuContainer>
                 <StatusDesc/>
                 <MenuTitle text={`👥 ${username} 님과 비슷한 사람들은?`} type={"sub"}/>
                 <SubTitle>전체 이용자 중에서 이만큼 있어요!</SubTitle>
@@ -58,8 +61,16 @@ const Body = styled(ScrollView)`
     flex: 10;
     width: 100%;
 `;
-const SeverityLeveContainer = styled.View`
-    width: 100%;
+const MenuContainer = styled.View`
+    display: flex;
+    flex-direction: row;
+`;
+const Line = styled.View`
+    display: flex;
+    width: 31%;
+    height: 0.6px;
+    background-color: ${palette.black};
+    margin: 29px 0 0 13px;
 `;
 const SubTitle = styled.Text`
     font-size: 18px;
