@@ -37,7 +37,12 @@ const RegisterScreen = () => {
     }, [name, id, pw, pwCheck]);
 
     const handleCheck = () => {
-        if (name !== "" && id !== "" && pw !== ""  && pwCheck !== "") {
+        if (name !== "" 
+            && id !== "" 
+            && pw !== ""  
+            && pwCheck !== "" 
+            && duplicateResult === "사용 가능한 이메일입니다."
+        ) {
             setIsInputCheck(true);
         } else {
             setIsInputCheck(false);
@@ -98,9 +103,10 @@ const RegisterScreen = () => {
             <Footer>    
                 <Button
                     text={"회원가입"}
-                    backgroundColor={palette.main}
+                    backgroundColor={isInputCheck ? palette.main : "#DADADA"}
                     borderColor={"none"}
                     fontColor={palette.white}
+                    movePage={isInputCheck ? "login" : ""}
                 />
             </Footer>
         </Container>
