@@ -6,10 +6,10 @@ import palette from "../styles/colorPalette";
 const InfoBox = ({title}) => {
     return (
         <Container>
-            <TitleText>{title}</TitleText>
-            <GraphContainer>
+            {/* <TitleText>{title}</TitleText> */}
+            {/* <GraphContainer>
 
-            </GraphContainer>
+            </GraphContainer> */}
         </Container>
     );
 };

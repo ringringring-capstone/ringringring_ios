@@ -25,6 +25,7 @@ export default function App() {
   useEffect(() => {
     async function loadFonts() {
       await Font.loadAsync({
+        "IBMPlexSans-Light": require("./src/assets/font/IBMPlexSansKR-Light.ttf"),
         "IBMPlexSans-Regular": require("./src/assets/font/IBMPlexSansKR-Regular.ttf"),
         "IBMPlexSans-Medium": require("./src/assets/font/IBMPlexSansKR-Medium.ttf"),
         "IBMPlexSans-Bold": require("./src/assets/font/IBMPlexSansKR-Bold.ttf"),
