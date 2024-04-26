@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import palette from "../../styles/colorPalette";
-import CheckIcon from "../../assets/icon/ic_Check.png";
+import CheckIcon from "../../assets/icon/ic_check.png";
 
 const DuplicateCheck = () => {
     const [click, setClick] = useState(false);

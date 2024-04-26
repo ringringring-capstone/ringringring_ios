@@ -1,18 +1,25 @@
 import { SafeAreaView } from "react-native";
+import { useState } from "react";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 import GoBackBtn from "../GoBackBtn";
+import NoticeBox from "./NoticeBox";
 import ConverHistoryList from "../converhistory/ConverHistoryList";
 
 const ConverHistory = () => {
+    const [isClick, setIsClick] = useState(false);
+
     return (
         <Container>
             <Header>
                 <GoBackBtn/>
             </Header>
             <Body>
-                <ConverHistoryList/>
+                <ConverHistoryList 
+                    isClick={isClick} 
+                    setIsClick={setIsClick}/>
             </Body>
+            {isClick && <NoticeBox/>}
         </Container>
     );
 };

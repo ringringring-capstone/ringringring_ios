@@ -4,7 +4,7 @@ import styled from "styled-components";
 import palette from "../styles/colorPalette";
 
 import Logout from "../assets/icon/mypage/ic_logout.png";
-import ConverHistory from "../assets/icon/mypage/ConverHistory.png";
+import ConverHistory from "../assets/icon/mypage/ic_converHistory.png";
 import BackBtn from "../assets/icon/ic_backBtn.png";
 import MenuTitle from "../components/MenuTitle";
 

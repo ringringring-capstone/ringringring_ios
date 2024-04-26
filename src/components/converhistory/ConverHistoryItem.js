@@ -1,10 +1,22 @@
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
+import { Pressable } from "react-native";
 
-const ConverHistoryItem = ({title, content}) => {
+import ContentMoreBtn from "../../assets/icon/ic_contentMore.png";
+
+const ConverHistoryItem = ({isClick, setIsClick, title, content}) => {
+    const handleClick = () => {
+        setIsClick(!isClick);
+    }
+
     return (
         <Container>
-            <MainTitle>{title}</MainTitle>
+            <TopContainer>
+                <MainTitle>{title}</MainTitle>
+                <Pressable onPress={handleClick}>
+                    <MoreBtn source={ContentMoreBtn}/>
+                </Pressable>
+            </TopContainer>
             <Content 
                 numberOfLines={4}
                 ellipsizeMode="tail"
@@ -22,11 +34,24 @@ const Container = styled.View`
     shadow-opacity: 0.1;
     shadow-offset: 0px 0px;
 `;
+const TopContainer = styled.View`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+`;
 const MainTitle = styled.Text`
     font-size: 22px;
     font-family: "IBMPlexSans-Bold";
     color: ${palette.main};
     margin-bottom: 13px;
+`;
+// const ButtonContainer = styled.Pressable`
+    
+// `;
+const MoreBtn = styled.Image`
+    width: 4px;
+    height: 15px;
 `;
 const Content = styled.Text`
     font-size: 17px;
