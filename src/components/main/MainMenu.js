@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
+import { useNavigation } from "@react-navigation/native";
 
 import callPractice1 from "../../assets/icon/main/ic_callPractice1.png";
 import callPractice2 from "../../assets/icon/main/ic_callPractice2.png";
@@ -11,13 +12,19 @@ const MainMenu = () => {
         { id: 1, src: callPractice1, content: "예약전화" },
         { id: 2, src: callPractice2, content: "배달전화" },
         { id: 3, src: callPractice3, content: "상담전화" },
-        { id: 4, src: Mission, content: "미션도전" }
+        { id: 4, src: Mission, content: "미션도전", page: "pickingmission"}
     ];
+
+    const navigation = useNavigation();
+
+    const movePage = (page) => {
+        navigation.navigate(page);
+    }
 
     return (
         <Container>
             {Menulist.map((item) => (
-                <MenuItem key={item.id}>
+                <MenuItem key={item.id} onPress={() => movePage(item.page)}>
                     <ItemIcon source={item.src}/>
                     <ItemContent>{item.content}</ItemContent>
                 </MenuItem>

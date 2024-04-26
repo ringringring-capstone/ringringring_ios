@@ -1,19 +1,20 @@
-import { useEffect, useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
-import * as Font from 'expo-font';
-import palette from './src/styles/colorPalette'
+import { useEffect, useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import * as Font from "expo-font";
+import palette from "./src/styles/colorPalette";
 
-import LoginScreen from './src/screens/LoginScreen';
-import RegisterScreen from './src/screens/RegisterScreen';
-import HomeScreen from './src/screens/HomeScreen';
-import MyPageScreen from './src/screens/MypageScreen';
-import ChecklistScreen from './src/screens/ChecklistScreen';
-import BottomMenu from './src/components/BottomMenu';
-import DoingChecklist from './src/components/checklist/DoingChecklist';
-import CheckListResult from './src/components/checklist/CheckListResult';
-import ConverHistory from './src/components/converhistory/ConverHistory';
+import LoginScreen from "./src/screens/LoginScreen";
+import RegisterScreen from "./src/screens/RegisterScreen";
+import HomeScreen from "./src/screens/HomeScreen";
+import MyPageScreen from "./src/screens/MypageScreen";
+import ChecklistScreen from "./src/screens/ChecklistScreen";
+import BottomMenu from "./src/components/BottomMenu";
+import DoingChecklist from "./src/components/checklist/DoingChecklist";
+import CheckListResult from "./src/components/checklist/CheckListResult";
+import ConverHistory from "./src/components/converhistory/ConverHistory";
+import PickingMission from "./src/components/missionchallenge/PickingMission";
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,7 @@ export default function App() {
         <Stack.Screen name="doingchecklist" component={DoingChecklist}/>
         <Stack.Screen name="checklistresult" component={CheckListResult}/>
         <Stack.Screen name="converhistory" component={ConverHistory}/>
+        <Stack.Screen name="pickingmission" component={PickingMission}/>
       </Stack.Navigator>
       <StatusBar style="auto"/>
     </NavigationContainer>

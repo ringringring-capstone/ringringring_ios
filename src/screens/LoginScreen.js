@@ -4,7 +4,7 @@ import styled from "styled-components";
 import palette from "../styles/colorPalette";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import DuplicateCheck from "../components/Login/DuplicateCheck";
+import DuplicateCheck from "../components/login/DuplicateCheck";
 
 const LoginScreen = () => {
   const [id, setId] = useState("");
