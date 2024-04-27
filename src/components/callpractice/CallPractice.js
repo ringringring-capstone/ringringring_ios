@@ -7,11 +7,13 @@ import CallInfo from "./CallInfo";
 import CallTopic from "./CallTopic";
 import ReuseText from "../ReuseText";
 import TalkingBtn from "./TalkingBtn";
+import NoticeBox from "./NoticeBox";
 
 const CallPractice = () => {
     const name = "길동 대리님";
     const topic = "직장 상사와 업무 대화 나누기"
     const [isLoading, setIsLoadig] = useState(true);
+    const [isClick, setIsClick] = useState(false);
 
     return (
         <Container>
@@ -30,7 +32,7 @@ const CallPractice = () => {
                     color={palette.white}/>
             </Body>
             <Footer>
-                <CallEndBtn/>
+                <CallEndBtn setIsClick={setIsClick}/>
                 <ReuseText
                     text={"종료"}
                     type={"more"}
@@ -38,6 +40,11 @@ const CallPractice = () => {
                     fontfamily={"IBMPlexSans-Regular"}
                     color={palette.white}/>
             </Footer>
+            {isClick &&
+                <NoticeBox 
+                    setIsClick={setIsClick}
+                    text={"통화를 종료 하시겠습니까?"}/>
+            }
         </Container>
     );
 };

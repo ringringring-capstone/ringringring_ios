@@ -3,10 +3,15 @@ import palette from "../../styles/colorPalette";
 import { Pressable } from "react-native";
 
 import Phone from "../../assets/icon/callpractice/ic_phone.png";
+import NoticeBox from "./NoticeBox";
 
-const CallEndBtn = () => {
+const CallEndBtn = ({setIsClick}) => {
+    const handleClick = () => {
+        setIsClick(true);
+    }
+
     return (
-        <Container>
+        <Container onPress={handleClick}>
             <PhoneIcon source={Phone}/>
         </Container>
     );

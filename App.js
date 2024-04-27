@@ -16,6 +16,7 @@ import CheckListResult from "./src/components/checklist/CheckListResult";
 import ConverHistory from "./src/components/converhistory/ConverHistory";
 import PickingMission from "./src/components/missionchallenge/PickingMission";
 import CallPractice from "./src/components/callpractice/CallPractice";
+import CallPracticeResult from "./src/components/callpractice/CallPracticeResult";
 
 const Stack = createNativeStackNavigator();
 
@@ -56,6 +57,7 @@ export default function App() {
         <Stack.Screen name="converhistory" component={ConverHistory}/>
         <Stack.Screen name="pickingmission" component={PickingMission}/>
         <Stack.Screen name="callpractice" component={CallPractice}/>
+        <Stack.Screen name="callpracticeresult" component={CallPracticeResult}/>
       </Stack.Navigator>
       <StatusBar style="auto"/>
     </NavigationContainer>
