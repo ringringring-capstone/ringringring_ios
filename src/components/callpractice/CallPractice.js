@@ -1,18 +1,34 @@
+import { useState } from "react";
+import { SafeAreaView } from "react-native";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
-import { SafeAreaView } from "react-native";
 import CallEndBtn from "./CallEndBtn";
 import CallInfo from "./CallInfo";
 import CallTopic from "./CallTopic";
 import ReuseText from "../ReuseText";
+import TalkingBtn from "./TalkingBtn";
 
 const CallPractice = () => {
     const name = "길동 대리님";
     const topic = "직장 상사와 업무 대화 나누기"
+    const [isLoading, setIsLoadig] = useState(true);
+
     return (
         <Container>
-            <CallInfo name={name}/>
+            <CallInfo 
+                name={name}
+                isLoading={isLoading}
+                setIsLoadig={setIsLoadig}/>
             <CallTopic topic={topic}/>
+            <Body isLoading={isLoading}>
+                <TalkingBtn/>
+                <ReuseText
+                    text={"말하기"}
+                    type={"more"}
+                    fontsize={"16px"}
+                    fontfamily={"IBMPlexSans-Regular"}
+                    color={palette.white}/>
+            </Body>
             <Footer>
                 <CallEndBtn/>
                 <ReuseText
@@ -31,12 +47,13 @@ const Container = styled(SafeAreaView)`
     display: flex;
     align-items: center;
 `;
+const Body = styled.View`
+    opacity: ${(props) => (props.isLoading ? 0 : 1)};
+    align-items: center;
+    margin: 150px 0 160px 0;
+`;
 const Footer = styled.View`
-    width: 100%;
-    height: 100%;
-    /* flex: 2; */
     display: flex;
     align-items: center;
-    /* justify-content: center; */
 `;
 export default CallPractice;

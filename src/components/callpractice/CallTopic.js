@@ -20,7 +20,7 @@ const Container = styled.View`
     border-radius: 10px;
     width: 80%;
     padding: 10px;
-    margin: 55px 0 420px 0;
+    margin-top: 55px;
     display: flex;
     align-items: center;
 `;

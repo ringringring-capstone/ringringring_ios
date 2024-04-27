@@ -4,14 +4,14 @@ import palette from "../../styles/colorPalette";
 import Profile from "../../assets/icon/callpractice/ic_callProfile.png";
 import ReuseText from "../ReuseText";
 
-const CallInfo = ({name}) => {
-    const [isLoading, setIsLoadig] = useState(true);
-    const [seconds, setSeconds] = useState(-3);
+const CallInfo = ({name, isLoading, setIsLoadig}) => {
+    const [seconds, setSeconds] = useState();
 
     // 통화 연결 준비 중
     useEffect(() => {
         setTimeout(() => {
             setIsLoadig(false);
+            setSeconds(0);
         }, 3000);
     }, []);
 
