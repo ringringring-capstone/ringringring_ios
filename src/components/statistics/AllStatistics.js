@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { ScrollView } from "react-native"
-import MenuTitle from "../MenuTitle";
+import ReuseText from "../ReuseText";
 import InfoBox from "../InfoBox";
 
 const AllStatitics = () => {
     const TitleName = ["주간 통계", "월간 통계"];
     return (
         <Container>
-            <MenuTitle text={"전체 통계량"} type={"sub"}/>
+            <ReuseText text={"전체 통계량"} type={"sub"}/>
             <GraphContainer horizontal={true}>
                 {TitleName.map((item) => (
                     <InfoBox key={item} title={item}/>

@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { SafeAreaView, ScrollView } from "react-native";
+
 import palette from "../../styles/colorPalette";
 import Button from "../Button";
 import GoBackBtn from "../GoBackBtn";
-import MenuTitle from "../MenuTitle";
+import ReuseText from "../ReuseText";
 import SeverityLevel from "./SeverityLevel";
 import StatusDesc from "./StatusDesc";
 import DailyPractice from "./DailyPractice";
@@ -19,17 +20,32 @@ const CheckListResult = ({route}) => {
                 <GoBackBtn/>
             </Header>
             <Body>
-                <MenuTitle text={`${username} 님은 현재 ..`} type={"sub"}/>
+                <ReuseText 
+                    text={`${username} 님은 현재 ..`} 
+                    type={"subtitle"}
+                    style={{marginTop: 15, marginLeft: 28}}/>
                 <SeverityLevel score={score}/>
                 <MenuContainer>
-                    <MenuTitle text={"🧐 이런 적 있지 않았나요?"} type={"sub"}/>
+                    <ReuseText 
+                        text={"🧐 이런 적 있지 않았나요?"} 
+                        type={"subtitle"}
+                        style={{marginTop: 15, marginLeft: 28}}/>
                     <Line/>
                 </MenuContainer>
                 <StatusDesc/>
-                <MenuTitle text={`👥 ${username} 님과 비슷한 사람들은?`} type={"sub"}/>
-                <SubTitle>전체 이용자 중에서 이만큼 있어요!</SubTitle>
+                <ReuseText 
+                    text={`👥 ${username} 님과 비슷한 사람들은?`} 
+                    type={"subtitle"}
+                    style={{marginTop: 15, marginLeft: 28}}/>
+                <ReuseText
+                    text={"전체 이용자 중에서 이만큼 있어요!"}
+                    type={"content"}
+                    style={{marginTop: 10, marginLeft: 28}}/>
                 <AllUsers score={score}/>
-                <SubTitle>하루 평균 이정도 연습하고 있어요!</SubTitle>
+                <ReuseText
+                    text={"하루 평균 이정도 연습하고 있어요!"}
+                    type={"content"}
+                    style={{marginTop: 15, marginLeft: 28}}/>
                 <DailyPractice/>
             </Body>
             <Footer>
@@ -67,7 +83,7 @@ const MenuContainer = styled.View`
 `;
 const Line = styled.View`
     display: flex;
-    width: 31%;
+    width: 29%;
     height: 0.6px;
     background-color: ${palette.black};
     margin: 29px 0 0 13px;

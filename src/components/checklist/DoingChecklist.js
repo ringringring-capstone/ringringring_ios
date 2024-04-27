@@ -7,6 +7,7 @@ import palette from "../../styles/colorPalette";
 import Button from "../Button";
 import GoBackBtn from "../GoBackBtn";
 import OptionList from "./OptionList";
+import ReuseText from "../ReuseText";
 
 const DoingChecklist = () => {
     const [score, setScore] = useState(0);
@@ -16,10 +17,11 @@ const DoingChecklist = () => {
                 <GoBackBtn/>
             </Header>
             <Body>
-                <NoticeText>
-                    아래 항목 중, 해당되는 상태가 있다면{"\n"}
-                    체크해주세요.
-                </NoticeText>
+                <ReuseText
+                    text={`아래 항목 중, 해당되는 상태가 있다면 \n체크해주세요.`}
+                    type={"subtitle"}
+                    style={{marginTop: 10, marginLeft: 10}}
+                />
                 <OptionList score={score} setScore={setScore}/>
             </Body>
             <Footer>
@@ -59,11 +61,5 @@ const Footer = styled(SafeAreaView)`
     margin: 20px 20px 0 20px;
     align-items: center;
     background-color: ${palette.white};
-`;
-const NoticeText = styled.Text`
-    font-size: 18px;
-    font-family: "IBMPlexSans-Bold";
-    color: ${palette.black};
-    margin-top: ${(props) => props.plusStyle ? '35px' : '10px'};
 `;
 export default DoingChecklist;

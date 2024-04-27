@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { Text } from "react-native";
-import MenuTitle from "./MenuTitle";
+import ReuseText from "./ReuseText";
 import palette from "../styles/colorPalette";
 
 const InfoBox = ({title}) => {
     return (
         <Container>
-            {/* <TitleText>{title}</TitleText> */}
+            <TitleText>{title}</TitleText>
             {/* <GraphContainer>
 
             </GraphContainer> */}

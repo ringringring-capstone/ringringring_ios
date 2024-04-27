@@ -3,7 +3,7 @@ import { SafeAreaView } from "react-native";
 import palette from "../../styles/colorPalette";
 import GoBackBtn from "../GoBackBtn";
 import Button from "../Button";
-import MenuTitle from "../MenuTitle";
+import ReuseText from "../ReuseText";
 import MissionTopicBox from "./MissionTopicBox";
 
 const PickingMission = () => {
@@ -13,9 +13,7 @@ const PickingMission = () => {
                 <GoBackBtn/>
             </Header>
             <Body>
-                <MenuTitle
-                    text="전화 미션"
-                    type="main"/>
+                <ReuseText text="전화 미션" type="title"/>
                 <Subtitle>다양한 상황을 겪으며 {`\n`}한 층 더 성장할 수 있어요.</Subtitle>
                 <MissionTopicBox/>
             </Body>

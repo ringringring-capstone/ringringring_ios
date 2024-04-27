@@ -7,6 +7,7 @@ import palette from "../styles/colorPalette";
 import Input from "../components/Input";
 import GoBackBtn from "../components/GoBackBtn";
 import Button from "../components/Button";
+import ReuseText from "../components/ReuseText";
 
 const RegisterScreen = () => {
     const navigation = useNavigation();
@@ -55,7 +56,10 @@ const RegisterScreen = () => {
                 <GoBackBtn/>
             </Header>
             <Body>
-                <NoticeText> 사용자 정보를 입력해주세요. </NoticeText>
+                <ReuseText
+                    text={"사용자 정보를 입력해주세요."}
+                    type={"content"}
+                    style={{marginTop: 10}}/> 
                 <Input
                     state={name}
                     setState={setName}
@@ -63,9 +67,10 @@ const RegisterScreen = () => {
                     isPassword={false}
                     marginTop={'15px'}
                 />
-                <NoticeText plusStyle={true}> 
-                    로그인에 사용할 {"\n"}아이디와 비밀번호를 입력해주세요. 
-                </NoticeText>
+                <ReuseText 
+                    text={`로그인에 사용할 \n아이디와 비밀번호를 입력해주세요.`}
+                    type={"content"}
+                    style={{marginTop: 35}}/>  
                 <IdContainer>
                     <Input
                         state={id}
@@ -162,11 +167,5 @@ const Footer = styled.View`
     flex: 1;
     width: 91%;
     align-items: center;
-`;
-const NoticeText = styled.Text`
-    font-size: 18px;
-    font-family: "IBMPlexSans-Bold";
-    color: ${palette.black};
-    margin-top: ${(props) => props.plusStyle ? '35px' : '10px'};
 `;
 export default RegisterScreen;
