@@ -1,12 +1,21 @@
-import { useState, useEffect, useInterval } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 import Profile from "../../assets/icon/callpractice/ic_callProfile.png";
 import ReuseText from "../ReuseText";
 
 const CallInfo = ({name}) => {
-    const [seconds, setSeconds] = useState(0);
+    const [isLoading, setIsLoadig] = useState(true);
+    const [seconds, setSeconds] = useState(-3);
 
+    // 통화 연결 준비 중
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoadig(false);
+        }, 3000);
+    }, []);
+
+    // 통화 시간
     const tick = () => {
         setSeconds(prevSeconds => prevSeconds + 1);
     };
@@ -29,7 +38,7 @@ const CallInfo = ({name}) => {
             </ImageContainer>
             <TextContainer>
                 <ReuseText
-                    text={`${formatTime}`}
+                    text={(isLoading ? "휴대전화 연결 중..." : `${formatTime}`)}
                     type={"more"}
                     fontsize={"17px"}
                     fontfamily={"IBMPlexSans-Medium"}
