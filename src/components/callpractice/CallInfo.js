@@ -1,10 +1,27 @@
+import { useState, useEffect, useInterval } from "react";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 import Profile from "../../assets/icon/callpractice/ic_callProfile.png";
 import ReuseText from "../ReuseText";
 
 const CallInfo = ({name}) => {
-    const time = "00:30";
+    const [seconds, setSeconds] = useState(0);
+
+    const tick = () => {
+        setSeconds(prevSeconds => prevSeconds + 1);
+    };
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            tick();
+        }, 1000);
+        return () => {
+            clearInterval(intervalId);
+        }
+    }, []);
+
+    const formatTime = `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`;
+
     return (
         <Container>
             <ImageContainer>
@@ -12,7 +29,7 @@ const CallInfo = ({name}) => {
             </ImageContainer>
             <TextContainer>
                 <ReuseText
-                    text={time}
+                    text={`${formatTime}`}
                     type={"more"}
                     fontsize={"17px"}
                     fontfamily={"IBMPlexSans-Medium"}
