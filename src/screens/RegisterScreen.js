@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView } from "react-native";
 import styled from "styled-components";
 import palette from "../styles/colorPalette";
 

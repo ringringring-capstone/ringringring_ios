@@ -9,9 +9,9 @@ import Mission from "../../assets/icon/main/ic_mission.png";
 
 const MainMenu = () => {
     const Menulist = [
-        { id: 1, src: callPractice1, content: "예약전화" },
-        { id: 2, src: callPractice2, content: "배달전화" },
-        { id: 3, src: callPractice3, content: "상담전화" },
+        { id: 1, src: callPractice1, content: "예약전화", page: "callpractice" },
+        { id: 2, src: callPractice2, content: "배달전화", page: "callpractice" },
+        { id: 3, src: callPractice3, content: "상담전화", page: "callpractice"},
         { id: 4, src: Mission, content: "미션도전", page: "pickingmission"}
     ];
 
