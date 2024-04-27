@@ -13,12 +13,12 @@ const CallEndBtn = () => {
 };
 const Container = styled.Pressable`
     background-color: #E54848;
-    width: 20%;
-    height: 10%;
-    border-radius: 50px;
+    padding: 22px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 5px;
 `;
 const PhoneIcon = styled.Image`
     width: 42px;
