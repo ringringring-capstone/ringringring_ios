@@ -4,9 +4,7 @@ import palette from "../../styles/colorPalette";
 import Profile from "../../assets/icon/callpractice/ic_callProfile.png";
 import ReuseText from "../ReuseText";
 
-const CallInfo = ({name, isLoading, setIsLoadig}) => {
-    const [seconds, setSeconds] = useState();
-
+const CallInfo = ({name, isLoading, setIsLoadig, seconds, setSeconds}) => {
     // 통화 연결 준비 중
     useEffect(() => {
         setTimeout(() => {

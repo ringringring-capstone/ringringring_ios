@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import ReuseText from "../ReuseText";
 import Button from "../Button";
+import CallHistoryInfo from "./CallHistoryInfo";
 
-const CallPracticeResult = () => {
+const CallPracticeResult = ({ route }) => {
+    const { time } = route.params;
+    const callTime = 
+        `${String(Math.floor(time / 60)).padStart(2, "0")}:${String(time % 60).padStart(2, "0")}`;
+
     return (
         <Container
             colors={["#FFBA52", "#F88418"]}
@@ -27,6 +32,7 @@ const CallPracticeResult = () => {
                         color={palette.white}/>
                 </Header>
                 <Body>
+                    <CallHistoryInfo callTime={callTime}/>
                 </Body>
             </SubContainer>
             <Bottom>
@@ -60,6 +66,7 @@ const Header = styled.View`
 `;
 const Body = styled.View`
     flex: 3;
+    align-items: center;
     background-color: ${palette.white};
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;

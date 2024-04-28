@@ -11,16 +11,20 @@ import NoticeBox from "./NoticeBox";
 
 const CallPractice = () => {
     const name = "길동 대리님";
-    const topic = "직장 상사와 업무 대화 나누기"
+    const topic = "직장 상사와 업무 대화 나누기";
+
     const [isLoading, setIsLoadig] = useState(true);
     const [isClick, setIsClick] = useState(false);
+    const [seconds, setSeconds] = useState();
 
     return (
         <Container>
             <CallInfo 
                 name={name}
                 isLoading={isLoading}
-                setIsLoadig={setIsLoadig}/>
+                setIsLoadig={setIsLoadig}
+                seconds={seconds}
+                setSeconds={setSeconds}/>
             <CallTopic topic={topic}/>
             <Body isLoading={isLoading}>
                 <TalkingBtn/>
@@ -43,7 +47,8 @@ const CallPractice = () => {
             {isClick &&
                 <NoticeBox 
                     setIsClick={setIsClick}
-                    text={"통화를 종료 하시겠습니까?"}/>
+                    text={"통화를 종료 하시겠습니까?"}
+                    time={seconds}/>
             }
         </Container>
     );
