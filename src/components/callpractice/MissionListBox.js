@@ -49,7 +49,7 @@ const MissionListBox = () => {
                         fontsize={"17px"}
                         fontfamily={"IBMPlexSans-Regular"}
                         color={palette.black}/>
-                        <SeccessIcon source={Success}/>
+                        {item.success && <SeccessIcon source={Success}/>}
                     </MissionItem>
                 ))}
             </Body>
