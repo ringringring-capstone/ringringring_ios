@@ -4,12 +4,12 @@ import ReuseText from "../ReuseText";
 import Phone from "../../assets/image/img_phone.png";
 import MissionListBox from "./MissionListBox";
 
-const CallHistoryInfo = ({callTime, type}) => {
+const CallHistoryInfo = ({callTime, callType}) => {
     const name = "홍길동";
     const count = 2;
     return (
         <Container>
-            <CallTimeContainer type={type}>
+            <CallTimeContainer type={callType}>
                 <ReuseText
                     text={"⏱️ 통화시간"}
                     type={"content"}/>
@@ -20,7 +20,7 @@ const CallHistoryInfo = ({callTime, type}) => {
                     fontfamily={"IBMPlexSans-Regular"}
                     color={palette.black}/>
             </CallTimeContainer>
-            {(type === "practice") ? (
+            {(callType === "practice") ? (
                 <>
                     <CallHistorySave>
                         <CallHistoryBtn>

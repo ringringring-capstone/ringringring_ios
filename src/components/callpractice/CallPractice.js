@@ -9,7 +9,8 @@ import ReuseText from "../ReuseText";
 import TalkingBtn from "./TalkingBtn";
 import NoticeBox from "./NoticeBox";
 
-const CallPractice = () => {
+const CallPractice = ({route}) => {
+    const { callType } = route.params;
     const name = "길동 대리님";
     const topic = "직장 상사와 업무 대화 나누기";
 
@@ -48,7 +49,8 @@ const CallPractice = () => {
                 <NoticeBox 
                     setIsClick={setIsClick}
                     text={"통화를 종료 하시겠습니까?"}
-                    time={seconds}/>
+                    time={seconds}
+                    callType={callType}/>
             }
         </Container>
     );

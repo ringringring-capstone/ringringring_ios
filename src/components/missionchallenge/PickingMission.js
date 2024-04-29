@@ -22,7 +22,9 @@ const PickingMission = () => {
                     text="미션 시작하기"
                     backgroundColor={palette.main}
                     borderColor="none"
-                    fontColor={palette.white}/>
+                    fontColor={palette.white}
+                    movePage={"callpractice"}
+                    props={"mission"}/>
                 <Button
                     text="주제 뽑기"
                     backgroundColor={palette.white}

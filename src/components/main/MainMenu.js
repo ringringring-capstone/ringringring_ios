@@ -18,7 +18,11 @@ const MainMenu = () => {
     const navigation = useNavigation();
 
     const movePage = (page) => {
-        navigation.navigate(page);
+        if (page !== "pickingmission") {
+            navigation.navigate(page, {callType: "practice"});
+        } else {
+            navigation.navigate(page);
+        }
     }
 
     return (
