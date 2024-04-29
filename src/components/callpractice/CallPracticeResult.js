@@ -8,6 +8,8 @@ import CallHistoryInfo from "./CallHistoryInfo";
 
 const CallPracticeResult = ({ route }) => {
     const { time } = route.params;
+    const type = "practice";
+    
     const callTime = 
         `${String(Math.floor(time / 60)).padStart(2, "0")}:${String(time % 60).padStart(2, "0")}`;
 
@@ -19,7 +21,7 @@ const CallPracticeResult = ({ route }) => {
             <SubContainer>
                 <Header>
                     <ReuseText
-                        text={"통화 연습 결과"}
+                        text={(type === "practice") ? "통화 연습 결과" : "미션 결과"}
                         type={"more"}
                         fontsize={"22px"}
                         fontfamily={"IBMPlexSans-Bold"}
@@ -32,7 +34,9 @@ const CallPracticeResult = ({ route }) => {
                         color={palette.white}/>
                 </Header>
                 <Body>
-                    <CallHistoryInfo callTime={callTime}/>
+                    <CallHistoryInfo 
+                        callTime={callTime}
+                        type={"mission"}/>
                 </Body>
             </SubContainer>
             <Bottom>
