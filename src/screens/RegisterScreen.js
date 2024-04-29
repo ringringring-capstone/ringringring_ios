@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native";
-import styled from "styled-components";
-import palette from "../styles/colorPalette";
 
+import { registerUser, duplicationEmail } from "../librarys/login-api";
+
+import styled from "styled-components";
+
+import palette from "../styles/colorPalette";
 import Input from "../components/Input";
 import GoBackBtn from "../components/GoBackBtn";
 import Button from "../components/Button";
@@ -12,7 +15,7 @@ import ReuseText from "../components/ReuseText";
 const RegisterScreen = () => {
     const navigation = useNavigation();
     const [name, setName] = useState("");
-    const [id, setId] = useState("");
+    const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
     const [pwCheck, setPwCheck] = useState("");
     const [pwHide, setPwHide] = useState(false);                    // 비밀번호 숨기기
@@ -20,26 +23,27 @@ const RegisterScreen = () => {
     const [duplicateResult, setDuplicateResult] = useState("");     // 중복 확인
     const [isInputCheck, setIsInputCheck] = useState(false);        // 입력창 빈 곳 없는지 확인
 
-    // 예시 이메일
-    const emailExample = "qwer1234@naver.com";
+    // 중복 확인 클릭 시 호출
+    // const DuplicateClick = () => {
+    //     setDuplicateCheck(true);
+    //     if (id === emailExample) {
+    //         setDuplicateResult("이미 존재하는 이메일입니다.");
+    //     }
+    //     else if (id !== emailExample) {
+    //         setDuplicateResult("사용 가능한 이메일입니다.");
+    //     }
 
-    const DuplicateClick = () => {
-        setDuplicateCheck(true);
-        if (id === emailExample) {
-            setDuplicateResult("이미 존재하는 이메일입니다.");
-        }
-        else if (id !== emailExample) {
-            setDuplicateResult("사용 가능한 이메일입니다.");
-        }
-    }
+    // }
 
+    // 입력 값이 변경될 때마다 실행
     useEffect(() => {
         handleCheck();
-    }, [name, id, pw, pwCheck]);
+    }, [name, email, pw, pwCheck]);
 
+    // 입력 값 체크하여 회원가입 버튼 활성화 여부 결정
     const handleCheck = () => {
         if (name !== "" 
-            && id !== "" 
+            && email !== "" 
             && pw !== ""  
             && pwCheck !== "" 
             && duplicateResult === "사용 가능한 이메일입니다."
@@ -49,6 +53,33 @@ const RegisterScreen = () => {
             setIsInputCheck(false);
         }
     }
+
+    const handleDuplicationEmail = async () => {
+        try {
+            const response = await duplicationEmail(email);
+            if (response.message) {
+                setDuplicateResult(response.message);
+            } else if (response.errorDetails) {
+                setDuplicateResult(response.errorDetails);
+            }
+            console.log(duplicateResult);
+
+        } catch (error) {
+            console.error(error);
+            if (error.response && error.response.data) {
+                setDuplicateResult(error.response.data.errorDetails);
+            }
+        }
+    }
+    const handleRegister = async () => {
+        registerUser(name, email, pw)
+            .then(response => {
+                console.log(response);
+            })
+            .catch (error => {
+                console.error(error);
+            });
+    };
 
     return (
         <Container>
@@ -73,18 +104,18 @@ const RegisterScreen = () => {
                     style={{marginTop: 35}}/>  
                 <IdContainer>
                     <Input
-                        state={id}
-                        setState={setId}
+                        state={email}
+                        setState={setEmail}
                         placeholder="이메일"
                         isPassword={false}
                         marginTop={'15px'}
                     />
-                    <CheckBtn onPress={DuplicateClick}>
+                    <CheckBtn onPress={handleDuplicationEmail}>
                         <BtnText>중복 확인</BtnText>
                     </CheckBtn>
                 </IdContainer>
-                <DuplicateNotice duplicateCheck={duplicateCheck}>
-                        {duplicateResult}
+                <DuplicateNotice duplicateCheck={(duplicateResult !== "")}>
+                    {duplicateResult}
                 </DuplicateNotice>
                 <Input
                     state={pw}
@@ -112,6 +143,7 @@ const RegisterScreen = () => {
                     borderColor={"none"}
                     fontColor={palette.white}
                     movePage={isInputCheck ? "login" : ""}
+                    onPress={registerUser}
                 />
             </Footer>
         </Container>
