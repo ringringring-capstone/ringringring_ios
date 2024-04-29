@@ -4,30 +4,9 @@ import palette from "../../styles/colorPalette";
 import Profile from "../../assets/icon/callpractice/ic_callProfile.png";
 import ReuseText from "../ReuseText";
 
-const CallInfo = ({name, isLoading, setIsLoadig, seconds, setSeconds}) => {
-    // 통화 연결 준비 중
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoadig(false);
-            setSeconds(0);
-        }, 3000);
-    }, []);
-
-    // 통화 시간
-    const tick = () => {
-        setSeconds(prevSeconds => prevSeconds + 1);
-    };
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            tick();
-        }, 1000);
-        return () => {
-            clearInterval(intervalId);
-        }
-    }, []);
-
-    const formatTime = `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`;
+const CallInfo = ({name, isClick, isLoading, setIsLoadig, seconds, setSeconds}) => {
+    const formatTime = 
+        `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`;
 
     return (
         <Container>

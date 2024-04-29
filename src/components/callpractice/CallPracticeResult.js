@@ -49,7 +49,8 @@ const CallPracticeResult = ({ route }) => {
                     backgroundColor={palette.whtie}
                     borderColor={palette.main}
                     fontColor={palette.main}
-                    movePage={"callpractice"}/>
+                    movePage={"callpractice"}
+                    props={(callType === "practice") ? "practice" : "mission"}/>
             </Bottom>
         </Container>
     );

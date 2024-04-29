@@ -4,12 +4,19 @@ import { useNavigation } from "@react-navigation/native";
 
 import ReuseText from "../ReuseText";
 
-const NoticeBox = ({setIsClick, text, time, callType}) => {
+const NoticeBox = ({
+    setIsClick, 
+    setSeconds, 
+    text, 
+    time, 
+    callType
+}) => {
     const navigation = useNavigation();
 
     const handleClick = (type) => {
         if (type === "yes") {
             navigation.navigate("callpracticeresult", {time, callType});
+            setSeconds(0);
         }
         setIsClick(false);
     }

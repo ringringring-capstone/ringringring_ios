@@ -5,13 +5,13 @@ import { Pressable } from "react-native";
 import Phone from "../../assets/icon/callpractice/ic_phone.png";
 import NoticeBox from "./NoticeBox";
 
-const CallEndBtn = ({setIsClick}) => {
-    const handleClick = () => {
-        setIsClick(true);
-    }
+const CallEndBtn = ({handleClick}) => {
+    // const handleClick = () => {
+    //     setIsClick(true);
+    // }
 
     return (
-        <Container onPress={handleClick}>
+        <Container onPress={() => handleClick(true)}>
             <PhoneIcon source={Phone}/>
         </Container>
     );
