@@ -1,48 +1,65 @@
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components";
+
+import { loginUser } from "../librarys/login-api";
+
 import palette from "../styles/colorPalette";
+
 import Button from "../components/Button";
 import Input from "../components/Input";
 import DuplicateCheck from "../components/login/DuplicateCheck";
 
+
 const LoginScreen = () => {
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
+  const navigation = useNavigation();
+  const [email, setEmail] = useState("");
+  const [pwd, setPw] = useState("");
+
+  const handleLogin = async () => {
+    loginUser(email, pwd)
+      .then(response => {
+        console.log(response);
+        if (response) {
+          navigation.navigate("main");
+        }
+      })
+      .catch (error => {
+        console.error("에러: ", error);
+      })
+  }
 
   return (
     <Container>
       <AppLogo> RingRingRing </AppLogo>
       <Body>
         <Input
-          state={id}
-          setState={setId}
+          state={email}
+          setState={setEmail}
           placeholder="아이디"
           isPassword={false}
-          marginTop={'50px'}
-        />
+          marginTop={'50px'}/>
         <Input
-          state={pw}
+          state={pwd}
           setState={setPw}
           placeholder="비밀번호"
           isPassword={true}
-          marginTop={'8px'}
-        />
+          marginTop={'8px'}/>
         <DuplicateCheck/>
         <Button
           text={"로그인"}
           backgroundColor={palette.main}
           borderColor={"none"}
           fontColor={palette.white}
-          movePage={'main'}
-        />
+          event={handleLogin}/>
         <Button
           text={"아직 계정이 없으신가요?"}
           backgroundColor={palette.white}
           borderColor={palette.main}
           fontColor={palette.main}
-          movePage={'register'}
-        />
+          event={"movePage"}
+          movePage={"register"}/>
         <IdPwFindText>아이디 ・ 비밀번호 찾기</IdPwFindText>
       </Body>
     </Container>

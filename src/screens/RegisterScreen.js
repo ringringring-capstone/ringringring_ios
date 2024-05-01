@@ -16,37 +16,25 @@ const RegisterScreen = () => {
     const navigation = useNavigation();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [pw, setPw] = useState("");
+    const [pwd, setPw] = useState("");
     const [pwCheck, setPwCheck] = useState("");
     const [pwHide, setPwHide] = useState(false);                    // 비밀번호 숨기기
-    const [duplicateCheck, setDuplicateCheck] = useState(false);
     const [duplicateResult, setDuplicateResult] = useState("");     // 중복 확인
     const [isInputCheck, setIsInputCheck] = useState(false);        // 입력창 빈 곳 없는지 확인
-
-    // 중복 확인 클릭 시 호출
-    // const DuplicateClick = () => {
-    //     setDuplicateCheck(true);
-    //     if (id === emailExample) {
-    //         setDuplicateResult("이미 존재하는 이메일입니다.");
-    //     }
-    //     else if (id !== emailExample) {
-    //         setDuplicateResult("사용 가능한 이메일입니다.");
-    //     }
-
-    // }
 
     // 입력 값이 변경될 때마다 실행
     useEffect(() => {
         handleCheck();
-    }, [name, email, pw, pwCheck]);
+    }, [name, email, pwd, pwCheck, duplicateResult]);
 
     // 입력 값 체크하여 회원가입 버튼 활성화 여부 결정
     const handleCheck = () => {
         if (name !== "" 
             && email !== "" 
-            && pw !== ""  
+            && pwd !== ""  
             && pwCheck !== "" 
-            && duplicateResult === "사용 가능한 이메일입니다."
+            && duplicateResult === "사용가능한 Email입니다."
+            && pwd === pwCheck
         ) {
             setIsInputCheck(true);
         } else {
@@ -54,6 +42,7 @@ const RegisterScreen = () => {
         }
     }
 
+    // 이메일 중복 확인 api 호출
     const handleDuplicationEmail = async () => {
         try {
             const response = await duplicationEmail(email);
@@ -62,8 +51,6 @@ const RegisterScreen = () => {
             } else if (response.errorDetails) {
                 setDuplicateResult(response.errorDetails);
             }
-            console.log(duplicateResult);
-
         } catch (error) {
             console.error(error);
             if (error.response && error.response.data) {
@@ -71,14 +58,17 @@ const RegisterScreen = () => {
             }
         }
     }
+
+    // 회원가입 api 호출
     const handleRegister = async () => {
-        registerUser(name, email, pw)
-            .then(response => {
+        if (isInputCheck) {
+            try {
+                const response = await registerUser(name, email, pwd);
                 console.log(response);
-            })
-            .catch (error => {
-                console.error(error);
-            });
+            } catch (error) {
+                console.error("회원가입 실패 :", error);
+            }
+        }
     };
 
     return (
@@ -96,8 +86,7 @@ const RegisterScreen = () => {
                     setState={setName}
                     placeholder="이름"
                     isPassword={false}
-                    marginTop={'15px'}
-                />
+                    marginTop={'15px'}/>
                 <ReuseText 
                     text={`로그인에 사용할 \n아이디와 비밀번호를 입력해주세요.`}
                     type={"content"}
@@ -108,8 +97,7 @@ const RegisterScreen = () => {
                         setState={setEmail}
                         placeholder="이메일"
                         isPassword={false}
-                        marginTop={'15px'}
-                    />
+                        marginTop={'15px'}/>
                     <CheckBtn onPress={handleDuplicationEmail}>
                         <BtnText>중복 확인</BtnText>
                     </CheckBtn>
@@ -118,14 +106,13 @@ const RegisterScreen = () => {
                     {duplicateResult}
                 </DuplicateNotice>
                 <Input
-                    state={pw}
+                    state={pwd}
                     setState={setPw}
                     placeholder="비밀번호"
                     isPassword={true}
                     pwHide={pwHide}
                     setPwHide={setPwHide}
-                    marginTop={'8px'}
-                />
+                    marginTop={'8px'}/>
                 <Input
                     state={pwCheck}
                     setState={setPwCheck}
@@ -133,8 +120,7 @@ const RegisterScreen = () => {
                     isPassword={true}
                     pwHide={pwHide}
                     setPwHide={setPwHide}
-                    marginTop={'8px'}
-                />
+                    marginTop={'8px'}/>
             </Body>
             <Footer>    
                 <Button
@@ -142,9 +128,7 @@ const RegisterScreen = () => {
                     backgroundColor={isInputCheck ? palette.main : "#DADADA"}
                     borderColor={"none"}
                     fontColor={palette.white}
-                    movePage={isInputCheck ? "login" : ""}
-                    onPress={registerUser}
-                />
+                    event={handleRegister}/>
             </Footer>
         </Container>
     );

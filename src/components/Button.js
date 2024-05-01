@@ -7,17 +7,21 @@ const Button = ({
     backgroundColor, 
     borderColor, 
     fontColor,
-    movePage, 
+    event,
+    movePage,
     props 
 }) => {
     const navigation = useNavigation();
+    const handleMovePage = () => {
+        navigation.navigate(movePage, props);
+    }
     
     return (
         <Container 
             backgroundColor={backgroundColor}
             borderColor={borderColor}
             topCheck={text}
-            onPress={() => navigation.navigate(movePage, props)}>
+            onPress={(event !== "movePage") ? event : handleMovePage}>
             <BtnText fontColor={fontColor}>{text}</BtnText>
         </Container>
     );
