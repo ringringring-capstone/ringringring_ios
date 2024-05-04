@@ -43,12 +43,14 @@ const CallPracticeResult = ({ route }) => {
                     backgroundColor={palette.main}
                     borderColor={"none"}
                     fontColor={palette.white}
+                    event={"movePage"}
                     movePage={"main"}/>
                 <Button
                     text={"한번 더 연습하기"}
                     backgroundColor={palette.whtie}
                     borderColor={palette.main}
                     fontColor={palette.main}
+                    event={"movePage"}
                     movePage={"callpractice"}
                     props={(callType === "practice") ? "practice" : "mission"}/>
             </Bottom>

@@ -23,6 +23,7 @@ const Checklist = () => {
                     backgroundColor={palette.main}
                     borderColor={"none"}
                     fontColor={palette.white}
+                    event={"movePage"}
                     movePage={"doingchecklist"}/>
             </Body>
         </Container>

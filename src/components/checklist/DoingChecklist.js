@@ -30,6 +30,7 @@ const DoingChecklist = () => {
                     backgroundColor={palette.main}
                     borderColor={"none"}
                     fontColor={palette.white}
+                    event={"movePage"}
                     movePage={"checklistresult"}
                     props={{score}}
                 />

@@ -54,8 +54,8 @@ const CheckListResult = ({route}) => {
                     backgroundColor={palette.main}
                     borderColor={"none"}
                     fontColor={palette.white}
-                    movePage={"checklist"}
-                />
+                    event={"movePage"}
+                    movePage={"checklist"}/>
             </Footer>
         </Container>
     );
