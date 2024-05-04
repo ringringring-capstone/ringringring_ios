@@ -3,18 +3,16 @@ import { useState } from "react";
 import palette from "../../styles/colorPalette";
 import CheckIcon from "../../assets/icon/ic_check.png";
 
-const DuplicateCheck = () => {
-    const [click, setClick] = useState(false);
-
+const DuplicateCheck = ({isAutoLogin, setIsAutoLogin}) => {
     const clickBtn = () => {
-        setClick(!click);
+        setIsAutoLogin(!isAutoLogin);
     }
 
     return (
         <Container>
             <CheckContainer 
                 onPress={clickBtn}
-                click={click}>
+                isAutoLogin={isAutoLogin}>
                 <Icon source={CheckIcon}/>
             </CheckContainer>
             <CheckText>자동 로그인</CheckText>
@@ -34,7 +32,7 @@ const CheckContainer = styled.Pressable`
     height: 19px;
     border-radius: 5px;
     border: 1px solid #F0F0F0;
-    background-color: ${(props) => (props.click) ? `${palette.main}` : `${palette.white}`};
+    background-color: ${(props) => (props.isAutoLogin) ? `${palette.main}` : `${palette.white}`};
     display: flex;
     align-items: center;
     justify-content: center;

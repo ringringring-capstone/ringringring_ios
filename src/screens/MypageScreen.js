@@ -1,5 +1,7 @@
 import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import styled from "styled-components";
 import palette from "../styles/colorPalette";
 
@@ -13,17 +15,30 @@ const MyPage = () => {
     const category = [
         {
             title: "로그아웃",
-            movepage: "login",
             type: "Logout",
             icon: Logout
         },
         {
             title : "대화기록",
-            movepage : "converhistory",
             type: "ConverHistory",
             icon: ConverHistory
         }
-    ]
+    ];
+
+    const removeStorage = async (key) => {
+        return await AsyncStorage.removeStorage(key);
+    }
+
+    const movePage = (type) => {
+        if (type === "Logout") {
+            removeStorage("token");
+            removeStorage("autoLogin");
+            navigation.navigate("login");
+        } 
+        else if (type === "ConverHistory") {
+            navigation.navigate("converhistory");
+        }
+    }
 
     return (
         <Container>
@@ -31,7 +46,7 @@ const MyPage = () => {
                 text={"MY페이지"} 
                 type={"title"}/>
             {category.map((item) => (
-                <SubContainer onPress={() => navigation.navigate(item.movepage)}>
+                <SubContainer onPress={() => movePage(item.type)}>
                     <Icon source={item.icon} type={item.type}/>
                     <ReuseText
                         text={item.title}

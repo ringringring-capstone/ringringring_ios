@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { loginUser } from "../librarys/login-api";
 
@@ -16,19 +17,44 @@ const LoginScreen = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [pwd, setPw] = useState("");
+  const [isAutoLogin, setIsAutoLogin] = useState(false);
+
+  const setStorage = async (key, value) => {
+    return await AsyncStorage.setItem(key, JSON.stringify(value));
+  }
+
+  const getStorage = async (key) => {
+    const result = await AsyncStorage.getItem(key);
+    return result && JSON.parse(result);
+  }
 
   const handleLogin = async () => {
     loginUser(email, pwd)
       .then(response => {
-        console.log(response);
         if (response) {
-          navigation.navigate("main");
+          const token = response.token;
+          setStorage("token", token);
+
+          if (isAutoLogin === true) {
+            setStorage("autoLogin", true);
+            navigation.navigate("main");
+          } else {
+            navigation.navigate("main");
+          }
         }
       })
       .catch (error => {
         console.error("에러: ", error);
       })
   }
+
+  useEffect(() => {
+    if (getStorage("token")) {
+      if (getStorage("autoLogin") === true) {
+        navigation.navigate("main");
+      }
+    }
+  });
 
   return (
     <Container>
@@ -46,7 +72,7 @@ const LoginScreen = () => {
           placeholder="비밀번호"
           isPassword={true}
           marginTop={'8px'}/>
-        <DuplicateCheck/>
+        <DuplicateCheck isAutoLogin={isAutoLogin} setIsAutoLogin={setIsAutoLogin}/>
         <Button
           text={"로그인"}
           backgroundColor={palette.main}
