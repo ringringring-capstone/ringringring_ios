@@ -64,6 +64,7 @@ const RegisterScreen = () => {
         if (isInputCheck) {
             try {
                 const response = await registerUser(name, email, pwd);
+                navigation.navigate("welcome");
                 console.log(response);
             } catch (error) {
                 console.error("회원가입 실패 :", error);
@@ -86,7 +87,7 @@ const RegisterScreen = () => {
                     setState={setName}
                     placeholder="이름"
                     isPassword={false}
-                    marginTop={'15px'}/>
+                    marginTop={"15px"}/>
                 <ReuseText 
                     text={`로그인에 사용할 \n아이디와 비밀번호를 입력해주세요.`}
                     type={"content"}
@@ -97,7 +98,7 @@ const RegisterScreen = () => {
                         setState={setEmail}
                         placeholder="이메일"
                         isPassword={false}
-                        marginTop={'15px'}/>
+                        marginTop={"15px"}/>
                     <CheckBtn onPress={handleDuplicationEmail}>
                         <BtnText>중복 확인</BtnText>
                     </CheckBtn>
@@ -108,19 +109,19 @@ const RegisterScreen = () => {
                 <Input
                     state={pwd}
                     setState={setPw}
-                    placeholder="비밀번호"
+                    placeholder={"비밀번호"}
                     isPassword={true}
                     pwHide={pwHide}
                     setPwHide={setPwHide}
-                    marginTop={'8px'}/>
+                    marginTop={"8px"}/>
                 <Input
                     state={pwCheck}
                     setState={setPwCheck}
-                    placeholder="비밀번호 확인"
+                    placeholder={"비밀번호 확인"}
                     isPassword={true}
                     pwHide={pwHide}
                     setPwHide={setPwHide}
-                    marginTop={'8px'}/>
+                    marginTop={"8px"}/>
             </Body>
             <Footer>    
                 <Button

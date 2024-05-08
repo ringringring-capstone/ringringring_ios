@@ -17,6 +17,7 @@ import ConverHistory from "./src/components/converhistory/ConverHistory";
 import PickingMission from "./src/components/missionchallenge/PickingMission";
 import CallPractice from "./src/components/callpractice/CallPractice";
 import CallPracticeResult from "./src/components/callpractice/CallPracticeResult";
+import WelcomeScreen from "./src/screens/WelcomeScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -45,12 +46,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName="login"
+        initialRouteName="welcome"
         screenOptions={{
           headerShown: false,
       }}>
         <Stack.Screen name="login" component={LoginScreen}/>
         <Stack.Screen name="register" component={RegisterScreen}/>
+        <Stack.Screen name="welcome" component={WelcomeScreen}/>
         <Stack.Screen name="main" component={MainScreen}/>
         <Stack.Screen name="doingchecklist" component={DoingChecklist}/>
         <Stack.Screen name="checklistresult" component={CheckListResult}/>
