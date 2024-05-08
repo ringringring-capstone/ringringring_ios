@@ -1,16 +1,22 @@
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 import { Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import ContentMoreBtn from "../../assets/icon/ic_contentMore.png";
 
 const ConverHistoryItem = ({setIsClick, title, content}) => {
+    const navigation = useNavigation();
+    const handleMovePage = () => {
+        navigation.navigate("converdetail", {title, content});
+    }
+
     const handleClick = () => {
         setIsClick(true);
     }
 
     return (
-        <Container>
+        <Container onPress={() => handleMovePage()}>
             <TopContainer>
                 <MainTitle>{title}</MainTitle>
                 <Pressable onPress={handleClick}>
@@ -24,7 +30,7 @@ const ConverHistoryItem = ({setIsClick, title, content}) => {
         </Container>
     );
 };
-const Container = styled.View`
+const Container = styled.Pressable`
     width: 87%;
     background-color: ${palette.white};
     padding: 15px;

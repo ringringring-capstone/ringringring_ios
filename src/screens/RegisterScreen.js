@@ -64,8 +64,10 @@ const RegisterScreen = () => {
         if (isInputCheck) {
             try {
                 const response = await registerUser(name, email, pwd);
-                navigation.navigate("welcome");
                 console.log(response);
+                if (response === "회원가입 완료") {
+                    navigation.navigate("welcome");
+                }
             } catch (error) {
                 console.error("회원가입 실패 :", error);
             }
