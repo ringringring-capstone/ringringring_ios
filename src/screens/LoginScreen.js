@@ -49,12 +49,17 @@ const LoginScreen = () => {
   }
 
   useEffect(() => {
-    if (getStorage("token")) {
-      if (getStorage("autoLogin") === true) {
-        navigation.navigate("main");
+    const checkLoginStatus = async () => {
+      const token = await getStorage("token");
+      const autoLogin = await getStorage("autoLogin");
+      if (token) {
+        if (autoLogin === true) {
+          navigation.navigate("main");
+        }
       }
     }
-  });
+    checkLoginStatus();
+  }, [navigation]);
 
   return (
     <Container>

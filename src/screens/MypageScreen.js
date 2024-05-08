@@ -26,7 +26,7 @@ const MyPage = () => {
     ];
 
     const removeStorage = async (key) => {
-        return await AsyncStorage.removeStorage(key);
+        return await AsyncStorage.removeItem(key);
     }
 
     const movePage = (type) => {
