@@ -3,9 +3,26 @@ import palette from "../../styles/colorPalette";
 
 import Mic from "../../assets/icon/callpractice/ic_mic.png";
 
-const TalkingBtn = () => {
+const TalkingBtn = ({setIsRecord}) => {
+     // 음성 녹음 버튼 클릭 시
+     let longPressTimer;
+     const handlePressIn = () => {
+         longPressTimer = setTimeout(() => {
+             setIsRecord(true);
+             console.log("녹음 test 시작");
+         }, 1000);
+     };
+ 
+     const handlePressOut = () => {
+         clearTimeout(longPressTimer);
+         setIsRecord(false);
+         console.log("녹음 test 끝");
+     };
+
     return (
-        <Container>
+        <Container
+            onPressIn={handlePressIn}
+            onPressOut={handlePressOut}>
             <MicIcon source={Mic}/>
         </Container>
     );

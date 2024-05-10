@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components";
+import Voice from "react-native-voice";
+
 import palette from "../../styles/colorPalette";
+
 import CallEndBtn from "./CallEndBtn";
 import CallInfo from "./CallInfo";
 import CallTopic from "./CallTopic";
@@ -19,6 +22,8 @@ const CallPractice = ({route}) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isClick, setIsClick] = useState(false);
     const [seconds, setSeconds] = useState(0);
+    const [isRecord, setIsRecord] = useState(false);
+    const [text, setText] = useState("");
 
     useEffect(() => {
         // 통화 연결 준비 중
@@ -54,7 +59,7 @@ const CallPractice = ({route}) => {
 
     const handleClick = (props) => {
         setIsClick(props);
-    }
+    };
 
     return (
         <Container>
@@ -66,7 +71,7 @@ const CallPractice = ({route}) => {
                 setSeconds={setSeconds}/>
             <CallTopic topic={topic}/>
             <Body isLoading={isLoading}>
-                <TalkingBtn/>
+                <TalkingBtn setIsRecord={setIsRecord}/>
                 <ReuseText
                     text={"말하기"}
                     type={"more"}
