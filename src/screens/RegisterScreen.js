@@ -49,6 +49,19 @@ const RegisterScreen = () => {
         }
     }
 
+    const handleEmailCheck = () => {
+        const regux = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+        if (regux.test(email)) {
+            handleDuplicationEmail();
+            if (duplicateResult === "사용가능한 Email입니다.") {
+                handleCertifiedEmail();
+            }
+        } else {
+            setDuplicateResult("이메일 형식에 맞춰 작성해주세요.");
+        }
+        
+    }
+
     // 이메일 중복 확인 api 호출
     const handleDuplicationEmail = async () => {
         try {
@@ -130,7 +143,7 @@ const RegisterScreen = () => {
                         placeholder="이메일"
                         isPassword={false}
                         marginTop={"15px"}/>
-                    <CheckBtn onPress={handleCertifiedEmail}>
+                    <CheckBtn onPress={handleEmailCheck}>
                         <BtnText>인증번호 받기</BtnText>
                     </CheckBtn>
                 </IdContainer>
