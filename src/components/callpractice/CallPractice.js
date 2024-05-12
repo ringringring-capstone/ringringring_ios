@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components";
-import Voice from "react-native-voice";
+// import Voice from "react-native-voice";
 
 import palette from "../../styles/colorPalette";
 

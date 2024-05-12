@@ -25,10 +25,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "infoPlist": {
-      "NSMicrophoneUsageDescription": "Description of why you require the use of the microphone",
-      "NSSpeechRecognitionUsageDescription": "Description of why you require the use of the speech recognition"
     }
   }
 }

@@ -32,6 +32,40 @@ export async function duplicationEmail(email) {
     }
 }
 
+export async function emailCertified(email) {
+    try {
+        const response = await instance.get(`/mailsender/${email}`);
+        return response.data;
+    } catch (error) {
+        if (error.response) {
+            return error.response.data;
+        } else {
+            throw error;
+        }
+    }
+}
+
+export async function emailEnterAuth(email, code) {
+    try {
+        const response = await instance.post(`/codecheck`, {
+            email,
+            code
+        });
+        return response.data;
+    } catch (error) {
+        if (error.response) {
+            // 서버 응답이 있는 경우
+            if (error.response.status === 200) {
+                return response.data;
+            } else {
+                return "메일 인증 실패, 다시 시도해 주세요.";
+            }
+        } else {
+            return "메일 인증 실패, 다시 시도해 주세요.";
+        }
+    }
+}
+
 // 로그인
 export async function loginUser(email, pwd) {
     try {
