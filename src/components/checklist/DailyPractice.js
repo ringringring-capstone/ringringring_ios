@@ -18,12 +18,12 @@ const DailyPractice = () => {
                 data={data}
                 width={190}
                 height={190}
-                strokeWidth={7}
+                strokeWidth={8}
                 radius={44}
                 chartConfig={{
                     backgroundGradientFrom: `${palette.white}`, // 시작 색상
                     backgroundGradientTo: `${palette.white}`,   // 종료 색상
-                    color: (opacity = 1) => `rgba(219, 219, 219, ${opacity})`,
+                    color: (opacity = 1) => `rgba(217, 217, 217, ${opacity})`,
                 }}
                 withCustomBarColorFromData={true}
                 hideLegend={true}/>
@@ -32,13 +32,13 @@ const DailyPractice = () => {
                         <ReuseText
                             text={"평균 연습 시간"}
                             type={"more"}
-                            fontsize={"12px"}
+                            fontsize={"13px"}
                             fontfamily={"IBMPlexSans-ExtraLight"}
                             color={palette.black}/>
                         <ReuseText
                             text={`${data.data[3] * 180}분`}
                             type={"more"}
-                            fontsize={"14px"}
+                            fontsize={"15px"}
                             fontfamily={"IBMPlexSans-Regular"}
                             color={"#686868"}/>
                     </DetailPractice>
@@ -47,13 +47,13 @@ const DailyPractice = () => {
                         <ReuseText
                             text={`${data.data[2] * 180}분`}
                             type={"more"}
-                            fontsize={"14px"}
+                            fontsize={"15px"}
                             fontfamily={"IBMPlexSans-Regular"}
                             color={palette.sub}/>
                         <ReuseText
                             text={"내 연습 시간"}
                             type={"more"}
-                            fontsize={"12px"}
+                            fontsize={"13px"}
                             fontfamily={"IBMPlexSans-ExtraLight"}
                             color={palette.black}/>
                     </DetailPractice>
@@ -83,7 +83,7 @@ const Container = styled.View`
 `;
 const ChartTextContainer = styled.View`
     position: absolute;
-    top: 70px;
+    top: 65px;
     left: 80px;
     display: flex;
     align-items: center;
@@ -96,12 +96,12 @@ const Line = styled.View`
     width: 80%;
     height: 0.5px;
     background-color: #DBDBDB;
-    margin: 5px 0;
+    margin: 7px 0;
 `;
 const TextContainer = styled.View`
     display: flex;
     justify-content: flex-end;
-    margin-left: 20px;
+    margin-left: 5px;
 `;
 const GraphContainer = styled.View`
     display: flex;
