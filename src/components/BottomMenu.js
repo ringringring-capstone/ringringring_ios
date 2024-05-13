@@ -8,7 +8,7 @@ import palette from "../styles/colorPalette";
 import HomeSelect from "../assets/icon/bottom/ic_home_Select.png";
 import HomeNotSelect from "../assets/icon/bottom/ic_home_NotSelect.png";
 import checklistSelect from "../assets/icon/bottom/ic_checklist_Select.png";
-import checklistNotSelect from "../assets/icon/bottom/ic_checklist_NotSelect.png";
+import checklistNotSelect from "../assets/icon/bottom/ic_checkList_NotSelect.png";
 import mypageSelect from "../assets/icon/bottom/ic_mypage_Select.png";
 import mypageNotSelect from "../assets/icon/bottom/ic_mypage_NotSelect.png";
 

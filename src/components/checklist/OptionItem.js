@@ -3,8 +3,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 
-import NotCheck from "../../assets/icon/ic_notCheck.png";
-import Check from "../../assets/icon/ic_check.png";
+import NotCheck from "../../assets/icon/ic_NotCheck.png";
+import Check from "../../assets/icon/ic_Check.png";
 
 const OptionItem = ({content, score, setScore, clickValue}) => {
     const [check, setCheck] = useState(clickValue);

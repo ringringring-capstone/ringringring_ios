@@ -10,8 +10,7 @@ import palette from "../styles/colorPalette";
 
 import Button from "../components/Button";
 import Input from "../components/Input";
-import DuplicateCheck from "../components/login/DuplicateCheck";
-
+import DuplicateCheck from "../components/Login/DuplicateCheck";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
