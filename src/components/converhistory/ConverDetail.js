@@ -18,7 +18,7 @@ const ConverDetail = ({route}) => {
                 <ReuseText 
                     text={content} 
                     type={"more"}
-                    fontsize={18}
+                    fontsize={"18px"}
                     fontfamily={"IBMPlexSans-Regular"}
                     color={palette.black}
                     style={{marginTop: 30}}/>
