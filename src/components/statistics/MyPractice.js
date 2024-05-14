@@ -25,6 +25,7 @@ const Container = styled.View`
 const GraphContainer = styled(ScrollView)`
     display: flex;
     flex-direction: row;
-    margin: 22px 15px;
+    margin: 0 10px;
+    padding: 20px 5px;
 `;
 export default MyPractice;

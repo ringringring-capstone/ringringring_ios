@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import { PieChart } from "react-native-chart-kit";
 import { PieChart } from "react-native-gifted-charts";
 import palette from "../../styles/colorPalette";
 import ReuseText from "../ReuseText";
