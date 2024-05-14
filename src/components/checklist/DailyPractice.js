@@ -36,7 +36,7 @@ const DailyPractice = () => {
                             fontfamily={"IBMPlexSans-ExtraLight"}
                             color={palette.black}/>
                         <ReuseText
-                            text={`${data.data[3] * 180}분`}
+                            text={(data.data[3] * 180) >= 180 ? "180분 이상" : `${data.data[3] * 180}분`}
                             type={"more"}
                             fontsize={"15px"}
                             fontfamily={"IBMPlexSans-Regular"}
@@ -45,7 +45,7 @@ const DailyPractice = () => {
                     <Line/>
                     <DetailPractice>
                         <ReuseText
-                            text={`${data.data[2] * 180}분`}
+                            text={(data.data[2] * 180) >= 180 ? "180분 이상" : `${data.data[2] * 180}분`}
                             type={"more"}
                             fontsize={"15px"}
                             fontfamily={"IBMPlexSans-Regular"}
