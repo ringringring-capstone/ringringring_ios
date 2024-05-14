@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native";
+import { getStorage } from "../librarys/storage";
 import styled from "styled-components";
 import palette from "../styles/colorPalette";
 
@@ -7,7 +8,16 @@ import ReuseText from "../components/ReuseText";
 import Button from "../components/Button";
 
 const Checklist = () => {
-    const name = "홍길동";
+    const [name, setName] = useState("");
+
+    useEffect(() => {
+        const getName = async () => {
+            const storageName = await getStorage("username");
+            setName(storageName);
+        };
+        getName();
+    }, []);
+
     return (
         <Container>
             <Header>

@@ -1,5 +1,7 @@
-import styled from "styled-components";
+import { useState, useEffect } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
+import { getStorage } from "../../librarys/storage";
+import styled from "styled-components";
 
 import palette from "../../styles/colorPalette";
 import Button from "../Button";
@@ -12,7 +14,16 @@ import AllUsers from "./AllUsers";
 
 const CheckListResult = ({route}) => {
     const { score } = route.params;
-    const username = "홍길동";
+    const [name, setName] = useState("");
+
+    useEffect(() => {
+        const getName = async () => {
+            const storageName = await getStorage("username");
+            setName(storageName);
+        };
+        getName();
+    }, []);
+
 
     return (
         <Container>
@@ -21,7 +32,7 @@ const CheckListResult = ({route}) => {
             </Header>
             <Body>
                 <ReuseText 
-                    text={`${username} 님은 현재 ..`} 
+                    text={`${name} 님은 현재 ..`} 
                     type={"subtitle"}
                     style={{marginTop: 15, marginLeft: 28}}/>
                 <SeverityLevel score={score}/>
@@ -34,7 +45,7 @@ const CheckListResult = ({route}) => {
                 </MenuContainer>
                 <StatusDesc/>
                 <ReuseText 
-                    text={`👥 ${username} 님과 비슷한 사람들은?`} 
+                    text={`👥 ${name} 님과 비슷한 사람들은?`} 
                     type={"subtitle"}
                     style={{marginTop: 15, marginLeft: 28}}/>
                 <ReuseText

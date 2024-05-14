@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { setStorage, getStorage } from "../librarys/storage";
 
 import { loginUser } from "../librarys/login-api";
 
@@ -18,21 +18,15 @@ const LoginScreen = () => {
   const [pwd, setPw] = useState("");
   const [isAutoLogin, setIsAutoLogin] = useState(false);
 
-  const setStorage = async (key, value) => {
-    return await AsyncStorage.setItem(key, JSON.stringify(value));
-  }
-
-  const getStorage = async (key) => {
-    const result = await AsyncStorage.getItem(key);
-    return result && JSON.parse(result);
-  }
-
   const handleLogin = async () => {
     loginUser(email, pwd)
       .then(response => {
         if (response) {
           const token = response.token;
+          const name = response.name;
+          
           setStorage("token", token);
+          setStorage("username", name);
 
           if (isAutoLogin === true) {
             setStorage("autoLogin", true);

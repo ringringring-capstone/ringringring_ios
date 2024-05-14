@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 import styled from "styled-components";
+import { getStorage } from "../librarys/storage";
 import palette from "../styles/colorPalette";
 
 import GirlImg from "../assets/image/img_mainScreenTop.png";
@@ -10,7 +12,15 @@ import MyPractice from "../components/statistics/MyPractice";
 import AllStatitics from "../components/statistics/AllStatistics";
 
 const HomeScreen = () => {
-    const name = "홍길동";
+    const [name, setName] = useState("");
+
+    useEffect(() => {
+        const getName = async () => {
+            const storageName = await getStorage("username");
+            setName(storageName);
+        };
+        getName();
+    }, []);
 
     return (
         <Container>
