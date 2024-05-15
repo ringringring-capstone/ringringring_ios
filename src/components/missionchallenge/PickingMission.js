@@ -14,7 +14,13 @@ const PickingMission = () => {
             </Header>
             <Body>
                 <ReuseText text="전화 미션" type="title"/>
-                <Subtitle>다양한 상황을 겪으며 {`\n`}한 층 더 성장할 수 있어요.</Subtitle>
+                <ReuseText 
+                    text={`다양한 상황을 겪으며 \n한 층 더 성장할 수 있어요.`}
+                    type={"more"}
+                    color={palette.black}
+                    fontsize={"20px"}
+                    fontfamily={"IBMPlexSans-Light"}
+                    style={{marginTop: 15, marginLeft: 28}}/>
                 <MissionTopicBox/>
             </Body>
             <Footer>
@@ -49,12 +55,6 @@ const Header = styled.View`
 const Body = styled.View`
     flex: 9;
     width: 100%;
-`;
-const Subtitle = styled.Text`
-    font-size: 20px;
-    font-family: "IBMPlexSans-Light";
-    margin-top: 15px;
-    margin-left: 28px;
 `;
 const Footer = styled(SafeAreaView)`
     flex: 2;

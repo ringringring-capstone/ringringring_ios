@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
-import styled from "styled-components";
 import { getStorage } from "../librarys/storage";
+import styled from "styled-components";
 import palette from "../styles/colorPalette";
 
 import GirlImg from "../assets/image/img_mainScreenTop.png";
@@ -10,6 +10,7 @@ import BottomMenu from "../components/BottomMenu";
 import MainMenu from "../components/main/MainMenu";
 import MyPractice from "../components/statistics/MyPractice";
 import AllStatitics from "../components/statistics/AllStatistics";
+import ReuseText from "../components/ReuseText";
 
 const HomeScreen = () => {
     const [name, setName] = useState("");
@@ -27,8 +28,20 @@ const HomeScreen = () => {
             <SubContainer>
                 <Header>
                     <ExampleImg source={GirlImg}/>
-                    <IntroductText type={"main"}>{name} 님,{"\n"}안녕하세요 😊</IntroductText>
-                    <IntroductText type={"sub"}>오늘도 함께 연습해봐요!</IntroductText>
+                    <ReuseText
+                        text={`${name} 님, \n안녕하세요 😊`}
+                        type={"more"}
+                        color={palette.black}
+                        fontsize={"26px"}
+                        fontfamily={"IBMPlexSans-Medium"}
+                        style={{marginTop: 30, marginLeft: 23}}/>
+                    <ReuseText
+                        text={"오늘도 함께 연습해봐요!"}
+                        type={"more"}
+                        color={palette.black}
+                        fontsize={"22px"}
+                        fontfamily={"IBMPlexSans-Regular"}
+                        style={{marginTop: 15, marginLeft: 23}}/>
                 </Header>
                 <Body>
                     <MainMenu/>
@@ -50,7 +63,6 @@ const SubContainer = styled(ScrollView)`
     flex: 1;
 `;
 const Header = styled.View`
-    /* flex: 4; */
     height: 200px;
     background-color: #FFF7F5;
 `;
@@ -63,14 +75,6 @@ const ExampleImg = styled.Image`
     bottom: -3px;
     width: 145px;
     height: 159px;
-`;
-const IntroductText = styled.Text`
-    font-size: ${(props) => (props.type === "main") ? "26px" : "22px"};
-    font-family: ${(props) => (props.type === "main") ? 
-        "IBMPlexSans-Medium" : "IBMPlexSans-Regular"
-    };
-    margin-top: ${(props) => (props.type === "main") ? "30px" : "15px"};
-    margin-left: 23px;
 `;
 const MiddleLine = styled.View`
     width: 100%;

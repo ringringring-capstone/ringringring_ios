@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
+import ReuseText from "../ReuseText";
 
 import MissionExam from "../../assets/image/img_missionTopic.png";
 
@@ -9,7 +10,13 @@ const MissionTopicBox = () => {
             <ShadowBox/>
             <MainBox>
                 <ExampleImg source={MissionExam}/>
-                <NoticeText>도전할 미션 주제를 뽑아주세요.</NoticeText>
+                <ReuseText 
+                    text={"도전할 미션 주제를 뽑아주세요."}
+                    type={"more"}
+                    color={palette.black}
+                    fontsize={"20px"}
+                    fontfamily={"IBMPlexSans-Light"}
+                    style={{marginTop: 15}}/>
             </MainBox>
         </Container>
     );
@@ -42,11 +49,5 @@ const ExampleImg = styled.Image`
     width: 98px;
     height: 98px;
     margin-bottom: 5px;
-`;
-const NoticeText = styled.Text`
-    font-size: 20px;
-    font-family: "IBMPlexSans-Light";
-    margin-top: 15px;
-    margin-left: 28px;
 `;
 export default MissionTopicBox;

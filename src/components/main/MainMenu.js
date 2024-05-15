@@ -6,6 +6,7 @@ import callPractice1 from "../../assets/icon/main/ic_callPractice1.png";
 import callPractice2 from "../../assets/icon/main/ic_callPractice2.png";
 import callPractice3 from "../../assets/icon/main/ic_callPractice3.png";
 import Mission from "../../assets/icon/main/ic_mission.png";
+import ReuseText from "../ReuseText";
 
 const MainMenu = () => {
     const Menulist = [
@@ -30,7 +31,12 @@ const MainMenu = () => {
             {Menulist.map((item) => (
                 <MenuItem key={item.id} onPress={() => movePage(item.page)}>
                     <ItemIcon source={item.src}/>
-                    <ItemContent>{item.content}</ItemContent>
+                    <ReuseText
+                        text={`${item.content}`}
+                        type={"more"}
+                        color={palette.black}
+                        fontsize={"12px"}
+                        fontfamily={"IBMPlexSans-Regular"}/>
                 </MenuItem>
             ))}
         </Container>
@@ -51,10 +57,5 @@ const MenuItem = styled.Pressable`
 const ItemIcon = styled.Image`
     width: 40px;
     height: 40px;
-`;
-const ItemContent = styled.Text`
-    font-size: 12px;
-    font-family: "IBMPlexSans-Regular";
-    color: ${palette.black};
 `;
 export default MainMenu;

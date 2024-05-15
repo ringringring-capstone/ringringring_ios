@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
+import * as Speech from 'expo-speech';
 
 import Mic from "../../assets/icon/callpractice/ic_mic.png";
 
