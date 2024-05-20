@@ -42,22 +42,23 @@ const CallPractice = ({route}) => {
             }, 1000);
         }
 
-        const unsubscribe = navigation.addListener('blur', () => {
-            clearInterval(intervalId);
-        });
-
-        // const reSubscribe = navigation.addListener('focus', () => {
+        // const unsubscribe = navigation.addListener('blur', () => {
         //     clearInterval(intervalId);
-        //     if (!isClick) {
-        //         intervalId = setInterval(() => {
-        //             setSeconds(prevSeconds => prevSeconds + 1);
-        //         }, 1000);
-        //     }
         // });
+
+        const reSubscribe = navigation.addListener('focus', () => {
+            clearInterval(intervalId);
+            if (!isClick) {
+                intervalId = setInterval(() => {
+                    setSeconds(prevSeconds => prevSeconds + 1);
+                }, 1000);
+            }
+        });
 
         return () => {
             clearInterval(intervalId);
-            unsubscribe();
+            // unsubscribe();
+            reSubscribe();
         };
     }, [isClick]);
 
