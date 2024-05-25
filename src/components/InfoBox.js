@@ -44,24 +44,28 @@ const InfoBox = ({title}) => {
     const data = [
         {
             text: "50",
-            value: 50 * 100 / durationTime,
+            // value: 50 * 100 / durationTime,
+            value: 50,
             shiftTextBackgroundX: 3,
         },
         {
             text: "20",
-            value: 20 * 100 / durationTime,
+            // value: 20 * 100 / durationTime,
+            value: 20,
             shiftTextBackgroundX: 4,
             shiftTextBackgroundY: -1,
         },
         {
             text: "30",
-            value: 30 * 100 / durationTime,
+            // value: 30 * 100 / durationTime,
+            value: 30,
             shiftTextBackgroundX: 3,
             shiftTextBackgroundY: 0,
         },
         {
             text: "30",
-            value: 30 * 100 / durationTime,
+            // value: 30 * 100 / durationTime,
+            value: 30,
             shiftTextBackgroundX: 3,
             shiftTextBackgroundY: 0,
         },
