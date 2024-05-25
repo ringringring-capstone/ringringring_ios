@@ -7,15 +7,16 @@ import ReuseText from "./ReuseText";
 import palette from "../styles/colorPalette";
 
 const InfoBox = ({title}) => {
-    const [userId, setUserId] = useState("");
+    const [email, setEmail] = useState("");
     const [token, setToken] = useState("");
-    const PracticeTime = 10;
+    const [averageTime, setAverageTime] = useState("");
+    const [durationTime, setDurationTime] = useState("");
 
     useEffect(() => {
         const getUserInfo = async () => {
-            const storageUserId = await getStorage("userId");
+            const storageEmail = await getStorage("email");
             const storageToken = await getStorage("token");
-            setUserId(storageUserId);
+            setEmail(storageEmail);
             setToken(storageToken);
         };
         getUserInfo();
@@ -26,10 +27,13 @@ const InfoBox = ({title}) => {
     }, []);
 
     const handleUsageStatistics  = async () => {
-        usageStatistics(userId, token)
+        usageStatistics(email, token)
             .then(response => {
                 if(response) {
-                    // console.log(response);
+                    const average = response.average;
+                    const duration = response.duration;
+                    setAverageTime(average);
+                    setDurationTime(duration);
                 }
             })
             .catch (error => {
@@ -40,24 +44,24 @@ const InfoBox = ({title}) => {
     const data = [
         {
             text: "50",
-            value: 50,
+            value: 50 * 100 / durationTime,
             shiftTextBackgroundX: 3,
         },
         {
             text: "20",
-            value: 20,
+            value: 20 * 100 / durationTime,
             shiftTextBackgroundX: 4,
             shiftTextBackgroundY: -1,
         },
         {
             text: "30",
-            value: 30,
+            value: 30 * 100 / durationTime,
             shiftTextBackgroundX: 3,
             shiftTextBackgroundY: 0,
         },
         {
             text: "30",
-            value: 30,
+            value: 30 * 100 / durationTime,
             shiftTextBackgroundX: 3,
             shiftTextBackgroundY: 0,
         },
@@ -80,7 +84,7 @@ const InfoBox = ({title}) => {
             <PracticeTextContainer>
                 {title === "주간 통계" && (
                     <ReuseText
-                        text={`평균 연습 시간: ${PracticeTime}분`}
+                        text={`평균 연습 시간: ${averageTime}분`}
                         type={"more"}
                         color={palette.black}
                         fontsize={"12px"}

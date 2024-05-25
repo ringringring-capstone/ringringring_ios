@@ -29,7 +29,10 @@ export async function usageStatistics(email, token) {
             Authorization: token
         }
     });
-    return response;
+    return {
+        average: response.data.average,
+        duration: response.data.duration,
+    }
  } catch (error) {
     if (error.response) {
         return error.response.data;
