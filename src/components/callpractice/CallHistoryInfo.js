@@ -2,63 +2,28 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 
-import { saveCallTime  } from "../../librarys/statistics-api";
 import { getStorage } from "../../librarys/storage";
 
 import ReuseText from "../ReuseText";
 import Phone from "../../assets/image/img_phone.png";
 import MissionListBox from "./MissionListBox";
 
-const CallHistoryInfo = ({callTime, callType}) => {
+const CallHistoryInfo = ({time, callType}) => {
     const [name, setName] = useState("");
-    const [userId, setUserId] = useState("");
-    const [token, setToken] = useState("");
-    const [totalCallTime, setTotalCallTime] = useState("");
+    // const [totalCallTime, setTotalCallTime] = useState("");
+
+    useEffect(() => {
+        const getName = async () => {
+            const storageName = await getStorage("username");
+            setName(storageName);
+        };
+        getName();
+    }, []);
 
     const count = 2;
 
-    const handleSaveTime = async () => {
-            saveCallTime(userId, totalCallTime, token)
-            .then(response => {
-                if(response) {
-                    console.log(response);
-                }
-            })
-            .catch (error => {
-                console.log("에러: ", error);
-            })
-    }
-
-    // 시:분(00:02) 형식 => 분으로 다시 수정
-    const convertToMinute = (callTime) => {
-        const [minutes, seconds] = callTime.split(":");
-        const totalSeconds = parseInt(minutes) * 60 + parseInt(seconds);
-        const convertTime = totalSeconds / 60; 
-        setTotalCallTime(convertTime);
-    }
-
-    useEffect(() => {
-        convertToMinute(callTime);
-    }, [callTime]);
-
-    useEffect(() => {
-        if (userId) 
-            handleSaveTime();
-    }, [userId]);
-
-    console.log(`id: ${userId}`);
-
-    useEffect(() => {
-        const getUserInfo = async () => {
-            const storageName = await getStorage("username");
-            const storageUserId = await getStorage("id");
-            const storageToken = await getStorage("token");
-            setName(storageName);
-            setUserId(storageUserId);
-            setToken(storageToken);
-        };
-        getUserInfo();
-    }, []);
+    const callTime = 
+        `${String(Math.floor(time / 60)).padStart(2, "0")}:${String(time % 60).padStart(2, "0")}`;
 
     return (
         <Container>
@@ -76,7 +41,7 @@ const CallHistoryInfo = ({callTime, callType}) => {
             {(callType === "practice") ? (
                 <>
                     <CallHistorySave>
-                        <CallHistoryBtn onPress={handleSaveTime}>
+                        <CallHistoryBtn>
                             <CallHistoryText>통화내역 저장</CallHistoryText>
                         </CallHistoryBtn>
                     </CallHistorySave>

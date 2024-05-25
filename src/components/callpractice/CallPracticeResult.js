@@ -1,15 +1,56 @@
+import { useState, useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
-import { SafeAreaView, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+
+import { saveCallTime  } from "../../librarys/statistics-api";
+import { getStorage } from "../../librarys/storage";
+
 import ReuseText from "../ReuseText";
 import Button from "../Button";
 import CallHistoryInfo from "./CallHistoryInfo";
 
 const CallPracticeResult = ({ route }) => {
     const { time, callType } = route.params;
-    const callTime = 
-        `${String(Math.floor(time / 60)).padStart(2, "0")}:${String(time % 60).padStart(2, "0")}`;
+    const Navigation = useNavigation();
+    const [userId, setUserId] = useState("");
+    const [token, setToken] = useState("");
+
+    const convertToMinutes = (seconds) => {
+        return Math.floor(seconds / 60);
+    };
+
+    useEffect(() => {
+        const getUserInfo = async () => {
+            const storageUserId = await getStorage("id");
+            const storageToken = await getStorage("token");
+            setUserId(storageUserId);
+            setToken(storageToken);
+        };
+        getUserInfo();
+    }, []);
+
+    const handleSaveTime = async () => {
+        if (!userId) return;
+        const timeInMinutes = convertToMinutes(time);
+        saveCallTime(userId, timeInMinutes, token)
+            .then(response => {
+                if(response) {
+                    console.log(response);
+                }
+            })
+            .catch (error => {
+                console.log("에러: ", error);
+            })
+    }
+
+    const movePage = () => {
+        if (userId)
+            handleSaveTime();
+        Navigation.navigate("home");
+    }
 
     return (
         <Container
@@ -33,7 +74,7 @@ const CallPracticeResult = ({ route }) => {
                 </Header>
                 <Body>
                     <CallHistoryInfo 
-                        callTime={callTime}
+                        time={time}
                         callType={callType}/>
                 </Body>
             </SubContainer>
@@ -43,8 +84,7 @@ const CallPracticeResult = ({ route }) => {
                     backgroundColor={palette.main}
                     borderColor={"none"}
                     fontColor={palette.white}
-                    event={"movePage"}
-                    movePage={"main"}/>
+                    event={movePage}/>
                 <Button
                     text={"한번 더 연습하기"}
                     backgroundColor={palette.whtie}

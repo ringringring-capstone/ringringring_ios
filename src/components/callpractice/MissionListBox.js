@@ -42,7 +42,7 @@ const MissionListBox = () => {
             </Header>
             <Body>
                 {MissionList.map((item) => (
-                    <MissionItem>
+                    <MissionItem key={item.id}>
                         <ReuseText
                         text={item.mission}
                         type={"more"}
