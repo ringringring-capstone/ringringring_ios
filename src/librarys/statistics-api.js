@@ -1,7 +1,7 @@
 import instance from "./axios";
 
+// 통화 시간 저장
 export async function saveCallTime(userId, callTime, token) {
-    console.log("test2");
     try {
         const response = await instance.put(`/save`, {
             userId,
@@ -11,7 +11,7 @@ export async function saveCallTime(userId, callTime, token) {
                 Authorization: token,
             }
         });
-        return response;
+        return response.data;
     } catch (error) {
         if (error.response) {
             // return error.response.data.errorDetails;

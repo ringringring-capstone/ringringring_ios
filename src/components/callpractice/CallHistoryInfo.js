@@ -18,7 +18,7 @@ const CallHistoryInfo = ({callTime, callType}) => {
     const count = 2;
 
     const handleSaveTime = async () => {
-        saveCallTime(userId, totalCallTime, token)
+            saveCallTime(userId, totalCallTime, token)
             .then(response => {
                 if(response) {
                     console.log(response);
@@ -27,7 +27,6 @@ const CallHistoryInfo = ({callTime, callType}) => {
             .catch (error => {
                 console.log("에러: ", error);
             })
-            console.log("test1");
     }
 
     // 시:분(00:02) 형식 => 분으로 다시 수정
@@ -38,17 +37,21 @@ const CallHistoryInfo = ({callTime, callType}) => {
         setTotalCallTime(convertTime);
     }
 
-    console.log(totalCallTime);
     useEffect(() => {
         convertToMinute(callTime);
-        handleSaveTime()
     }, [callTime]);
-    
+
+    useEffect(() => {
+        if (userId) 
+            handleSaveTime();
+    }, [userId]);
+
+    console.log(`id: ${userId}`);
 
     useEffect(() => {
         const getUserInfo = async () => {
             const storageName = await getStorage("username");
-            const storageUserId = await getStorage("userId");
+            const storageUserId = await getStorage("id");
             const storageToken = await getStorage("token");
             setName(storageName);
             setUserId(storageUserId);
