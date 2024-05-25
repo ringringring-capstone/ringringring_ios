@@ -25,47 +25,58 @@ const CallPractice = ({route}) => {
     const [isRecord, setIsRecord] = useState(false);
     const [text, setText] = useState("");
 
-    useEffect(() => {
-        // 통화 연결 준비 중
+    // useEffect(() => {
+    //     // 통화 연결 준비 중
+    //     setTimeout(() => {
+    //         setIsLoading(false);
+    //         setSeconds(0);
+    //     }, 3000);
+    // }, []);
+
+    let intervalId;
+
+    const startLoading = () => {
+        setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false);
             setSeconds(0);
         }, 3000);
-    }, []);
+    };
+
+    const handleFocus = () => {
+        startLoading();
+    };
 
     useEffect(() => {
-        let intervalId;
-        // 통화 시간
         if (!isClick) {
             intervalId = setInterval(() => {
                 setSeconds(prevSeconds => prevSeconds + 1);
             }, 1000);
+        } else {
+            clearInterval(intervalId);
         }
-
-        // const unsubscribe = navigation.addListener('blur', () => {
-        //     clearInterval(intervalId);
-        // });
-
-        const reSubscribe = navigation.addListener('focus', () => {
-            clearInterval(intervalId);
-            if (!isClick) {
-                intervalId = setInterval(() => {
-                    setSeconds(prevSeconds => prevSeconds + 1);
-                }, 1000);
-            }
-        });
-
-        return () => {
-            clearInterval(intervalId);
-            // unsubscribe();
-            reSubscribe();
-        };
+        return () => clearInterval(intervalId);
     }, [isClick]);
+
+    const handleBlur = () => {
+        clearInterval(intervalId);
+    };
+
+    useEffect(() => {
+        const unsubscribeFocus = navigation.addListener('focus', handleFocus);
+        const unsubscribeBlur = navigation.addListener('blur', handleBlur);
+
+        // 컴포넌트가 마운트 해제될 때 타이머 정리
+        return () => {
+            unsubscribeFocus();
+            unsubscribeBlur();
+            clearInterval(intervalId);
+        };
+    }, [navigation]);
 
     const handleClick = (props) => {
         setIsClick(props);
     };
-
     return (
         <Container>
             <CallInfo 

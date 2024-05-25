@@ -23,8 +23,9 @@ const InfoBox = ({title}) => {
     }, []);
 
     useEffect(() => {
-        handleUsageStatistics();
-    }, []);
+        if (email && token) 
+            handleUsageStatistics();
+    }, [email, token]);
 
     const handleUsageStatistics  = async () => {
         usageStatistics(email, token)
