@@ -1,12 +1,61 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
+
+import { saveCallTime  } from "../../librarys/statistics-api";
+import { getStorage } from "../../librarys/storage";
+
 import ReuseText from "../ReuseText";
 import Phone from "../../assets/image/img_phone.png";
 import MissionListBox from "./MissionListBox";
 
 const CallHistoryInfo = ({callTime, callType}) => {
-    const name = "홍길동";
+    const [name, setName] = useState("");
+    const [userId, setUserId] = useState("");
+    const [token, setToken] = useState("");
+    const [totalCallTime, setTotalCallTime] = useState("");
+
     const count = 2;
+
+    const handleSaveTime = async () => {
+        saveCallTime(userId, totalCallTime, token)
+            .then(response => {
+                if(response) {
+                    console.log(response);
+                }
+            })
+            .catch (error => {
+                console.log("에러: ", error);
+            })
+            console.log("test1");
+    }
+
+    // 시:분(00:02) 형식 => 분으로 다시 수정
+    const convertToMinute = (callTime) => {
+        const [minutes, seconds] = callTime.split(":");
+        const totalSeconds = parseInt(minutes) * 60 + parseInt(seconds);
+        const convertTime = totalSeconds / 60; 
+        setTotalCallTime(convertTime);
+    }
+
+    useEffect(() => {
+        convertToMinute(callTime);
+        handleSaveTime()
+    }, [callTime]);
+    
+
+    useEffect(() => {
+        const getUserInfo = async () => {
+            const storageName = await getStorage("username");
+            const storageUserId = await getStorage("userId");
+            const storageToken = await getStorage("token");
+            setName(storageName);
+            setUserId(storageUserId);
+            setToken(storageToken);
+        };
+        getUserInfo();
+    }, []);
+
     return (
         <Container>
             <CallTimeContainer type={callType}>
@@ -23,7 +72,7 @@ const CallHistoryInfo = ({callTime, callType}) => {
             {(callType === "practice") ? (
                 <>
                     <CallHistorySave>
-                        <CallHistoryBtn>
+                        <CallHistoryBtn onPress={handleSaveTime}>
                             <CallHistoryText>통화내역 저장</CallHistoryText>
                         </CallHistoryBtn>
                     </CallHistorySave>

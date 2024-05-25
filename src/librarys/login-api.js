@@ -79,6 +79,7 @@ export async function loginUser(email, pwd) {
         });
         return {
             token: response.headers.authorization,
+            userId: response.data.email,
             name: response.data.name,
         }
     } catch (error) {

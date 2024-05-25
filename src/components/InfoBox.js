@@ -1,10 +1,42 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { PieChart } from "react-native-gifted-charts";
+import { usageStatistics } from "../librarys/statistics-api";
+import { getStorage } from "../librarys/storage";
 import ReuseText from "./ReuseText";
 import palette from "../styles/colorPalette";
 
 const InfoBox = ({title}) => {
+    const [userId, setUserId] = useState("");
+    const [token, setToken] = useState("");
     const PracticeTime = 10;
+
+    useEffect(() => {
+        const getUserInfo = async () => {
+            const storageUserId = await getStorage("userId");
+            const storageToken = await getStorage("token");
+            setUserId(storageUserId);
+            setToken(storageToken);
+        };
+        getUserInfo();
+    }, []);
+
+    useEffect(() => {
+        handleUsageStatistics();
+    }, []);
+
+    const handleUsageStatistics  = async () => {
+        usageStatistics(userId, token)
+            .then(response => {
+                if(response) {
+                    // console.log(response);
+                }
+            })
+            .catch (error => {
+                console.log("에러: ", error);
+            })
+    }
+
     const data = [
         {
             text: "50",
