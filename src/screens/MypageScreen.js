@@ -1,6 +1,6 @@
 import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { removeStorage } from "../librarys/storage";
 
 import styled from "styled-components";
 import palette from "../styles/colorPalette";
@@ -25,14 +25,13 @@ const MyPage = () => {
         }
     ];
 
-    const removeStorage = async (key) => {
-        return await AsyncStorage.removeItem(key);
-    }
-
     const movePage = (type) => {
         if (type === "Logout") {
             removeStorage("token");
             removeStorage("autoLogin");
+            removeStorage("id");
+            removeStorage("email");
+            removeStorage("username");
             navigation.navigate("login");
         } 
         else if (type === "ConverHistory") {

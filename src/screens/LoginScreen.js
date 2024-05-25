@@ -23,11 +23,13 @@ const LoginScreen = () => {
       .then(response => {
         if (response) {
           const token = response.token;
-          const userId = response.userId;
+          const id = response.id;
+          const email = response.email;
           const name = response.name;
           
           setStorage("token", token);
-          setStorage("userId", userId);
+          setStorage("id", id);
+          setStorage("email", email);
           setStorage("username", name);
 
           if (isAutoLogin === true) {

@@ -8,3 +8,7 @@ export const getStorage = async (key) => {
     const result = await AsyncStorage.getItem(key);
     return result && JSON.parse(result);
 }
+
+export const removeStorage = async (key) => {
+    return await AsyncStorage.removeItem(key);
+}

@@ -8,7 +8,7 @@ export async function saveCallTime(userId, callTime, token) {
             callTime,
         }, {
             headers: {
-                Authorization: token
+                Authorization: token,
             }
         });
         return response;

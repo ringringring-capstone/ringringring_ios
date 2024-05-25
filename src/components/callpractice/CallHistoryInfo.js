@@ -38,6 +38,7 @@ const CallHistoryInfo = ({callTime, callType}) => {
         setTotalCallTime(convertTime);
     }
 
+    console.log(totalCallTime);
     useEffect(() => {
         convertToMinute(callTime);
         handleSaveTime()
