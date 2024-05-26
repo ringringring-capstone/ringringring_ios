@@ -39,7 +39,7 @@ const Container = styled.View`
 const ImageContainer = styled.View`
     background-color: #D9D9D9;
     padding: 19px;
-    border-radius: 50%;
+    border-radius: 50px;
 `;
 const ProfileImg = styled.Image`
     width: 23px;

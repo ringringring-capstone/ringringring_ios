@@ -19,7 +19,7 @@ const CallEndBtn = ({handleClick}) => {
 const Container = styled.Pressable`
     background-color: #E54848;
     padding: 22px;
-    border-radius: 50%;
+    border-radius: 50px;
     display: flex;
     align-items: center;
     justify-content: center;

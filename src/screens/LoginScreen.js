@@ -18,31 +18,35 @@ const LoginScreen = () => {
   const [pwd, setPw] = useState("");
   const [isAutoLogin, setIsAutoLogin] = useState(false);
 
-  const handleLogin = async () => {
-    loginUser(email, pwd)
-      .then(response => {
-        if (response) {
-          const token = response.token;
-          const id = response.id;
-          const email = response.email;
-          const name = response.name;
+  // const handleLogin = async () => {
+  //   loginUser(email, pwd)
+  //     .then(response => {
+  //       if (response) {
+  //         const token = response.token;
+  //         const id = response.id;
+  //         const email = response.email;
+  //         const name = response.name;
           
-          setStorage("token", token);
-          setStorage("id", id);
-          setStorage("email", email);
-          setStorage("username", name);
+  //         setStorage("token", token);
+  //         setStorage("id", id);
+  //         setStorage("email", email);
+  //         setStorage("username", name);
 
-          if (isAutoLogin === true) {
-            setStorage("autoLogin", true);
-            navigation.navigate("main");
-          } else {
-            navigation.navigate("main");
-          }
-        }
-      })
-      .catch (error => {
-        console.error("에러: ", error);
-      })
+  //         if (isAutoLogin === true) {
+  //           setStorage("autoLogin", true);
+  //           navigation.navigate("main");
+  //         } else {
+  //           navigation.navigate("main");
+  //         }
+  //       }
+  //     })
+  //     .catch (error => {
+  //       console.error("에러: ", error);
+  //     })
+  // }
+
+  const handleLogin = () => {
+    navigation.navigate("main");
   }
 
   useEffect(() => {

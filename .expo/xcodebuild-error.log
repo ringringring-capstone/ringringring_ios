@@ -1,0 +1,9 @@
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, id:55F400B9-7605-4480-A407-9DB0931ED99F, OS:17.4, name:iPhone 15 Pro }
+{ platform:iOS Simulator, id:55F400B9-7605-4480-A407-9DB0931ED99F, OS:17.4, name:iPhone 15 Pro }
+** BUILD FAILED **
+
+
+The following build commands failed:
+	PhaseScriptExecution [CP-User]\ Generate\ Specs /Users/heoyoona/Library/Developer/Xcode/DerivedData/ringringringios-hdglctrgxhiefmfzwazxvcahdhpk/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-rncore.build/Script-46EB2E00020110.sh (in target 'React-rncore' from project 'Pods')
+(1 failure)

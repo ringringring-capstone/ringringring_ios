@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components";
-// import Voice from "react-native-voice";
 
 import palette from "../../styles/colorPalette";
 
@@ -24,15 +23,6 @@ const CallPractice = ({route}) => {
     const [seconds, setSeconds] = useState(0);
     const [isRecord, setIsRecord] = useState(false);
     const [text, setText] = useState("");
-
-    // useEffect(() => {
-    //     // 통화 연결 준비 중
-    //     setTimeout(() => {
-    //         setIsLoading(false);
-    //         setSeconds(0);
-    //     }, 3000);
-    // }, []);
-
     let intervalId;
 
     const startLoading = () => {
