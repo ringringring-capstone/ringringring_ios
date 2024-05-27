@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView } from "react-native";
 import { getStorage } from "../librarys/storage";
 import styled from "styled-components";
 import palette from "../styles/colorPalette";
+import { serverConnected } from "../librarys/ai-call-api";
 
 import GirlImg from "../assets/image/img_mainScreenTop.png";
 
@@ -14,14 +15,30 @@ import ReuseText from "../components/ReuseText";
 
 const HomeScreen = () => {
     const [name, setName] = useState("");
+    const [token, setToken] = useState("");
 
     useEffect(() => {
-        const getName = async () => {
+        const getUserInfo = async () => {
             const storageName = await getStorage("username");
+            const storageToken = await getStorage("token");
             setName(storageName);
+            setToken(storageToken);
         };
-        getName();
+        getUserInfo();
+        serverCheck();
     }, []);
+
+    const serverCheck = async () => {
+        serverConnected(token)
+        .then(response => {
+            if (response) {
+                console.log(response);
+            }
+        })
+        .catch (error => {
+            console.error("에러: ", error);
+        })
+    }
 
     return (
         <Container>
