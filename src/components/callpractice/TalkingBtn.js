@@ -1,24 +1,35 @@
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
-import * as Speech from 'expo-speech';
+import * as Speech from "expo-speech";
 
 import Mic from "../../assets/icon/callpractice/ic_mic.png";
 
 const TalkingBtn = ({setIsRecord}) => {
-     // 음성 녹음 버튼 클릭 시
-     let longPressTimer;
-     const handlePressIn = () => {
-         longPressTimer = setTimeout(() => {
-             setIsRecord(true);
-             console.log("녹음 test 시작");
-         }, 1000);
-     };
- 
-     const handlePressOut = () => {
-         clearTimeout(longPressTimer);
-         setIsRecord(false);
-         console.log("녹음 test 끝");
-     };
+    // 음성 녹음 버튼 클릭 시
+    let longPressTimer;
+    const handlePressIn = () => {
+        longPressTimer = setTimeout(() => {
+            setIsRecord(true);
+            console.log("녹음 test 시작");
+        }, 1000);
+    };
+
+    const handlePressOut = () => {
+        clearTimeout(longPressTimer);
+        setIsRecord(false);
+        console.log("녹음 test 끝");
+    };
+
+    const speakText = async (text) => {
+        try {
+            await Speech.speak(text, {
+                language: 'ko',
+            });
+          console.log("tts test 성공");
+        } catch (error) {
+          console.error("에러:", error);
+        }
+    };
 
     return (
         <Container
