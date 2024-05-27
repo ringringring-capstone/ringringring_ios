@@ -7,28 +7,28 @@ import ReuseText from "./ReuseText";
 import palette from "../styles/colorPalette";
 
 const InfoBox = ({title}) => {
-    const [email, setEmail] = useState("");
+    const [id, setId] = useState("");
     const [token, setToken] = useState("");
     const [averageTime, setAverageTime] = useState("");
     const [durationTime, setDurationTime] = useState("");
 
     useEffect(() => {
         const getUserInfo = async () => {
-            const storageEmail = await getStorage("email");
+            const storageId = await getStorage("id");
             const storageToken = await getStorage("token");
-            setEmail(storageEmail);
+            setId(storageId);
             setToken(storageToken);
         };
         getUserInfo();
     }, []);
 
     useEffect(() => {
-        if (email && token) 
+        if (id && token) 
             handleUsageStatistics();
-    }, [email, token]);
+    }, [id, token]);
 
     const handleUsageStatistics  = async () => {
-        usageStatistics(email, token)
+        usageStatistics(id, token)
             .then(response => {
                 if(response) {
                     const average = response.average;
@@ -89,7 +89,7 @@ const InfoBox = ({title}) => {
             <PracticeTextContainer>
                 {title === "주간 통계" && (
                     <ReuseText
-                        text={`평균 연습 시간: ${averageTime}분`}
+                        text={`평균 연습 시간: ${averageTime ? `${averageTime}분` : "없음"}`}
                         type={"more"}
                         color={palette.black}
                         fontsize={"12px"}

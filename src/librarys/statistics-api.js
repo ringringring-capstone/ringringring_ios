@@ -14,17 +14,17 @@ export async function saveCallTime(userId, callTime, token) {
         return response.data;
     } catch (error) {
         if (error.response) {
-            // return error.response.data.errorDetails;
-            return error;
+            return error.response.data;
         } else {
             throw error;
         }
     }
 }
 
-export async function usageStatistics(email, token) {
+// 주간 사용 통계
+export async function usageStatistics(id, token) {
  try {
-    const response = await instance.get(`/usage/${email}`, {
+    const response = await instance.get(`/usage/${id}`, {
         headers: {
             Authorization: token
         }
