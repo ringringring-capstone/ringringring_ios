@@ -5,8 +5,8 @@ const StatusDesc = () => {
     const DescriptionText = ["전화 벨소리가 울리면 무서워요", "전화를 해야하면 심장이 떨려요"];
     return (
         <Container>
-            {DescriptionText.map((item) => (
-                <DescriptContainer>
+            {DescriptionText.map((item, idx) => (
+                <DescriptContainer key={idx}>
                     <Icon source={CheckIcon}/>
                     <DescriptText>{item}</DescriptText>
                 </DescriptContainer>

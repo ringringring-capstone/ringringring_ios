@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import { SafeAreaView, ScrollView } from "react-native";
 import { getStorage } from "../librarys/storage";
 import styled from "styled-components";
@@ -15,15 +16,21 @@ const Checklist = () => {
     const [name, setName] = useState("");
     const [score, setScore] = useState(0);
 
+    const getUserInfo = async () => {
+        const storageName = await getStorage("username");
+        const storageScore = await getStorage("score");
+        setName(storageName);
+        setScore(storageScore);
+    };
+
     useEffect(() => {
-        const getUserInfo = async () => {
-            const storageName = await getStorage("username");
-            const storageScore = await getStorage("score");
-            setName(storageName);
-            setScore(storageScore);
-        };
         getUserInfo();
     }, []);
+
+    // 해당 컴포넌트가 포커스될 때
+    useFocusEffect(() => {
+        getUserInfo();
+    });
 
     return (
         <Container>
