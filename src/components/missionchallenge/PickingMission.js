@@ -1,12 +1,26 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { SafeAreaView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import palette from "../../styles/colorPalette";
+
 import GoBackBtn from "../GoBackBtn";
 import Button from "../Button";
 import ReuseText from "../ReuseText";
 import MissionTopicBox from "./MissionTopicBox";
 
 const PickingMission = () => {
+    const Navigation = useNavigation();
+    const [mission, setMission] = useState("");
+    const missionList = ["짜장면 배달", "상담 예약", "고깃집 에약", "회사 상사와 얘기", "짬뽕 배달"];
+
+    const randomMission = () => {
+        const result = missionList[Math.floor(Math.random() * missionList.length)];
+        setMission(result);
+        console.log(result);
+    }
+
     return (
         <Container>
             <Header>
@@ -21,7 +35,7 @@ const PickingMission = () => {
                     fontsize={"20px"}
                     fontfamily={"IBMPlexSans-Light"}
                     style={{marginTop: 15, marginLeft: 28}}/>
-                <MissionTopicBox/>
+                <MissionTopicBox topic={mission}/>
             </Body>
             <Footer>
                 <Button
@@ -33,10 +47,11 @@ const PickingMission = () => {
                     movePage={"callpractice"}
                     props={"mission"}/>
                 <Button
-                    text="주제 뽑기"
+                    text={mission ? "다시 뽑기" : "주제 뽑기"}
                     backgroundColor={palette.white}
                     borderColor={palette.main}
-                    fontColor={palette.main}/>
+                    fontColor={palette.main}
+                    event={randomMission}/>
             </Footer>
         </Container>
     );

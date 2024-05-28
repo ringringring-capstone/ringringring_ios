@@ -4,14 +4,14 @@ import ReuseText from "../ReuseText";
 
 import MissionExam from "../../assets/image/img_missionTopic.png";
 
-const MissionTopicBox = () => {
+const MissionTopicBox = ({topic}) => {
     return (
         <Container>
             <ShadowBox/>
             <MainBox>
                 <ExampleImg source={MissionExam}/>
                 <ReuseText 
-                    text={"도전할 미션 주제를 뽑아주세요."}
+                    text={topic ? topic : "도전할 미션 주제를 뽑아주세요."}
                     type={"more"}
                     color={palette.black}
                     fontsize={"20px"}
