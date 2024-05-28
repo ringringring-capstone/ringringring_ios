@@ -85,9 +85,9 @@ export async function loginUser(email, pwd) {
         }
     } catch (error) {
         if (error.response) {
-            console.error(error.response.data.massage);
+            return error.response.data.massage;
         } else {
-            console.error(error);
+            return error;
         }
     }
 }

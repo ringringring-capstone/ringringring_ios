@@ -9,6 +9,7 @@ import Logout from "../assets/icon/mypage/ic_logout.png";
 import ConverHistory from "../assets/icon/mypage/ic_converHistory.png";
 import BackBtn from "../assets/icon/ic_backBtn.png";
 import ReuseText from "../components/ReuseText";
+import { ToastMessage } from "../components/ToastMessage";
 
 const MyPage = () => {
     const navigation = useNavigation();
@@ -27,6 +28,7 @@ const MyPage = () => {
 
     const movePage = (type) => {
         if (type === "Logout") {
+            ToastMessage("로그아웃 되었습니다.");
             removeStorage("token");
             removeStorage("autoLogin");
             removeStorage("id");

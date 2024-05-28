@@ -11,6 +11,7 @@ import palette from "../styles/colorPalette";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import DuplicateCheck from "../components/Login/DuplicateCheck";
+import { ToastMessage } from "../components/ToastMessage";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -19,9 +20,13 @@ const LoginScreen = () => {
   const [isAutoLogin, setIsAutoLogin] = useState(false);
 
   const handleLogin = async () => {
+    if (email === "" || pwd === "") {
+      ToastMessage("아이디 또는 비밀번호를 작성해주세요.");
+    }
+
     loginUser(email, pwd)
       .then(response => {
-        if (response) {
+        if (response.token) {
           const token = response.token;
           const id = response.id;
           const email = response.email;
@@ -35,9 +40,13 @@ const LoginScreen = () => {
           if (isAutoLogin === true) {
             setStorage("autoLogin", true);
             navigation.navigate("main");
+            ToastMessage("자동 로그인 되었습니다.")
           } else {
             navigation.navigate("main");
+            ToastMessage("로그인 되었습니다.")
           }
+        } else {
+          ToastMessage(response);
         }
       })
       .catch (error => {

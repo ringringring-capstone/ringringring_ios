@@ -4,6 +4,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import * as Font from "expo-font";
 import palette from "./src/styles/colorPalette";
+import Toast from "react-native-toast-message";
+import styled from "styled-components";
+import { BaseToast } from "react-native-toast-message";
 
 import LoginScreen from "./src/screens/LoginScreen";
 import RegisterScreen from "./src/screens/RegisterScreen";
@@ -21,6 +24,20 @@ import WelcomeScreen from "./src/screens/WelcomeScreen";
 import ConverDetail from "./src/components/converhistory/ConverDetail";
 
 const Stack = createNativeStackNavigator();
+
+const toastConfig = {
+  success: (props) => (
+    <StyledBaseToast 
+      {...props} 
+      type="success" />
+  )
+};
+
+const StyledBaseToast = styled(BaseToast)`
+  /* background-color: #E0E0E0; */
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+`;
 
 export default function App() {
   const [isFontLoading, setIsFontLoading] = useState(false)
@@ -46,12 +63,13 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator 
-        initialRouteName="login"
-        screenOptions={{
-          headerShown: false,
-      }}>
+    <>
+      <NavigationContainer>
+        <Stack.Navigator 
+          initialRouteName="login"
+          screenOptions={{
+            headerShown: false,
+        }}>
         <Stack.Screen name="login" component={LoginScreen}/>
         <Stack.Screen name="register" component={RegisterScreen}/>
         <Stack.Screen name="welcome" component={WelcomeScreen}/>
@@ -66,6 +84,8 @@ export default function App() {
       </Stack.Navigator>
       <StatusBar style="auto"/>
     </NavigationContainer>
+    <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)}/>
+    </>
   );
 };
 

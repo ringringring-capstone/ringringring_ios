@@ -15,6 +15,7 @@ import Input from "../components/Input";
 import GoBackBtn from "../components/GoBackBtn";
 import Button from "../components/Button";
 import ReuseText from "../components/ReuseText";
+import { ToastMessage } from "../components/ToastMessage";
 
 const RegisterScreen = () => {
     const navigation = useNavigation();
@@ -108,6 +109,7 @@ const RegisterScreen = () => {
                 const response = await registerUser(name, email, pwd);
                 console.log(response);
                 if (response === "회원가입 완료") {
+                    ToastMessage("회원가입 되었습니다.");
                     navigation.navigate("welcome");
                 }
             } catch (error) {
