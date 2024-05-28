@@ -45,10 +45,9 @@ const MyPage = () => {
                 text={"MY페이지"} 
                 type={"title"}/>
             {category.map((item, idx) => (
-                <SubContainer onPress={() => movePage(item.type)}>
+                <SubContainer key={idx} onPress={() => movePage(item.type)}>
                     <Icon source={item.icon} type={item.type}/>
                     <ReuseText
-                        key={idx}
                         text={item.title}
                         type={"more"}
                         fontsize={"20px"}
