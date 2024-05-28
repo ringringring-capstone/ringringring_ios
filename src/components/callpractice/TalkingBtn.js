@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
-import * as Speech from "expo-speech";
 
 import Mic from "../../assets/icon/callpractice/ic_mic.png";
 
@@ -18,17 +17,6 @@ const TalkingBtn = ({setIsRecord}) => {
         clearTimeout(longPressTimer);
         setIsRecord(false);
         console.log("녹음 test 끝");
-    };
-
-    const speakText = async (text) => {
-        try {
-            await Speech.speak(text, {
-                language: 'ko',
-            });
-          console.log("tts test 성공");
-        } catch (error) {
-          console.error("에러:", error);
-        }
     };
 
     return (

@@ -20,14 +20,35 @@ export async function serverConnected(token) {
 }
 
 // 배달 ai
-export async function deliveryAi(token) {
+export async function deliveryAi(answer, token) {
     try {
-        const response = await instance.post(`/deliveryAI`,
-            {
-                headers: {
-                    Authorization: token, 
-                }
-            });
+        const response = await instance.post(`/deliveryAI`, {
+            answer
+        }, {
+            headers: {
+                Authorization: token, 
+            }
+        });
+        return response.data;
+    } catch (error) {
+        if (error.response) {
+            return error.response.data;
+        } else {
+            throw error;
+        }
+    }
+}
+
+// 예약 ai
+export async function reservationAi(answer, token) {
+    try {
+        const response = await instance.post(`/reservationAI`, {
+            answer
+        }, {
+            headers: {
+                Authorization: token, 
+            }
+        });
         return response.data;
     } catch (error) {
         if (error.response) {

@@ -25,7 +25,6 @@ const HomeScreen = () => {
             setToken(storageToken);
         };
         getUserInfo();
-        serverCheck();
     }, []);
 
     const serverCheck = async () => {
@@ -39,6 +38,10 @@ const HomeScreen = () => {
             console.error("에러: ", error);
         })
     }
+
+    useEffect(() => {
+        if (token) serverCheck();
+    }, [token]);
 
     return (
         <Container>

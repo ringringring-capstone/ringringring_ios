@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components";
+import * as Speech from "expo-speech";
 // import Voice from "react-native-voice";
-
+import { deliveryAi, reservationAi,  aiCall } from "../../librarys/ai-call-api";
+import { getStorage } from "../../librarys/storage";
 import palette from "../../styles/colorPalette";
 
 import CallEndBtn from "./CallEndBtn";
@@ -18,23 +20,32 @@ const CallPractice = ({route}) => {
     const navigation = useNavigation();
     const name = "길동 대리님";
     const topic = "직장 상사와 업무 대화 나누기";
+    const talk = "안녕하세요.";
 
     const [isLoading, setIsLoading] = useState(true);
     const [isClick, setIsClick] = useState(false);
     const [seconds, setSeconds] = useState(0);
     const [isRecord, setIsRecord] = useState(false);
     const [text, setText] = useState("");
-
-    // useEffect(() => {
-    //     // 통화 연결 준비 중
-    //     setTimeout(() => {
-    //         setIsLoading(false);
-    //         setSeconds(0);
-    //     }, 3000);
-    // }, []);
-
+    const [token, setToken] = useState("");
+    const [id, setId] = useState(0);
     let intervalId;
 
+    const handleClick = (props) => {
+        setIsClick(props);
+    }
+
+    useEffect(() => {
+        const userInfo = async () => {
+            const storageToken = await getStorage("token");
+            const storageId = await getStorage("id");
+            setToken(storageToken);
+            setId(storageId);
+        }
+        userInfo();
+    }, []);
+
+    // 시작 전 3초 로딩 시간
     const startLoading = () => {
         setIsLoading(true);
         setTimeout(() => {
@@ -74,9 +85,30 @@ const CallPractice = ({route}) => {
         };
     }, [navigation]);
 
-    const handleClick = (props) => {
-        setIsClick(props);
+    const aiCalling = async () => {
+        aiCall(id, token)
+            .then(response => {
+                if (response) {
+                    console.log(response);
+                    // speakText(response);
+                }
+            })
+            .catch (error => {
+                console.error("에러: ", error);
+            })
+    }
+
+    const speakText = async (text) => {
+        try {
+            await Speech.speak(text, {
+                language: 'ko',
+            });
+          console.log("tts test 성공");
+        } catch (error) {
+          console.error("에러:", error);
+        }
     };
+
     return (
         <Container>
             <CallInfo 
