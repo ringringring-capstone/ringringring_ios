@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, forwardRef } from "react";
 import { StatusBar } from "expo-status-bar";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -27,17 +27,18 @@ const Stack = createNativeStackNavigator();
 
 const toastConfig = {
   success: (props) => (
-    <StyledBaseToast 
-      {...props} 
-      type="success" />
+    <StyledBaseToast {...props} type="success" />
   )
 };
 
 const StyledBaseToast = styled(BaseToast)`
-  /* background-color: #E0E0E0; */
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
 `;
+
+const ToastMessage = forwardRef((props, ref) => (
+  <Toast ref={ref} {...props} />
+));
 
 export default function App() {
   const [isFontLoading, setIsFontLoading] = useState(false)
@@ -84,7 +85,7 @@ export default function App() {
       </Stack.Navigator>
       <StatusBar style="auto"/>
     </NavigationContainer>
-    <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)}/>
+    <Toast config={toastConfig}/>
     </>
   );
 };
