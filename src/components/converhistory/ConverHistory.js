@@ -1,13 +1,42 @@
 import { SafeAreaView } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { setStorage, getStorage, removeStorage } from "../../librarys/storage";
+
 import palette from "../../styles/colorPalette";
+
 import GoBackBtn from "../GoBackBtn";
 import NoticeBox from "./NoticeBox";
 import ConverHistoryList from "../converhistory/ConverHistoryList";
 
 const ConverHistory = () => {
     const [isClick, setIsClick] = useState(false);
+    const [callConversation, setCallConversation] = useState([]);
+    const [selectIndex, setSelectIndex] = useState();
+
+    useEffect(() => {
+        const userCallHistory = async () => {
+            try {
+                const storageHistory = await getStorage("callHistory");
+                setCallConversation(storageHistory);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        userCallHistory();
+    }, []);
+
+    const handleRemoveItem = async (idx) => {
+        try {
+            const updatedConversation = [...callConversation];
+            updatedConversation.splice(idx, 1);
+            setCallConversation(updatedConversation);
+            await removeStorage("callHistory");
+            await setStorage("callHistory", updatedConversation);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <Container>
@@ -15,10 +44,18 @@ const ConverHistory = () => {
                 <GoBackBtn/>
             </Header>
             <Body>
-                <ConverHistoryList setIsClick={setIsClick}/>
+                <ConverHistoryList 
+                    callConversation={callConversation}
+                    setIsClick={setIsClick}
+                    setSelectIndex={setSelectIndex}/>
             </Body>
             {isClick && 
-                <NoticeBox setIsClick={setIsClick}/>
+                <NoticeBox 
+                    onConfirm={() => {
+                        handleRemoveItem(selectIndex);
+                        setIsClick(false);
+                    }}
+                    onCancel={() => setIsClick(false)}/>
             }
         </Container>
     );

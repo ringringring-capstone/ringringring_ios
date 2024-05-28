@@ -1,11 +1,7 @@
 import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 
-const NoticeBox = ({setIsClick}) => {
-    const handleClick = () => {
-        setIsClick(false);
-    }
-    
+const NoticeBox = ({onConfirm, onCancel}) => {
     return (
         <Container>
             <BoxContainer>
@@ -14,18 +10,18 @@ const NoticeBox = ({setIsClick}) => {
                         통화 기록을 삭제 하시겠습니까?
                     </NoticeText>
                     <NoticeText type="sub">
-                    삭제된 기록은 복구할 수 없습니다.
+                        삭제된 기록은 복구할 수 없습니다.
                     </NoticeText>
                 </TextContainer>
                 <ButtonContainer>
                     <ButtonItemContainer 
                         type="main"
-                        onPress={handleClick}>
+                        onPress={onConfirm}>
                         <BtnText type="main">확인</BtnText>
                     </ButtonItemContainer>
                     <ButtonItemContainer 
                         type="sub"
-                        onPress={handleClick}>
+                        onPress={onCancel}>
                         <BtnText type="sub">취소</BtnText>
                     </ButtonItemContainer>
                 </ButtonContainer>

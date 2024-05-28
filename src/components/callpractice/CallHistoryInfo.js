@@ -3,19 +3,18 @@ import styled from "styled-components";
 import palette from "../../styles/colorPalette";
 
 import { setStorage, getStorage } from "../../librarys/storage";
+import { ToastMessage } from "../ToastMessage";
 
 import ReuseText from "../ReuseText";
 import Phone from "../../assets/image/img_phone.png";
 import MissionListBox from "./MissionListBox";
-import { ToastMessage } from "../ToastMessage";
 
 const CallHistoryInfo = ({time, callType}) => {
     const [name, setName] = useState("");
-    // const [totalCallTime, setTotalCallTime] = useState("");
 
     const CallConversation = [
         {
-            title: "자전거 환불 전화 연습",
+            title: "W 환불 전화 연습2",
             content: `안녕하세요.
 네 안녕하세요. 
 자전거 환불 관련해서 전화를 드렸습니다.
@@ -23,13 +22,21 @@ const CallHistoryInfo = ({time, callType}) => {
 홍길동입니다.
 네 홍길동님, 저희 제품을 언제 구매해주셨나요?
             `
-        },
+        }
     ];
 
     // 대화 내용 저장 / 일단 임의로 넣어둠
-    const handleCallHistorySave = () => {
-        setStorage("callHistory", CallConversation);
-        ToastMessage("저장 되었습니다.");
+    const handleCallHistorySave = async () => {
+        try {
+            let existingHistory = await getStorage("callHistory");
+            existingHistory = existingHistory ? existingHistory : [];
+            existingHistory.push(...CallConversation);
+            console.log(existingHistory);
+            await setStorage("callHistory", existingHistory);
+            ToastMessage("저장 되었습니다.");
+        } catch (error) {
+            ToastMessage("문제가 발생했습니다. 다시 시도해 주세요.");
+        }
     }
 
     useEffect(() => {
