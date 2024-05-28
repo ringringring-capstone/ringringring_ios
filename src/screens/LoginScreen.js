@@ -14,7 +14,7 @@ import DuplicateCheck from "../components/Login/DuplicateCheck";
 import { ToastMessage } from "../components/ToastMessage";
 
 const LoginScreen = () => {
-  const navigation = useNavigation();
+  const Navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [pwd, setPw] = useState("");
   const [isAutoLogin, setIsAutoLogin] = useState(false);
@@ -39,10 +39,10 @@ const LoginScreen = () => {
 
           if (isAutoLogin === true) {
             setStorage("autoLogin", true);
-            navigation.navigate("main");
+            Navigation.navigate("main");
             ToastMessage("자동 로그인 되었습니다.")
           } else {
-            navigation.navigate("main");
+            Navigation.navigate("main");
             ToastMessage("로그인 되었습니다.")
           }
         } else {
@@ -60,12 +60,12 @@ const LoginScreen = () => {
       const autoLogin = await getStorage("autoLogin");
       if (token) {
         if (autoLogin === true) {
-          navigation.navigate("main");
+          Navigation.navigate("main");
         }
       }
     }
     checkLoginStatus();
-  }, [navigation]);
+  }, [Navigation]);
 
   return (
     <Container>

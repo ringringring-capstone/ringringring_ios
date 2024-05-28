@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
-import { getStorage } from "../../librarys/storage";
+import { useNavigation } from "@react-navigation/native";
+import { getStorage, setStorage } from "../../librarys/storage";
 import styled from "styled-components";
 
 import palette from "../../styles/colorPalette";
@@ -15,6 +16,7 @@ import AllUsers from "./AllUsers";
 const CheckListResult = ({route}) => {
     const { score } = route.params;
     const [name, setName] = useState("");
+    const Navigation = useNavigation();
 
     useEffect(() => {
         const getName = async () => {
@@ -24,6 +26,10 @@ const CheckListResult = ({route}) => {
         getName();
     }, []);
 
+    const movePage = () => {
+        Navigation.navigate("checklist");
+        setStorage("score", score);
+    }
 
     return (
         <Container>
@@ -65,8 +71,7 @@ const CheckListResult = ({route}) => {
                     backgroundColor={palette.main}
                     borderColor={"none"}
                     fontColor={palette.white}
-                    event={"movePage"}
-                    movePage={"checklist"}/>
+                    event={movePage}/>
             </Footer>
         </Container>
     );
