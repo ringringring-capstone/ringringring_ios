@@ -11,7 +11,7 @@ const MissionTopicBox = ({topic}) => {
             <MainBox>
                 <ExampleImg source={MissionExam}/>
                 <ReuseText 
-                    text={topic ? topic : "도전할 미션 주제를 뽑아주세요."}
+                    text={topic ? `주제 | ${topic}` : "도전할 미션 주제를 뽑아주세요."}
                     type={"more"}
                     color={palette.black}
                     fontsize={"20px"}
