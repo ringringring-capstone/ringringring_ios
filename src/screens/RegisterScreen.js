@@ -50,11 +50,11 @@ const RegisterScreen = () => {
         }
     }
 
-    const handleEmailCheck = () => {
+    const handleEmailCheck = async () => {
         const regux = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
         if (regux.test(email)) {
-            handleDuplicationEmail();
-            if (duplicateResult === "사용가능한 Email입니다.") {
+            const result = await handleDuplicationEmail();
+            if (result === "사용가능한 Email입니다.") {
                 handleCertifiedEmail();
             }
         } else {
@@ -97,6 +97,7 @@ const RegisterScreen = () => {
             const response = await emailEnterAuth(email, emailCode);
             console.log(response);
             setAuthenticationResult(response);
+            ToastMessage("이메일 인증에 성공하였습니다.");
         } catch (error) {
             console.error(error);
         }
